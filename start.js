@@ -10,6 +10,8 @@ mongoose.connection.on('error', (err) => {
   console.error("Can't connect to database :(");
 });
 
+require('./models/Item');
+
 const app = require('./app');
 app.set('port', process.env.PORT || 7778);
 

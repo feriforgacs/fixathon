@@ -1,0 +1,18 @@
+mixin itemForm(item = {})
+  form(method='POST' action=`/item/save/${item._id || ''}`).form
+    .form-group
+      label(for='itemName') Item name
+      input#itemName(type='text' name='itemName' required='required' value=item.itemName)
+
+    .form-group
+      label(for='itemDescription') Description
+      textarea#itemDescription(name='itemDescription' required='required' maxlength='500')= item.itemDescription
+
+    .form-group
+      select#itemCategory(name='itemCategory')
+        option(value='0') Please, select a category
+        each category in h.itemCategories
+          option(value=category.id selected=(item.itemCategory == category.id) )= category.name
+
+    .form-group
+      input#saveItem(type='submit' name='itemSave' value='Save item')

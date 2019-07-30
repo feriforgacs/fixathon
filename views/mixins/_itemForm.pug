@@ -17,7 +17,7 @@ mixin itemForm(item = {})
 
     .form-group
       select#itemCategory(name='itemCategory')
-        option(value='0') Please, select a category
+        option Please, select a category
         each category in h.itemCategories
           option(value=category.id selected=(item.itemCategory == category.id) )= category.name
 

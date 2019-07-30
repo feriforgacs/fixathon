@@ -24,7 +24,7 @@ const itemSchema = new mongoose.Schema({
   }
 });
 
-itemSchema.pre('save', function(next){
+itemSchema.pre('save', async function(next){
   /**
    * Name hasn't changed, go to next
    */
@@ -36,6 +36,14 @@ itemSchema.pre('save', function(next){
    * Generate slug from name
    */
   this.itemSlug = slug(this.itemName);
+
+  const slugRegEx = new RegExp(`^(${this.itemSlug})((-[0-9]*$)?)$`, 'i');
+  const itemsWithSameSlug = await this.constructor.find({ itemSlug: slugRegEx });
+
+  if(itemsWithSameSlug.length) {
+    this.itemSlug = `${this.itemSlug}-${itemsWithSameSlug.length + 1}`;
+  }
+
   next();
 });
 

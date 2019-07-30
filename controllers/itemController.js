@@ -63,7 +63,7 @@ exports.addItem = (req, res) => {
 exports.createItem = async (req, res) => {
   const item = await (new Item(req.body)).save();
   req.flash('success', `🎉 Successfully created ${item.itemName}. We'll review it soon (24-48 hours) and send you and email when it's live.`);
-  res.redirect(`/item/${item._id}`);
+  res.redirect(`/item/${item.itemSlug}`);
 }
 
 /**
@@ -74,7 +74,7 @@ exports.getItems = async (req, res) => {
   res.render('items', {
     title: 'Latest items',
     items
-  })
+  });
 }
 
 /**
@@ -85,7 +85,7 @@ exports.editItem = async (req, res) => {
   res.render('itemEdit', {
     title: `Edit ${item.itemName}`,
     item
-  })
+  });
 }
 
 /**
@@ -106,7 +106,7 @@ exports.updateItem = async (req, res) => {
 /**
  * Display item data
  */
-exports.displayItem = async (req, res) => {
+exports.displayItem = async (req, res, next) => {
   const item = await Item.findOne({ itemSlug: req.params.slug });
   if(!item){
     return next();

@@ -48,6 +48,6 @@ router.post('/item/save/:id',
 /**
  * Display item data
  */
-router.get('/item/:id', catchErrors(itemController.displayItem));
+router.get('/item/:slug', catchErrors(itemController.displayItem));
 
 module.exports = router;

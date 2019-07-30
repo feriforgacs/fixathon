@@ -1,4 +1,12 @@
 extends layout
 
 block content
-  h1= item.itemName
+  .item-details
+    img.item-image(src=`/uploads/${item.itemPhoto}` alt=`${item.itemName}` title=`${item.itemName}`)
+    h1.item-name= item.itemName
+
+    each category in h.itemCategories
+      if item.itemCategory === category.id
+        a.item-category(href=`/category/${category.slug}` title=`View more items in the ${category.name} category`)= category.name
+          
+    p.item-description= item.itemDescription

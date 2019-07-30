@@ -70,7 +70,7 @@ exports.createItem = async (req, res) => {
  * Get items from the database
  */
 exports.getItems = async (req, res) => {
-  const items = await Item.find();
+  const items = await Item.find().sort({ _id: -1 });
   res.render('items', {
     title: 'Latest items',
     items
@@ -107,7 +107,11 @@ exports.updateItem = async (req, res) => {
  * Display item data
  */
 exports.displayItem = async (req, res) => {
-  const item = await Item.findOne({ _id: req.params.id });
+  const item = await Item.findOne({ itemSlug: req.params.slug });
+  if(!item){
+    return next();
+  }
+
   res.render('itemDetails', {
     title: item.itemName,
     item

@@ -15,9 +15,7 @@ router.get('/', (req, res) => {
 /**
  * Display all items
  */
-router.get('/items', (req, res) => {
-  // TODO
-});
+router.get('/items', catchErrors(itemController.getItems));
 
 /**
  * Add new item

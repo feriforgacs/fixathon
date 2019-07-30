@@ -1,0 +1,9 @@
+extends layout
+
+include mixins/_itemCard
+
+block content
+  h1 Latest items
+  .items
+    each item in items
+      +itemCard(item)

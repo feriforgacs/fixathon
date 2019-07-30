@@ -20,6 +20,17 @@ exports.createItem = async (req, res) => {
 }
 
 /**
+ * Get items from the database
+ */
+exports.getItems = async (req, res) => {
+  const items = await Item.find();
+  res.render('items', {
+    title: 'Latest items',
+    items
+  })
+}
+
+/**
  * Edit item - Display edit form
  */
 exports.editItem = async (req, res) => {

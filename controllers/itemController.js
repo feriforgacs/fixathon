@@ -1,5 +1,52 @@
 const mongoose = require('mongoose');
 const Item = mongoose.model('Item');
+const multer = require('multer');
+const jimp = require('jimp');
+const uuid = require('uuid');
+
+/**
+ * Image upload settings
+ */
+const multerOptions = {
+  storage: multer.memoryStorage(),
+  fileFilter(req, file, next) {
+    // check file format
+    if(file.mimetype.startsWith('image/')){
+      next(null, true);
+    } else {
+      // invalid file
+      next({ message: 'The selected file type is not supported. Please, choose an other image.'}, false);
+    }
+  }
+}
+
+/**
+ * Upload selected image
+ */
+exports.upload = multer(multerOptions).single('itemPhoto');
+
+/**
+ * Resize and rename selected image
+ */
+exports.resize = async (req, res, next) => {
+  // check if there is no file to resize
+  if(!req.file){
+    return next();
+  }
+
+  // get image extension
+  const imageExtension = req.file.mimetype.split('/')[1];
+
+  // generate random name and add extension to it
+  req.body.itemPhoto = `${uuid.v4()}.${imageExtension}`;
+
+  // resize
+  const itemPhoto = await jimp.read(req.file.buffer);
+  await itemPhoto.resize(800, jimp.AUTO);
+  await itemPhoto.write(`./public/uploads/${req.body.itemPhoto}`);
+
+  next();
+}
 
 /**
  * Add new item - Display form

@@ -1,6 +1,7 @@
 mixin itemCard(item = {})
   .item-card
+    img.item-image(src=`${item.itemPhoto || ''}` alt=`${item.itemName}`)
     h3.item-name= item.itemName
-    p.item-description= item.itemDescription
+    p.item-description= item.itemDescription.split(' ').slice(0, 15).join(' ')
     .item-actions
       a.view-item(target='_blank' href=`/item/${item.itemSlug}`) View item details

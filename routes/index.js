@@ -25,7 +25,11 @@ router.get('/item/add', itemController.addItem);
 /**
  * Save new item data
  */
-router.post('/item/save/', catchErrors(itemController.createItem));
+router.post('/item/save/', 
+  itemController.upload,
+  catchErrors(itemController.resize),
+  catchErrors(itemController.createItem)
+);
 
 /**
  * Edit existing item - Display form
@@ -35,7 +39,11 @@ router.get('/item/:id/edit', catchErrors(itemController.editItem));
 /**
  * Save updated item data
  */
-router.post('/item/save/:id', catchErrors(itemController.updateItem));
+router.post('/item/save/:id', 
+  itemController.upload,
+  catchErrors(itemController.resize),
+  catchErrors(itemController.updateItem)
+);
 
 /**
  * Display item data

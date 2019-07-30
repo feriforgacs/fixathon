@@ -17,6 +17,10 @@ const itemSchema = new mongoose.Schema({
   itemCategory: {
     type: Number,
     required: 'Please, select a category.'
+  },
+  itemPhoto: {
+    type: String,
+    required: 'Please, select a photo for your item'
   }
 });
 

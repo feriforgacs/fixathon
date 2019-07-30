@@ -1,5 +1,12 @@
 mixin itemForm(item = {})
-  form(method='POST' action=`/item/save/${item._id || ''}`).form
+  form(method='POST' action=`/item/save/${item._id || ''}` enctype='multipart/form-data').form
+    .form-group
+      label(for='itemPhoto') Item photo
+      input#itemPhoto(type='file' name='itemPhoto')
+
+      if item.itemPhoto
+        img.itemPhoto(src=`/uploads/${item.itemPhoto}` alt=`${item.itemName}`)
+
     .form-group
       label(for='itemName') Item name
       input#itemName(type='text' name='itemName' required='required' value=item.itemName)

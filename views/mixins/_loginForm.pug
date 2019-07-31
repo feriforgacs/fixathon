@@ -1,0 +1,12 @@
+mixin loginForm(user = {})
+  form(method='POST')
+    .form-group
+      label(for='email') Email
+      input#email(type='email' name='email' required value=(user && user.name))
+
+    .form-group
+      label(for='password') Password
+      input(type='password' name='password' required value=(user && user.email))
+
+    .form-group
+      input(type='submit' value='Log in')

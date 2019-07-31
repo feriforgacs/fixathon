@@ -70,3 +70,12 @@ exports.createUser = async (req, res, next) => {
   await createUserWithPromise(user, req.body.password);
   next();
 }
+
+/**
+ * Display login form
+ */
+exports.loginForm = (req, res) => {
+  res.render('login', {
+    title: 'Log in'
+  });
+}

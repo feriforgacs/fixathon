@@ -1,16 +1,17 @@
 mixin registerForm(user = {})
+
   form(method='POST')
     .form-group
       label(for='name') Your Name
-      input#name(type='text' name='name' required value=user.name)
+      input#name(type='text' name='name' required value=(user && user.name))
 
     .form-group
       label(for='email') Your Email address
-      input#email(type='email' name='email' required value=user.email)
+      input#email(type='email' name='email' required value=(user && user.email))
 
     .form-group
       label(for='email-confirm') Confirm Your Email address
-      input#email(type='email' name='email-confirm' required value=user['email-confirm'])
+      input#email(type='email' name='email-confirm' required value=(user && user['email-confirm']))
 
     .form-group
       label(for='password') Password

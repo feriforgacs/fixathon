@@ -67,8 +67,12 @@ router.post('/register',
 );
 
 /**
- * User login
+ * User login - Display login form
  */
+router.get('/login', userController.loginForm);
+ /**
+  * User login - Process login data
+  */
 router.post('/login', authController.login);
 
 /**

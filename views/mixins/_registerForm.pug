@@ -1,0 +1,25 @@
+mixin registerForm(user = {})
+  form(method='POST')
+    .form-group
+      label(for='name') Your Name
+      input#name(type='text' name='name' required value=user.name)
+
+    .form-group
+      label(for='email') Your Email address
+      input#email(type='email' name='email' required value=user.email)
+
+    .form-group
+      label(for='password') Password
+      input#password(type='password' name='password' required)
+
+    .form-group
+      label(for='password-confirm') Confirm your password
+      input#password-confirm(type='password' name='password-confirm' required)
+
+    .form-group
+      label
+        input#legal(type='checkbox' name='legal' required)
+        | By creating an account you are accepiting .......
+
+    .form-group
+      input(type='submit' value='Register')

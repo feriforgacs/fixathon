@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const itemController = require('../controllers/itemController');
+const userController = require('../controllers/userController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 /**
@@ -49,5 +50,10 @@ router.post('/item/save/:id',
  * Display item data
  */
 router.get('/item/:slug', catchErrors(itemController.displayItem));
+
+/**
+ * Display register form
+ */
+router.get('/register', userController.registerForm);
 
 module.exports = router;

@@ -74,6 +74,6 @@ router.post('/login', authController.login);
 /**
  * User logout
  */
-
+router.get('/logout', authController.logout);
 
 module.exports = router;

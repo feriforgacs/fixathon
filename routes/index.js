@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const itemController = require('../controllers/itemController');
 const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 /**
@@ -52,8 +53,27 @@ router.post('/item/save/:id',
 router.get('/item/:slug', catchErrors(itemController.displayItem));
 
 /**
- * Display register form
+ * Display registration form
  */
 router.get('/register', userController.registerForm);
+
+/**
+ * Process registration form
+ */
+router.post('/register', 
+  userController.validateRegister,
+  catchErrors(userController.createUser),
+  authController.login
+);
+
+/**
+ * User login
+ */
+router.post('/login', authController.login);
+
+/**
+ * User logout
+ */
+
 
 module.exports = router;

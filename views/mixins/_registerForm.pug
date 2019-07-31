@@ -9,6 +9,10 @@ mixin registerForm(user = {})
       input#email(type='email' name='email' required value=user.email)
 
     .form-group
+      label(for='email-confirm') Confirm Your Email address
+      input#email(type='email' name='email-confirm' required value=user['email-confirm'])
+
+    .form-group
       label(for='password') Password
       input#password(type='password' name='password' required)
 
@@ -18,7 +22,7 @@ mixin registerForm(user = {})
 
     .form-group
       label
-        input#legal(type='checkbox' name='legal' required)
+        input#legal(type='checkbox' name='legal' value='1' required)
         | By creating an account you are accepiting .......
 
     .form-group

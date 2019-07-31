@@ -37,4 +37,12 @@ const userSchema = new mongoose.Schema({
   resetPasswordExpire: Date
 });
 
+userSchema.virtual('gravatar').get(function(){
+  const hash = md5(this,email);
+  return `https://gravatar.cmo/avatar/${hash}?s=100`;
+});
+
+userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
+userSchema.plugin(mongodbErrorHandler);
+
 module.exports = mongoose.model('User', userSchema);

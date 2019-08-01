@@ -96,4 +96,9 @@ router.post('/account',
   catchErrors(userController.updateAccount)
 );
 
+/**
+ * Lost password recovery email
+ */
+router.post('/account/forgot', catchErrors(authController.forgot));
+
 module.exports = router;

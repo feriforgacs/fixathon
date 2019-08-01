@@ -92,23 +92,25 @@ exports.updateAccount = async (req, res) => {
     email: req.body.email
   };
 
-  // check user in the db with same email
+  /* 
+  // TODO - check other user with the same email address
   const tempUser = await User.findOne({
     email: req.body.email
   });
 
-  if(tempUser && tempUser._id != req.user._id){
+  if(tempUser._id !== req.user._id){
     req.flash('error', 'This email address is taken by an other account. Please, use a different one.');
     res.redirect('/account');
     return;
-  } else {
-    const user = await User.findOneAndUpdate(
-      { _id: req.user._id },
-      { $set: updates },
-      { new: true, runValidators: true, context: 'query' }
-    );
-  
-    req.flash('success', 'Profile updated!');
-    res.redirect('/account');
-  }
+  } */
+
+  const user = await User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $set: updates },
+    { new: true, runValidators: true, context: 'query' }
+  );
+
+  req.flash('success', 'Profile updated!');
+  req.login(user);
+  res.redirect('/account');
 }

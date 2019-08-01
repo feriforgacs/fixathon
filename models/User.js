@@ -42,7 +42,12 @@ userSchema.virtual('gravatar').get(function(){
   return `https://gravatar.cmo/avatar/${hash}?s=100`;
 });
 
-userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
+userSchema.plugin(passportLocalMongoose, { 
+  usernameField: 'email', 
+  errorMessages: { 
+    UserExistsError: 'An account with the selected email address already exists. Please, use an other one.'
+  }
+});
 userSchema.plugin(mongodbErrorHandler);
 
 module.exports = mongoose.model('User', userSchema);

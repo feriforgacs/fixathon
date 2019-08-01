@@ -18,3 +18,13 @@ exports.logout = (req, res) => {
   req.flash('success', '👋 Bye');
   res.redirect('/');
 }
+
+exports.isLoggedIn = (req, res, next) => {
+  if(req.isAuthenticated()){
+    next();
+    return;
+  }
+
+  req.flash('error', 'Please, log in to view this page');
+  res.redirect('/login');
+}

@@ -79,3 +79,36 @@ exports.loginForm = (req, res) => {
     title: 'Log in'
   });
 }
+
+exports.account = (req, res) => {
+  res.render('account', {
+    title: 'Edit your profile'
+  });
+}
+
+exports.updateAccount = async (req, res) => {
+  const updates = {
+    name: req.body.name,
+    email: req.body.email
+  };
+
+  // check user in the db with same email
+  const tempUser = await User.findOne({
+    email: req.body.email
+  });
+
+  if(tempUser && tempUser._id != req.user._id){
+    req.flash('error', 'This email address is taken by an other account. Please, use a different one.');
+    res.redirect('/account');
+    return;
+  } else {
+    const user = await User.findOneAndUpdate(
+      { _id: req.user._id },
+      { $set: updates },
+      { new: true, runValidators: true, context: 'query' }
+    );
+  
+    req.flash('success', 'Profile updated!');
+    res.redirect('/account');
+  }
+}

@@ -16,14 +16,19 @@ html(lang="en")
       li
         a(href='/items') List items
 
-      li
-        a(href='/register') Create profile
+      if user 
+        li
+          | Logged in as #{user.name} 
+          a(href='/logout') Logout
+        
+        li
+          a(href='/account') Update your profile
+      else
+        li
+          a(href='/register') Create profile
 
-      li
-        a(href='/login') Login
-
-      li
-        a(href='/logout') Logout
+        li
+          a(href='/login') Login
 
 
   block messages

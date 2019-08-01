@@ -80,4 +80,20 @@ router.post('/login', authController.login);
  */
 router.get('/logout', authController.logout);
 
+/**
+ * Display account update form
+ */
+router.get('/account', 
+  authController.isLoggedIn,
+  userController.account
+);
+
+/**
+ * Update account data
+ */
+router.post('/account',
+  authController.isLoggedIn,
+  catchErrors(userController.updateAccount)
+);
+
 module.exports = router;

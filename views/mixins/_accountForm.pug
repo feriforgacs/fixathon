@@ -1,0 +1,12 @@
+mixin accountForm(user = {})
+  form(method='POST')
+    .form-group
+      label(for='name') Your Name
+      input#name(type='text' name='name' required value=(user && user.name))
+
+    .form-group
+      label(for='email') Your Email address
+      input#email(type='email' name='email' required value=(user && user.email))
+
+    .form-group
+      input(type='submit' value='Save profile data')

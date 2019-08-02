@@ -101,4 +101,17 @@ router.post('/account',
  */
 router.post('/account/forgot', catchErrors(authController.forgot));
 
+/**
+ * Reset password - Display reset form
+ */
+router.get('/account/reset/:token', catchErrors(authController.reset));
+
+/**
+ * Reset password - SAve new password
+ */
+router.post('/account/reset/:token',
+  authController.confirmedPasswords,
+  catchErrors(authController.update)
+);
+
 module.exports = router;

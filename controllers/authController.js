@@ -63,3 +63,70 @@ exports.forgot = async (req, res) => {
   // redirect to login
   res.redirect('/login');
 }
+
+/**
+ * Display password reset form
+ */
+exports.reset = async (req, res) => {
+  const user = await User.findOne({
+    resetPasswordToken: req.params.token,
+    resetPasswordExpires: {
+      $gt: Date.now()
+    }
+  });
+
+  /**
+   * Invalid or expired token
+   */
+  if(!user){
+    req.flash('error', 'Reset token invalid or expired');
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('reset', {
+    title: 'Create new password'
+  });
+}
+
+exports.confirmedPasswords = (req, res, next) => {
+  if(req.body.password === req.body['password-confirm']){
+    next();
+    return;
+  }
+
+  req.flash('error', 'Password do not match');
+  res.redirect('back');
+}
+
+/**
+ * Save new passwords
+ */
+exports.update = async (req, res) => {
+  const user = await User.findOne({
+    resetPasswordToken: req.params.token,
+    resetPasswordExpires: {
+      $gt: Date.now()
+    }
+  });
+
+  /**
+   * Invalid or expired token
+   */
+  if(!user){
+    req.flash('error', 'Reset token invalid or expired');
+    res.redirect('/login');
+    return;
+  }
+
+  const setPassword = promisify(user.setPassword, user);
+  await setPassword(req.body.password);
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpires = undefined;
+
+  const updatedUser = await user.save();
+  await req.login(updatedUser);
+
+  req.flash('success', 'Your password has been updated and you are now logged in.');
+  res.redirect('/');
+}

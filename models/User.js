@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
     type: Date
   },
   resetPasswordToken: String,
-  resetPasswordExpire: Date
+  resetPasswordExpires: Date
 });
 
 userSchema.virtual('gravatar').get(function(){

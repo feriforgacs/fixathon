@@ -1,0 +1,14 @@
+mixin resetForm()
+  form(method='POST')
+    h2= title
+
+    .form-group
+      label(for='password') New Password
+      input(type='password' name='password' required)
+
+    .form-group
+      label(for='password-confirm') Confirm New Password
+      input(type='password' name='password-confirm' required)
+
+    .form-group
+      input(type='submit' value='Reset password')

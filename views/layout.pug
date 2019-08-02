@@ -29,7 +29,7 @@ html(lang="en")
 
         li
           a(href='/login') Login
-
+  hr
 
   block messages
     if locals.flashes
@@ -44,3 +44,24 @@ html(lang="en")
 
   block content
     p Default content
+
+  nav.footer-navigation
+    hr
+    ul
+      li
+        a(href='/') Home
+
+      li
+        a(href='/about') About
+
+      li
+        a(href='/terms-and-conditions') Terms and Conditions
+
+      li
+        a(href='/privacy-policy') Privacy Policy
+      
+      li
+        a(href='/faq') FAQ
+
+      li
+        a(href='/contact') Contact

@@ -3,16 +3,39 @@ const router = express.Router();
 const itemController = require('../controllers/itemController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const cmsController = require('../controllers/cmsController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 /**
- * Display homepage
+ * Basic pages - Home
  */
-router.get('/', (req, res) => {
-  res.render('index', {
-    title: "Home page"
-  })
-});
+router.get('/', cmsController.home);
+
+/**
+ * Basic pages - About
+ */
+router.get('/about', cmsController.about);
+
+/**
+ * Basic pages - Privacy Policy
+ */
+router.get('/privacy-policy', cmsController.privacyPolicy);
+
+/**
+ * Basic pages - Terms and Conditions
+ */
+router.get('/terms-and-conditions', cmsController.termsAndConditions);
+
+/**
+ * Basic pages - FAQ
+ */
+router.get('/faq', cmsController.faq);
+
+/**
+ * Basic pages - Contact
+ */
+router.get('/contact', cmsController.contact);
+
 
 /**
  * Display all items

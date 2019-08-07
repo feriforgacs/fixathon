@@ -43,39 +43,6 @@ router.get('/contact', cmsController.contact);
 router.get('/items', catchErrors(itemController.getItems));
 
 /**
- * Add new item
- */
-router.get('/item/add', itemController.addItem);
-
-/**
- * Save new item data
- */
-router.post('/item/save/', 
-  itemController.upload,
-  catchErrors(itemController.resize),
-  catchErrors(itemController.createItem)
-);
-
-/**
- * Edit existing item - Display form
- */
-router.get('/item/:id/edit', catchErrors(itemController.editItem));
-
-/**
- * Save updated item data
- */
-router.post('/item/save/:id', 
-  itemController.upload,
-  catchErrors(itemController.resize),
-  catchErrors(itemController.updateItem)
-);
-
-/**
- * Display item data
- */
-router.get('/item/:slug', catchErrors(itemController.displayItem));
-
-/**
  * Display registration form
  */
 router.get('/register', userController.registerForm);
@@ -149,5 +116,46 @@ router.get('/account/confirm/:token',
  * Account confirmed, display some information
  */
 router.get('/confirmed', cmsController.confirmed);
+
+/**
+ * Add new item
+ */
+router.get('/item/add', 
+  authController.isLoggedIn,
+  itemController.addItem
+);
+
+/**
+ * Save new item data
+ */
+router.post('/item/save/',
+  authController.isLoggedIn,
+  itemController.upload,
+  catchErrors(itemController.resize),
+  catchErrors(itemController.createItem)
+);
+
+/**
+ * Edit existing item - Display form
+ */
+router.get('/item/:id/edit', 
+  authController.isLoggedIn,
+  catchErrors(itemController.editItem)
+);
+
+/**
+ * Save updated item data
+ */
+router.post('/item/save/:id', 
+  authController.isLoggedIn,
+  itemController.upload,
+  catchErrors(itemController.resize),
+  catchErrors(itemController.updateItem)
+);
+
+/**
+ * Display item data
+ */
+router.get('/item/:slug', catchErrors(itemController.displayItem));
 
 module.exports = router;

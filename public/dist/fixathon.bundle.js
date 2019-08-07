@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -130,10 +130,18 @@ function togglePassword(event, button, input) {
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+__webpack_require__(2);
 
 var _bling = __webpack_require__(0);
 
@@ -147,13 +155,18 @@ if (registerForm) {
 var showPassword = (0, _bling.$)('#showpassword');
 var showPasswordConfirm = (0, _bling.$)('#showpassword-confirm');
 
-showPassword.on('click', function (e) {
-  return (0, _register.togglePassword)(e, showPassword, (0, _bling.$)('#password'));
-});
-showPasswordConfirm.on('click', function (e) {
-  return (0, _register.togglePassword)(e, showPasswordConfirm, (0, _bling.$)('#password-confirm'));
-});
+if (showPassword) {
+  showPassword.on('click', function (e) {
+    return (0, _register.togglePassword)(e, showPassword, (0, _bling.$)('#password'));
+  });
+}
+
+if (showPasswordConfirm) {
+  showPasswordConfirm.on('click', function (e) {
+    return (0, _register.togglePassword)(e, showPasswordConfirm, (0, _bling.$)('#password-confirm'));
+  });
+}
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=App.bundle.js.map
+//# sourceMappingURL=fixathon.bundle.js.map

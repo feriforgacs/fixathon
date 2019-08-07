@@ -1,3 +1,5 @@
+import '../sass/style.scss';
+
 import { $, $$ } from './modules/bling';
 import { registerFormCheck, togglePassword } from './modules/register';
 
@@ -9,5 +11,10 @@ if(registerForm){
 const showPassword = $('#showpassword');
 const showPasswordConfirm = $('#showpassword-confirm');
 
-showPassword.on('click', (e) => togglePassword(e, showPassword, $('#password')));
-showPasswordConfirm.on('click', (e) => togglePassword(e, showPasswordConfirm, $('#password-confirm')));
+if(showPassword){
+  showPassword.on('click', (e) => togglePassword(e, showPassword, $('#password')));
+}
+
+if(showPasswordConfirm){
+  showPasswordConfirm.on('click', (e) => togglePassword(e, showPasswordConfirm, $('#password-confirm')));
+}

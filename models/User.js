@@ -33,6 +33,13 @@ const userSchema = new mongoose.Schema({
   created: {
     type: Date
   },
+  status: {
+    type: String,
+    trim: true,
+    default: 'unverified'
+  },
+  confirmToken: String,
+  confirmedAt: Date,
   resetPasswordToken: String,
   resetPasswordExpires: Date
 });

@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 exports.siteName = `Fixathon Project 1.0.0`;
 
 exports.itemCategories = [
@@ -17,3 +19,5 @@ exports.itemCategories = [
     slug: 'third-category'
   }
 ]
+
+exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);

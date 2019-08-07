@@ -130,11 +130,24 @@ router.post('/account/forgot', catchErrors(authController.forgot));
 router.get('/account/reset/:token', catchErrors(authController.reset));
 
 /**
- * Reset password - SAve new password
+ * Reset password - Save new password
  */
 router.post('/account/reset/:token',
   authController.confirmedPasswords,
   catchErrors(authController.update)
 );
+
+/**
+ * Confirm account
+ */
+router.get('/account/confirm/:token',
+  authController.isLoggedIn,
+  catchErrors(userController.confirmAccount)
+);
+
+/**
+ * Account confirmed, display some information
+ */
+router.get('/confirmed', cmsController.confirmed);
 
 module.exports = router;

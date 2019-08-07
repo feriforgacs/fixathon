@@ -19,7 +19,7 @@ const postcss = {
 };
 
 const styles = {
-  test: /\.(scss)$/,
+  test: /\.(css)$/,
   use: ExtractTextPlugin.extract(['css-loader?sourceMap', postcss, 'sass-loader?sourceMap'])
 };
 
@@ -42,7 +42,7 @@ const config = {
   },
   // plugins: [uglify],
   plugins: [
-    new ExtractTextPlugin('style.css'),
+    new ExtractTextPlugin('./public/css/style.css'),
   ]
 };
 

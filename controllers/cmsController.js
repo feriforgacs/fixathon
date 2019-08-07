@@ -51,3 +51,12 @@ exports.contact = (req, res) => {
     title: 'Get in touch'
   });
 }
+
+/**
+ * Confirmed account
+ */
+exports.confirmed = (req, res) => {
+  res.render('confirmed', {
+    title: 'Things you can do with a confirmed account'
+  });
+}

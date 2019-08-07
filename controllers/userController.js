@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
+const crypto = require('crypto');
+const mail = require('../handlers/mail');
 
 /**
  * Display registration form
@@ -62,12 +64,29 @@ exports.createUser = async (req, res, next) => {
     email: req.body.email,
     name: req.body.name,
     legal: req.body.legal,
-    created: Date.now()
+    created: Date.now(),
+    confirmToken: crypto.randomBytes(20).toString('hex')
   });
 
   const createUserWithPromise = promisify(User.register, User);
 
-  await createUserWithPromise(user, req.body.password);
+  const newUser = await createUserWithPromise(user, req.body.password);
+
+  if(newUser && newUser._doc._id){
+    /**
+     * Send confirm mail to new user
+     */
+    const confirmURL = `http://${req.headers.host}/account/confirm/${user.confirmToken}`;
+    await mail.send({
+      user,
+      subject: 'Confirm your account',
+      confirmURL,
+      filename: 'account-confirm'
+    });
+
+    req.flash('success', `We've sent an email to ${user.email}. Please, click on the link in it to confirm your account.`);
+  }
+
   next();
 }
 
@@ -86,6 +105,9 @@ exports.account = (req, res) => {
   });
 }
 
+/**
+ * Update existing account
+ */
 exports.updateAccount = async (req, res) => {
   const updates = {
     name: req.body.name,
@@ -113,4 +135,25 @@ exports.updateAccount = async (req, res) => {
   req.flash('success', 'Profile updated!');
   req.login(user);
   res.redirect('/account');
+}
+
+/**
+ * Confirm registered account
+ */
+exports.confirmAccount = async (req, res) => {
+  const updates = {
+    status: 'confirmed',
+    confirmedAt: Date.now()
+  };
+  const user = await User.findOneAndUpdate(
+    { 
+      _id: req.user._id,
+      confirmToken: req.params.token
+    },
+    { $set: updates },
+    { new: true, runValidators: true, context: 'query' }
+  );
+
+  req.flash('success', `Thank you ${user.name} for confirming your account. Now you can start to create items.`);
+  res.redirect('/confirmed');
 }

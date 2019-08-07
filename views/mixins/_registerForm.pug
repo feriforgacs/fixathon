@@ -1,30 +1,58 @@
 mixin registerForm(user = {})
 
-  form(method='POST')
+  .form-info
+    p To create an account, please fill the fields below.
+      br 
+      | Just a few things, it's realy easy.
+      br 
+      | Already have an account? 
+      a(href='/login') Log in.
+
+  form(method='POST')#form-register
     .form-group
       label(for='name') Your Name
+        small Just to let us know how to call you 😉
       input#name(type='text' name='name' required value=(user && user.name))
 
     .form-group
       label(for='email') Your Email address
+        small We'll never share your email with anyone else.
       input#email(type='email' name='email' required value=(user && user.email))
 
     .form-group
       label(for='email-confirm') Confirm Your Email address
-      input#email(type='email' name='email-confirm' required value=(user && user['email-confirm']))
+      input#email-confirm(type='email' name='email-confirm' required value=(user && user['email-confirm']))
 
     .form-group
       label(for='password') Password
-      input#password(type='password' name='password' required)
+        small Should be at least 5 characters long
+        span#showpassword
+          i.show Show 
+            != h.icon('show')
+
+          i.hide Hide
+            != h.icon('hide')
+
+      input#password(type='password' name='password' required minlength='5')
 
     .form-group
       label(for='password-confirm') Confirm your password
-      input#password-confirm(type='password' name='password-confirm' required)
+        span#showpassword-confirm
+          i.show Show 
+            != h.icon('show')
+
+          i.hide Hide
+            != h.icon('hide')
+
+      input#password-confirm(type='password' name='password-confirm' required minlength='5')
 
     .form-group
       label
         input#legal(type='checkbox' name='legal' value='1' required)
-        | By creating an account you are accepiting .......
+        | By creating an account I agree that I read and I accept the 
+        a(href='/terms-and-conditions' target='_blank') Terms and Conditions
+        |  and 
+        a(href='/privacy-policy') Privacy Policy.
 
     .form-group
-      input(type='submit' value='Register')
+      input(type='submit' value='Sign up')

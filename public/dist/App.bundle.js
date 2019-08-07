@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -72,6 +72,87 @@
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// based on https://gist.github.com/paulirish/12fb951a8b893a454b32
+
+var $ = document.querySelector.bind(document);
+var $$ = document.querySelectorAll.bind(document);
+
+Node.prototype.on = window.on = function (name, fn) {
+  this.addEventListener(name, fn);
+};
+
+NodeList.prototype.__proto__ = Array.prototype; // eslint-disable-line
+
+NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn) {
+  this.forEach(function (elem) {
+    elem.on(name, fn);
+  });
+};
+
+exports.$ = $;
+exports.$$ = $$;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.registerFormCheck = registerFormCheck;
+exports.togglePassword = togglePassword;
+
+var _bling = __webpack_require__(0);
+
+function registerFormCheck(e) {
+  /**
+   * TODO
+   * Check email match and password match
+   */
+}
+
+function togglePassword(event, button, input) {
+  if (button.classList.contains('show')) {
+    input.type = 'text';
+    button.classList.remove('show');
+  } else {
+    input.type = 'password';
+    button.classList.add('show');
+  }
+}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _bling = __webpack_require__(0);
+
+var _register = __webpack_require__(1);
+
+var registerForm = (0, _bling.$)('#form-register');
+if (registerForm) {
+  registerForm.on('submit', _register.registerFormCheck);
+}
+
+var showPassword = (0, _bling.$)('#showpassword');
+var showPasswordConfirm = (0, _bling.$)('#showpassword-confirm');
+
+showPassword.on('click', function (e) {
+  return (0, _register.togglePassword)(e, showPassword, (0, _bling.$)('#password'));
+});
+showPasswordConfirm.on('click', function (e) {
+  return (0, _register.togglePassword)(e, showPasswordConfirm, (0, _bling.$)('#password-confirm'));
+});
 
 /***/ })
 /******/ ]);

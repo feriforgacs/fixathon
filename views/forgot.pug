@@ -1,0 +1,8 @@
+extends layout
+
+include mixins/_forgotForm
+
+block content
+  #forgot.container--small
+    h1= title
+    +forgotForm()

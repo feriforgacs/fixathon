@@ -1,12 +1,27 @@
 mixin loginForm(user = {})
-  form(method='POST')
+  .form-info
+    p Don't have an account? 
+      br
+      | You can create one 
+      a(href='/register') here
+      | . It doesn't take more than a minute.
+
+  form(method='POST')#form-login
     .form-group
       label(for='email') Email
       input#email(type='email' name='email' required value=(user && user.email))
 
     .form-group
       label(for='password') Password
-      input(type='password' name='password' required)
+        span#showpassword.show
+          i.show Show 
+            != h.icon('show')
+
+          i.hide Hide 
+            != h.icon('hide')
+      input(type='password' name='password' required minlength='5')#password
 
     .form-group
-      input(type='submit' value='Log in')
+      button(type='submit').button.button--primary Log In
+        i.hidden
+          != h.icon('spin')

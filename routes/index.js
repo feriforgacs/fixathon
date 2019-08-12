@@ -87,6 +87,11 @@ router.post('/account',
 );
 
 /**
+ * Lost password form
+ */
+router.get('/account/forgot', authController.forgotForm);
+
+/**
  * Lost password recovery email
  */
 router.post('/account/forgot', catchErrors(authController.forgot));

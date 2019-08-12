@@ -79,12 +79,12 @@ exports.createUser = async (req, res, next) => {
     const confirmURL = `http://${req.headers.host}/account/confirm/${user.confirmToken}`;
     await mail.send({
       user,
-      subject: 'Confirm your account',
+      subject: 'Welcome to Re-Product 🤗 Please, confirm your account',
       confirmURL,
       filename: 'account-confirm'
     });
 
-    req.flash('success', `We've sent an email to ${user.email}. Please, click on the link in it to confirm your account.`);
+    req.flash('success', `💌 We've sent an email to <strong>${user.email}</strong>. Please, follow the instructions in that, to confirm your account.`);
   }
 
   next();

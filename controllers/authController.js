@@ -8,7 +8,7 @@ const mail = require('../handlers/mail');
 
 exports.login = passport.authenticate('local', {
   failureRedirect: '/login',
-  failureFlash: 'Invalid login details. Please, try again.',
+  failureFlash: 'Invalid login details. Please, try again.<br />Have you forgot your password? <a href="/account/forgot">Click here to request a new one</a>.',
 
   successRedirect: '/',
   successFlash: 'Hi there.'
@@ -30,14 +30,20 @@ exports.isLoggedIn = (req, res, next) => {
   res.redirect('/login');
 }
 
+exports.forgotForm = (req, res) => {
+  res.render('forgot', {
+    title: 'Have you forgot your password?'
+  });
+}
+
 exports.forgot = async (req, res) => {
   // check user in the database
   const user = await User.findOne({ email: req.body.email });
 
   // there is no user in the database with that email
   if(!user){
-    req.flash('error', `There is no user in the database with the following email address: ${req.body.email}`);
-    res.redirect('/login');
+    req.flash('error', `There is no user in the database with the following email address: <strong>${req.body.email}</strong>`);
+    res.redirect('/account/forgot');
     return;
   }
 
@@ -58,10 +64,10 @@ exports.forgot = async (req, res) => {
     filename: 'password-reset'
   });
 
-  req.flash('success', `Password reset mail has been sent to ${req.body.email}`);
+  req.flash('success', `Password reset mail has been sent to <strong>${req.body.email}</strong>`);
 
   // redirect to login
-  res.redirect('/login');
+  res.redirect('/account/forgot/');
 }
 
 /**

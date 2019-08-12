@@ -6,7 +6,7 @@
 
   .flash{
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto 1rem;
     border-radius: 3px;
     font-size: 0.77777778rem;
     padding: .5rem;
@@ -41,6 +41,11 @@
       right: 0;
       height: 45px;
       width: 45px;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: underline;
     }
   }
 }

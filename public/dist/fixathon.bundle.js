@@ -176,6 +176,10 @@ var _bling = __webpack_require__(0);
 
 var _register = __webpack_require__(1);
 
+var _login = __webpack_require__(5);
+
+var _forgot = __webpack_require__(6);
+
 /**
  * Registration form
  */
@@ -201,6 +205,77 @@ if (showPasswordConfirm) {
 /**
  * END Registration Form
  */
+
+/**
+ * Login Form
+ */
+var loginForm = (0, _bling.$)('#form-login');
+if (loginForm) {
+  loginForm.on('submit', _login.loginFormCheck);
+}
+/**
+ * END Login Form
+ */
+
+/**
+ * Forgot Form
+ */
+var forgotForm = (0, _bling.$)('#form-forgot');
+if (forgotForm) {
+  forgotForm.on('submit', _forgot.forgotFormCheck);
+}
+/**
+ * END Forgot Form
+ */
+
+/***/ }),
+/* 4 */,
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loginFormCheck = loginFormCheck;
+
+var _bling = __webpack_require__(0);
+
+function loginFormCheck(e) {
+  e.preventDefault();
+  var error = 0;
+  var errorMessage = "";
+
+  // display spin icon
+  (0, _bling.$)("#form-login .button--primary i").classList.remove("hidden");
+  (0, _bling.$)('#form-login').submit();
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.forgotFormCheck = forgotFormCheck;
+
+var _bling = __webpack_require__(0);
+
+function forgotFormCheck(e) {
+  e.preventDefault();
+  var error = 0;
+  var errorMessage = "";
+
+  // display spin icon
+  (0, _bling.$)("#form-forgot .button--primary i").classList.remove("hidden");
+  (0, _bling.$)('#form-forgot').submit();
+}
 
 /***/ })
 /******/ ]);

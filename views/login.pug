@@ -1,10 +1,10 @@
 extends layout
 
 include mixins/_loginForm
-include mixins/_forgotForm
 
 block content
-  h1= title
-  +loginForm(user)
-
-  +forgotForm()
+  #login.container--small
+    h1= title
+    +loginForm(user)
+    p.forgot
+      a(href='/account/forgot/') Forgot your password?

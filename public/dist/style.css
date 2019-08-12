@@ -412,12 +412,15 @@ template {
   display: none; }
 
 .container {
+  width: 90%;
   max-width: 960px;
   margin: 0 auto; }
   .container--mid {
+    width: 90%;
     max-width: 620px;
     margin: 0 auto; }
   .container--small {
+    width: 90%;
     max-width: 420px;
     margin: 0 auto; }
 
@@ -488,42 +491,13 @@ a {
 
 h1 {
   font-family: "Paytone One", sans-serif;
-  font-weight: bold; }
-
-#register h1 {
-  text-align: center;
-  margin: 3rem auto; }
-
-#register .form-info {
-  margin: 0 auto 3rem; }
-
-#register #legal-label {
-  font-weight: normal; }
-  #register #legal-label a {
-    text-decoration: underline; }
-
-#register .button {
-  margin: 2rem auto; }
-
-#register #showpassword, #register #showpassword-confirm {
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: .7rem;
-  color: #13B296;
-  cursor: pointer; }
-  #register #showpassword svg, #register #showpassword-confirm svg {
-    fill: #13B296; }
-  #register #showpassword .hide, #register #showpassword-confirm .hide {
-    display: none; }
-  #register #showpassword.hide .hide, #register #showpassword-confirm.hide .hide {
-    display: inline-block; }
-  #register #showpassword.hide .show, #register #showpassword-confirm.hide .show {
-    display: none; }
+  font-weight: bold;
+  line-height: 150%; }
 
 .form-info {
   text-align: center;
-  font-size: 0.77777778rem; }
+  font-size: 0.77777778rem;
+  margin: 0 auto 3rem; }
 
 .form-group {
   margin: 0 0 15px 0; }
@@ -587,7 +561,7 @@ h1 {
   z-index: 10; }
   .flash-messages .flash {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto 1rem;
     border-radius: 3px;
     font-size: 0.77777778rem;
     padding: .5rem;
@@ -615,5 +589,67 @@ h1 {
       right: 0;
       height: 45px;
       width: 45px; }
+    .flash-messages .flash a {
+      color: #fff;
+      text-decoration: underline; }
+
+#register h1 {
+  text-align: center;
+  margin: 3rem auto; }
+
+#register #legal-label {
+  font-weight: normal; }
+  #register #legal-label a {
+    text-decoration: underline; }
+
+#register .button {
+  margin: 2rem auto; }
+
+#register #showpassword, #register #showpassword-confirm {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: .7rem;
+  color: #13B296;
+  cursor: pointer; }
+  #register #showpassword svg, #register #showpassword-confirm svg {
+    fill: #13B296; }
+  #register #showpassword .hide, #register #showpassword-confirm .hide {
+    display: none; }
+  #register #showpassword.hide .hide, #register #showpassword-confirm.hide .hide {
+    display: inline-block; }
+  #register #showpassword.hide .show, #register #showpassword-confirm.hide .show {
+    display: none; }
+
+#login h1 {
+  text-align: center;
+  margin: 3rem auto; }
+
+#login .button {
+  margin: 2rem auto; }
+
+#login #showpassword, #login #showpassword-confirm {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: .7rem;
+  color: #13B296;
+  cursor: pointer; }
+  #login #showpassword svg, #login #showpassword-confirm svg {
+    fill: #13B296; }
+  #login #showpassword .hide, #login #showpassword-confirm .hide {
+    display: none; }
+  #login #showpassword.hide .hide, #login #showpassword-confirm.hide .hide {
+    display: inline-block; }
+  #login #showpassword.hide .show, #login #showpassword-confirm.hide .show {
+    display: none; }
+
+#login .forgot {
+  text-align: center;
+  font-size: .78rem; }
+
+#forgot h1 {
+  text-align: center;
+  margin: 3rem auto; }
 
 /*# sourceMappingURL=style.css.map*/

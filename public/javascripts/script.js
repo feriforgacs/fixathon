@@ -2,6 +2,8 @@ import '../sass/style.scss';
 
 import { $, $$ } from './modules/bling';
 import { registerFormCheck, togglePassword } from './modules/register';
+import { loginFormCheck } from './modules/login';
+import { forgotFormCheck } from './modules/forgot';
 
 /**
  * Registration form
@@ -23,4 +25,26 @@ if(showPasswordConfirm){
 }
 /**
  * END Registration Form
+ */
+
+/**
+ * Login Form
+ */
+const loginForm = $('#form-login');
+if(loginForm){
+  loginForm.on('submit', loginFormCheck);
+}
+/**
+ * END Login Form
+ */
+
+/**
+ * Forgot Form
+ */
+const forgotForm = $('#form-forgot');
+if(forgotForm){
+  forgotForm.on('submit', forgotFormCheck);
+}
+/**
+ * END Forgot Form
  */

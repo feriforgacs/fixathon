@@ -1,10 +1,12 @@
 mixin forgotForm()
-  form(method='POST' action='/account/forgot')
-    h2 Have you forgot your password? No worries. Add your email below and will send you a link to set up a new password
-
+  .form-info
+    p No worries. Add your email below and will send you a link to set up a new password.
+  form(method='POST' action='/account/forgot')#form-forgot
     .form-group
       label(for='email') Email address
       input(type='email' name='email' required)
 
     .form-group
-      input(type='submit' value='Send password reset email')
+      button(type='submit').button.button--primary Send password reset email
+        i.hidden
+          != h.icon('spin')

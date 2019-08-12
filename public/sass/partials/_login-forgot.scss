@@ -1,15 +1,7 @@
-#register{
+#login{
   h1{
     text-align: center;
     margin: 3rem auto;
-  }
-
-  #legal-label{
-    font-weight: normal;
-
-    a{
-      text-decoration: underline;
-    }
   }
 
   .button{
@@ -40,5 +32,17 @@
         display: none;
       }
     }
+  }
+
+  .forgot{
+    text-align: center;
+    font-size: .78rem;
+  }
+}
+
+#forgot{
+  h1{
+    text-align: center;
+    margin: 3rem auto;
   }
 }

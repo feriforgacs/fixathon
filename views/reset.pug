@@ -3,4 +3,6 @@ extends layout
 include mixins/_resetForm
 
 block content
-  +resetForm()
+  #reset.container--small
+    h1= title
+    +resetForm()

@@ -228,6 +228,17 @@ if (forgotForm) {
  * END Forgot Form
  */
 
+/**
+ * Reset Form
+ */
+var resetForm = (0, _bling.$)('#form-reset');
+if (resetForm) {
+  resetForm.on('submit', _forgot.resetFormCheck);
+}
+/**
+ * END Reset Form
+ */
+
 /***/ }),
 /* 4 */,
 /* 5 */
@@ -264,6 +275,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.forgotFormCheck = forgotFormCheck;
+exports.resetFormCheck = resetFormCheck;
 
 var _bling = __webpack_require__(0);
 
@@ -275,6 +287,33 @@ function forgotFormCheck(e) {
   // display spin icon
   (0, _bling.$)("#form-forgot .button--primary i").classList.remove("hidden");
   (0, _bling.$)('#form-forgot').submit();
+}
+
+function resetFormCheck(e) {
+  e.preventDefault();
+  var error = 0;
+  var errorMessage = "";
+
+  if ((0, _bling.$)("#password").value !== (0, _bling.$)("#password-confirm").value) {
+    errorMessage += "Please, check your passwords. They don't match.<br />";
+    error++;
+  }
+
+  if (error) {
+    // add error message to result div
+    (0, _bling.$)("#form-reset .form--error").innerHTML = "";
+    (0, _bling.$)("#form-reset .form--error").innerHTML = errorMessage;
+
+    // display result div
+    (0, _bling.$)("#form-reset .form--error").classList.remove("hidden");
+
+    return false;
+  } else {
+    (0, _bling.$)("#form-reset .form--error").classList.add("hidden");
+    // display spin icon
+    (0, _bling.$)("#form-reset .button--primary i").classList.remove("hidden");
+    (0, _bling.$)('#form-reset').submit();
+  }
 }
 
 /***/ })

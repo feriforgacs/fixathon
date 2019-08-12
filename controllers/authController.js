@@ -86,12 +86,12 @@ exports.reset = async (req, res) => {
    */
   if(!user){
     req.flash('error', 'Reset token invalid or expired');
-    res.redirect('/login');
+    res.redirect('/account/forgot/');
     return;
   }
 
   res.render('reset', {
-    title: 'Create new password'
+    title: 'Set up new password'
   });
 }
 

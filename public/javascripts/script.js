@@ -3,7 +3,7 @@ import '../sass/style.scss';
 import { $, $$ } from './modules/bling';
 import { registerFormCheck, togglePassword } from './modules/register';
 import { loginFormCheck } from './modules/login';
-import { forgotFormCheck } from './modules/forgot';
+import { forgotFormCheck, resetFormCheck } from './modules/forgot';
 
 /**
  * Registration form
@@ -47,4 +47,15 @@ if(forgotForm){
 }
 /**
  * END Forgot Form
+ */
+
+/**
+ * Reset Form
+ */
+const resetForm = $('#form-reset');
+if(resetForm){
+  resetForm.on('submit', resetFormCheck);
+}
+/**
+ * END Reset Form
  */

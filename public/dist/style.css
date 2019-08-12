@@ -652,4 +652,30 @@ h1 {
   text-align: center;
   margin: 3rem auto; }
 
+#forgot .button {
+  margin: 2rem auto; }
+
+#reset h1 {
+  text-align: center;
+  margin: 3rem auto; }
+
+#reset .button {
+  margin: 2rem auto; }
+
+#reset #showpassword, #reset #showpassword-confirm {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: .7rem;
+  color: #13B296;
+  cursor: pointer; }
+  #reset #showpassword svg, #reset #showpassword-confirm svg {
+    fill: #13B296; }
+  #reset #showpassword .hide, #reset #showpassword-confirm .hide {
+    display: none; }
+  #reset #showpassword.hide .hide, #reset #showpassword-confirm.hide .hide {
+    display: inline-block; }
+  #reset #showpassword.hide .show, #reset #showpassword-confirm.hide .show {
+    display: none; }
+
 /*# sourceMappingURL=style.css.map*/

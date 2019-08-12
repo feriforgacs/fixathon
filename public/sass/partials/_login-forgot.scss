@@ -45,4 +45,45 @@
     text-align: center;
     margin: 3rem auto;
   }
+
+  .button{
+    margin: 2rem auto;
+  }
+}
+
+#reset{
+  h1{
+    text-align: center;
+    margin: 3rem auto;
+  }
+
+  .button{
+    margin: 2rem auto;
+  }
+
+  #showpassword, #showpassword-confirm{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: .7rem;
+    color: $primaryColor;
+    cursor: pointer;
+
+    svg{
+      fill: $primaryColor;
+    }
+
+    .hide{
+      display: none;
+    }
+
+    &.hide{
+      .hide{
+        display: inline-block;
+      }
+      .show{
+        display: none;
+      }
+    }
+  }
 }

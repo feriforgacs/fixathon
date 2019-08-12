@@ -1,14 +1,28 @@
 mixin resetForm()
-  form(method='POST')
-    h2= title
-
+  form(method='POST')#form-reset
     .form-group
       label(for='password') New Password
-      input(type='password' name='password' required)
+        span#showpassword.show
+          i.show Show 
+            != h.icon('show')
+
+          i.hide Hide 
+            != h.icon('hide')
+      input(type='password' name='password' required minlength='5')#password
 
     .form-group
       label(for='password-confirm') Confirm New Password
-      input(type='password' name='password-confirm' required)
+        span#showpassword-confirm.show
+          i.show Show 
+            != h.icon('show')
+
+          i.hide Hide 
+            != h.icon('hide')
+      input(type='password' name='password-confirm' required minlength='5')#password-confirm
+
+    .form--error.hidden
 
     .form-group
-      input(type='submit' value='Reset password')
+      button(type='submit').button.button--primary Reset Password
+        i.hidden
+          != h.icon('spin')

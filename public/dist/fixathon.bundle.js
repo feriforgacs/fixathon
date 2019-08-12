@@ -112,19 +112,48 @@ exports.togglePassword = togglePassword;
 var _bling = __webpack_require__(0);
 
 function registerFormCheck(e) {
+  e.preventDefault();
+  var error = 0;
+  var errorMessage = "";
   /**
-   * TODO
    * Check email match and password match
    */
+  if ((0, _bling.$)("#email").value !== (0, _bling.$)("#email-confirm").value) {
+    errorMessage += "Please, check your email addresses. They don't match.<br />";
+    error++;
+  }
+
+  if ((0, _bling.$)("#password").value !== (0, _bling.$)("#password-confirm").value) {
+    errorMessage += "Please, check your passwords. They don't match.<br />";
+    error++;
+  }
+
+  if (error) {
+    // add error message to result div
+    (0, _bling.$)("#form-register .form--error").innerHTML = "";
+    (0, _bling.$)("#form-register .form--error").innerHTML = errorMessage;
+
+    // display result div
+    (0, _bling.$)("#form-register .form--error").classList.remove("hidden");
+
+    return false;
+  } else {
+    (0, _bling.$)("#form-register .form--error").classList.add("hidden");
+    // display spin icon
+    (0, _bling.$)("#form-register .button--primary i").classList.remove("hidden");
+    (0, _bling.$)('#form-register').submit();
+  }
 }
 
 function togglePassword(event, button, input) {
   if (button.classList.contains('show')) {
     input.type = 'text';
     button.classList.remove('show');
+    button.classList.add('hide');
   } else {
     input.type = 'password';
     button.classList.add('show');
+    button.classList.remove('hide');
   }
 }
 
@@ -147,6 +176,9 @@ var _bling = __webpack_require__(0);
 
 var _register = __webpack_require__(1);
 
+/**
+ * Registration form
+ */
 var registerForm = (0, _bling.$)('#form-register');
 if (registerForm) {
   registerForm.on('submit', _register.registerFormCheck);
@@ -166,6 +198,9 @@ if (showPasswordConfirm) {
     return (0, _register.togglePassword)(e, showPasswordConfirm, (0, _bling.$)('#password-confirm'));
   });
 }
+/**
+ * END Registration Form
+ */
 
 /***/ })
 /******/ ]);

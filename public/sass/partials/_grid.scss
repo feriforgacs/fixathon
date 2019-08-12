@@ -1,0 +1,18 @@
+.container{
+  max-width: 960px;
+  margin: 0 auto;
+
+  &--mid{
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  &--small{
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+.hidden{
+  display: none;
+}

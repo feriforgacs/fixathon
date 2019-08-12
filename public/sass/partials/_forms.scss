@@ -1,0 +1,55 @@
+.form-info{
+  text-align: center;
+  font-size: 0.77777778rem;
+}
+
+.form-group{
+  margin: 0 0 15px 0;
+
+  label{
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    font-size: 0.777778rem;
+    position: relative;
+
+    small{
+      font-weight: normal;
+      font-size: 0.66666667rem;
+    }
+  }
+
+  input[type="text"], input[type="email"], input[type="password"]{
+    width: 100%;
+    font-size: 0.777778rem;
+    line-height: 2rem;
+    padding: 0 .5rem;
+  }
+
+  input[type="checkbox"]{
+    margin-right: .5rem;
+  }
+}
+
+.form--error{
+  color: $errorColor;
+  border: 2px solid $errorColor;
+  border-radius: 3px;
+  margin: 10px auto;
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+  font-size: .7rem;
+  background: #ffeff2;
+}
+
+.spin {
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}

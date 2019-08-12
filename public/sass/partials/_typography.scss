@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Paytone+One&display=swap&subset=latin-ext');
+
+$paytone: 'Paytone One', sans-serif;
+
+html {
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #333;
+  line-height: 150%;
+  background: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: $primaryColor;
+  
+  &:hover{
+    opacity: .8;
+  }
+}
+
+h1{
+  font-family: $paytone;
+  font-weight: bold;
+}

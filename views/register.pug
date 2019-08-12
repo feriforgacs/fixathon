@@ -3,5 +3,6 @@ extends layout
 include mixins/_registerForm
 
 block content
-  h1= title
-  +registerForm(user)
+  #register.container--small
+    h1= title
+    +registerForm(user)

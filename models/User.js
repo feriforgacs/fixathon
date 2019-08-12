@@ -38,6 +38,10 @@ const userSchema = new mongoose.Schema({
     trim: true,
     default: 'unverified'
   },
+  level: {
+    type: Number,
+    default: 30
+  },
   confirmToken: String,
   confirmedAt: Date,
   resetPasswordToken: String,

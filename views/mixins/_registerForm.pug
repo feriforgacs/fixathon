@@ -1,9 +1,9 @@
 mixin registerForm(user = {})
 
   .form-info
-    p To create an account, please fill the fields below.
-      br 
-      | Just a few things, it's realy easy.
+    p To 
+      strong start fixing the 🌎climate, 
+      | please, create an account by filling the form below.
       br 
       | Already have an account? 
       a(href='/login') Log in.
@@ -11,11 +11,13 @@ mixin registerForm(user = {})
   form(method='POST')#form-register
     .form-group
       label(for='name') Your Name
-        small Just to let us know how to call you 😉
-      input#name(type='text' name='name' required value=(user && user.name))
+        br
+        small This will be visible on your profile page and under the items you created.
+      input#name(type='text' name='name' required value=(user && user.name) minlength='2')
 
     .form-group
       label(for='email') Your Email address
+        br
         small We'll never share your email with anyone else.
       input#email(type='email' name='email' required value=(user && user.email))
 
@@ -25,34 +27,39 @@ mixin registerForm(user = {})
 
     .form-group
       label(for='password') Password
-        small Should be at least 5 characters long
-        span#showpassword
+        br
+        small Should be at least 5 characters long.
+        span#showpassword.show
           i.show Show 
             != h.icon('show')
 
-          i.hide Hide
+          i.hide Hide 
             != h.icon('hide')
 
-      input#password(type='password' name='password' required minlength='5')
+      input(type='password' name='password' required minlength='5')#password
 
     .form-group
       label(for='password-confirm') Confirm your password
-        span#showpassword-confirm
+        span#showpassword-confirm.show
           i.show Show 
             != h.icon('show')
 
-          i.hide Hide
+          i.hide Hide 
             != h.icon('hide')
 
-      input#password-confirm(type='password' name='password-confirm' required minlength='5')
+      input(type='password' name='password-confirm' required minlength='5')#password-confirm
 
     .form-group
-      label
+      label#legal-label
         input#legal(type='checkbox' name='legal' value='1' required)
         | By creating an account I agree that I read and I accept the 
         a(href='/terms-and-conditions' target='_blank') Terms and Conditions
         |  and 
         a(href='/privacy-policy') Privacy Policy.
 
+    .form--error.hidden
+
     .form-group
-      input(type='submit' value='Sign up')
+      button(type='submit').button.button--primary Sign up
+        i.hidden
+          != h.icon('spin')

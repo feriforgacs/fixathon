@@ -1,0 +1,48 @@
+#register{
+  h1{
+    text-align: center;
+    margin: 3rem auto;
+  }
+
+  .form-info{
+    margin: 0 auto 3rem;
+  }
+
+  #legal-label{
+    font-weight: normal;
+
+    a{
+      text-decoration: underline;
+    }
+  }
+
+  .button{
+    margin: 2rem auto;
+  }
+
+  #showpassword, #showpassword-confirm{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: .7rem;
+    color: $primaryColor;
+    cursor: pointer;
+
+    svg{
+      fill: $primaryColor;
+    }
+
+    .hide{
+      display: none;
+    }
+
+    &.hide{
+      .hide{
+        display: inline-block;
+      }
+      .show{
+        display: none;
+      }
+    }
+  }
+}

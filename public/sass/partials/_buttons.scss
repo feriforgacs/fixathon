@@ -1,0 +1,22 @@
+.button{
+  border: none;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  font-weight: bold;
+  height: 3rem;
+  line-height: 3rem;
+  margin: 0 auto;
+  border-radius: 3px;
+  text-transform: uppercase;
+
+  &--primary{
+    color: #fff;
+    background-color: $primaryColor;
+
+    &:hover{
+      background-color: #099B81;
+    }
+  }
+}

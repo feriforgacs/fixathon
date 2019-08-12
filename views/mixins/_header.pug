@@ -1,0 +1,30 @@
+mixin header()
+  header#header
+    nav#header__navigation
+      ul.navigation__list
+        li.navigation__item#logo
+          a(href='/').navigation__link.navigation__link--activ RE-PRODUCT
+
+        li.navigation__item
+          a(href='').navigation__link#category Categories
+            span
+              != h.icon('categories_button')
+        li.navigation__item
+          a(href='/items').navigation__link List items
+
+        if user 
+          li.navigation__item
+            a(href='/item/add').navigation__link Add new item
+
+          li.navigation__item
+            | Logged in as #{user.name} 
+            a(href='/logout').navigation__link Logout
+          
+          li.navigation__item
+            a(href='/account').navigation__link Update your profile
+        else
+          li.navigation__item
+            a(href='/register').navigation__link Create profile
+
+          li.navigation__item
+            a(href='/login').navigation__link Login

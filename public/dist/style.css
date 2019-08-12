@@ -1,4 +1,4 @@
-html {
+@import url(https://fonts.googleapis.com/css?family=Paytone+One&display=swap&subset=latin-ext);html {
   box-sizing: border-box; }
 
 *, *:before, *:after {
@@ -410,5 +410,210 @@ template {
  */
 [hidden] {
   display: none; }
+
+.container {
+  max-width: 960px;
+  margin: 0 auto; }
+  .container--mid {
+    max-width: 620px;
+    margin: 0 auto; }
+  .container--small {
+    max-width: 420px;
+    margin: 0 auto; }
+
+.hidden {
+  display: none; }
+
+#header {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  text-align: left;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  border-bottom: 1px solid #eee; }
+  #header__navigation {
+    width: 100%; }
+
+.navigation__list {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 4.5rem; }
+
+.navigation__link {
+  text-decoration: none;
+  color: #888;
+  margin: 0 2rem 0 0;
+  font-size: .8rem;
+  font-weight: bold;
+  line-height: 4.5rem;
+  height: 4.5rem;
+  display: block; }
+  .navigation__link--activ {
+    border-bottom: 2px solid #13B296; }
+
+#logo {
+  font-weight: bold;
+  padding: 0 0 0 2rem; }
+  #logo .navigation__link {
+    color: #13B296;
+    font-size: 1.5rem; }
+
+#category span {
+  border: 1px solid #eee;
+  line-height: 2rem;
+  height: 2rem;
+  display: inline-block;
+  width: 2rem;
+  text-align: center;
+  border-radius: 3px;
+  margin-left: .5rem; }
+
+html {
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #333;
+  line-height: 150%;
+  background: #fff; }
+
+a {
+  text-decoration: none;
+  color: #13B296; }
+  a:hover {
+    opacity: .8; }
+
+h1 {
+  font-family: "Paytone One", sans-serif;
+  font-weight: bold; }
+
+#register h1 {
+  text-align: center;
+  margin: 3rem auto; }
+
+#register .form-info {
+  margin: 0 auto 3rem; }
+
+#register #legal-label {
+  font-weight: normal; }
+  #register #legal-label a {
+    text-decoration: underline; }
+
+#register .button {
+  margin: 2rem auto; }
+
+#register #showpassword, #register #showpassword-confirm {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: .7rem;
+  color: #13B296;
+  cursor: pointer; }
+  #register #showpassword svg, #register #showpassword-confirm svg {
+    fill: #13B296; }
+  #register #showpassword .hide, #register #showpassword-confirm .hide {
+    display: none; }
+  #register #showpassword.hide .hide, #register #showpassword-confirm.hide .hide {
+    display: inline-block; }
+  #register #showpassword.hide .show, #register #showpassword-confirm.hide .show {
+    display: none; }
+
+.form-info {
+  text-align: center;
+  font-size: 0.77777778rem; }
+
+.form-group {
+  margin: 0 0 15px 0; }
+  .form-group label {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    font-size: 0.777778rem;
+    position: relative; }
+    .form-group label small {
+      font-weight: normal;
+      font-size: 0.66666667rem; }
+  .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"] {
+    width: 100%;
+    font-size: 0.777778rem;
+    line-height: 2rem;
+    padding: 0 .5rem; }
+  .form-group input[type="checkbox"] {
+    margin-right: .5rem; }
+
+.form--error {
+  color: #CD0D3B;
+  border: 2px solid #CD0D3B;
+  border-radius: 3px;
+  margin: 10px auto;
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+  font-size: .7rem;
+  background: #ffeff2; }
+
+.spin {
+  animation: spin 1s linear infinite; }
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg); } }
+
+.button {
+  border: none;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  font-weight: bold;
+  height: 3rem;
+  line-height: 3rem;
+  margin: 0 auto;
+  border-radius: 3px;
+  text-transform: uppercase; }
+  .button--primary {
+    color: #fff;
+    background-color: #13B296; }
+    .button--primary:hover {
+      background-color: #099B81; }
+
+.flash-messages {
+  position: absolute;
+  top: 1rem;
+  width: 100%;
+  z-index: 10; }
+  .flash-messages .flash {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 3px;
+    font-size: 0.77777778rem;
+    padding: .5rem;
+    position: relative;
+    text-align: center; }
+    .flash-messages .flash--success {
+      color: #fff;
+      background: #27ae60;
+      box-shadow: 0px 0px 20px rgba(0, 255, 109, 0.5); }
+    .flash-messages .flash--error {
+      color: #fff;
+      background: #CD0D3B;
+      box-shadow: 0px 0px 20px rgba(205, 13, 59, 0.5); }
+    .flash-messages .flash__text {
+      padding: 0;
+      margin: 0;
+      max-width: calc(100% - 50px); }
+    .flash-messages .flash__remove {
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 45px;
+      width: 45px; }
 
 /*# sourceMappingURL=style.css.map*/

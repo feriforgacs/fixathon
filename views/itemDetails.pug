@@ -2,11 +2,15 @@ extends layout
 
 block content
   .item-details
-    img.item-image(src=`/uploads/${item.itemPhoto}` alt=`${item.itemName}` title=`${item.itemName}`)
-    h1.item-name= item.itemName
+    if item.status === 'approved' || user && ( user.level < 30 || user._id.toString() === item.author._id.toString() )
+      if preview
+        p.item__preview This is just a preview URL
+      
+      img.item-image(src=`/uploads/${item.itemPhoto}` alt=`${item.itemName}` title=`${item.itemName}`)
+      h1.item-name= item.itemName
 
-    each category in h.itemCategories
-      if item.itemCategory === category.id
-        a.item-category(href=`/category/${category.slug}` title=`View more items in the ${category.name} category`)= category.name
-          
-    p.item-description= item.itemDescription
+      each category in h.itemCategories
+        if item.itemCategory === category.id
+          a.item-category(href=`/category/${category.slug}` title=`View more items in the ${category.name} category`)= category.name
+            
+      p.item-description= item.itemDescription

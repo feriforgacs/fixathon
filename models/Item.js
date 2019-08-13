@@ -30,7 +30,21 @@ const itemSchema = new mongoose.Schema({
     type: String,
     default: 'new'
   },
-  itemCreated: Date
+  itemCreated: Date,
+  author: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: 'You must supply a user'
+  }
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+});
+
+// define our indexes
+itemSchema.index({
+  name: 'text',
+  description: 'text'
 });
 
 itemSchema.pre('save', async function(next){
@@ -55,5 +69,13 @@ itemSchema.pre('save', async function(next){
 
   next();
 });
+
+function autoPopulate(next){
+  this.populate('author');
+  next();
+}
+
+itemSchema.pre('find', autoPopulate);
+itemSchema.pre('findOne', autoPopulate);
 
 module.exports = mongoose.model('Item', itemSchema);

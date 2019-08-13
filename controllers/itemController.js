@@ -68,6 +68,7 @@ exports.createItem = async (req, res) => {
    */
   req.body.itemToken = crypto.randomBytes(20).toString('hex');
   req.body.itemCreated = Date.now();
+  req.body.author = req.user._id;
 
   const item = await (new Item(req.body)).save();
 
@@ -143,4 +144,27 @@ exports.displayItem = async (req, res, next) => {
     title: item.itemName,
     item
   })
+}
+
+/**
+ * Display item preview
+ */
+exports.previewItem = async (req, res, next) => {
+  const itemToken = req.params.token;
+  const itemId = req.params.id;
+
+  const item = await Item.findOne({
+    _id: itemId,
+    itemToken
+  });
+
+  if(!item){
+    return next();
+  }
+
+  res.render('itemDetails', {
+    title: `PREVIEW - ${item.itemName}`,
+    preview: true,
+    item
+  });
 }

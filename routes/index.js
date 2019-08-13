@@ -163,4 +163,14 @@ router.post('/item/save/:id',
  */
 router.get('/item/:slug', catchErrors(itemController.displayItem));
 
+/**
+ * Display item preview
+ */
+router.get('/item/preview/:token/:id', catchErrors(itemController.previewItem));
+
+/**
+ * Approve item
+ */
+router.get('/item/approve/:token/:id', catchErrors(itemController.approveItem));
+
 module.exports = router;

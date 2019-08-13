@@ -5,27 +5,42 @@ mixin header(search = '')
         li.navigation__item#logo
           a(href='/').navigation__link.navigation__link--activ RE-PRODUCT
 
-        li.navigation__item#category-item
-          a(href='').navigation__link#category Categories
-            span
-              != h.icon('categories_button')
-
-        li.navigation__item#search-item
-          form(method='GET' action='search')#search-form
-            input(type='text' name='search' value=`${search || ''}` placeholder='Search items...')
-            button(type='submit')#search-item__submit
-              != h.icon('search_button')
+        if user
+          li.navigation__item.logged-in#category-item
+            a(href='').navigation__link#category Categories
+              span
+                != h.icon('categories_button')
+          
+          li.navigation__item.logged-in#search-item
+            form(method='GET' action='search')#search-form
+              input(type='text' name='search' value=`${search || ''}` placeholder='Search items...')
+              button(type='submit')#search-item__submit
+                != h.icon('search_button')
+        else
+          li.navigation__item#category-item
+            a(href='').navigation__link#category Categories
+              span
+                != h.icon('categories_button')
+        
+          li.navigation__item#search-item
+            form(method='GET' action='search')#search-form
+              input(type='text' name='search' value=`${search || ''}` placeholder='Search items...')
+              button(type='submit')#search-item__submit
+                != h.icon('search_button')
 
         if user 
-          li.navigation__item
-            a(href='/item/add').navigation__link Add new item
+          li.navigation__item#add-item
+            a(href='/item/add').navigation__link.button.button--primary.button--small Add item
 
-          li.navigation__item
-            | Logged in as #{user.name} 
-            a(href='/logout').navigation__link Logout
-          
-          li.navigation__item
-            a(href='/account').navigation__link Update your profile
+          li.navigation__item#profile
+            #profile__link
+              img(src=`${user.gravatar}`).profile__image
+              span.profile__name #{user.name}
+            #profile__dropdown.hidden
+              a(href='/account') Update account
+              a(href='/my-items') Your uploaded items
+              a(href='/logout') Logout
+            
         else
           li.navigation__item#login-item
             a(href='/login').navigation__link.button.button--secondary.button--small Log In

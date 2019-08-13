@@ -49,8 +49,8 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.virtual('gravatar').get(function(){
-  const hash = md5(this,email);
-  return `https://gravatar.cmo/avatar/${hash}?s=100`;
+  const hash = md5(this.email);
+  return `https://gravatar.com/avatar/${hash}?s=50`;
 });
 
 userSchema.plugin(passportLocalMongoose, { 

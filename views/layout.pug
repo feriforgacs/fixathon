@@ -1,6 +1,7 @@
 include mixins/_header
+include mixins/_meta
 
-<!DOCTYPE html>
+doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
@@ -8,6 +9,10 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title= `${title} | ${h.siteName}`
     link(rel='stylesheet', href='/dist/style.css')
+
+    block meta
+      +meta()
+
   body
 
   block header

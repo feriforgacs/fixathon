@@ -10,6 +10,8 @@
   margin: 0 auto;
   border-radius: 3px;
   text-transform: uppercase;
+  text-align: center;
+  padding: 0 1rem;
 
   &--primary{
     color: #fff;
@@ -18,5 +20,20 @@
     &:hover{
       background-color: #099B81;
     }
+  }
+
+  &--secondary{
+    color: $primaryColor;
+    border: 1px solid $primaryColor;
+
+    &:hover{
+      background-color: #f7f7f7;
+    }
+  }
+
+  &--small{
+    height: 2rem;
+    line-height: 2rem;
+    font-size: .7rem;
   }
 }

@@ -20,11 +20,16 @@
   height: 4.5rem;
 }
 
+.navigation__item{
+  display: flex;
+  align-items: center;
+}
+
 .navigation__link{
   text-decoration: none;
   color: #888;
   margin: 0 2rem 0 0;
-  font-size: .8rem;
+  font-size: .7rem;
   font-weight: bold;
   line-height: 4.5rem;
   height: 4.5rem;
@@ -38,6 +43,8 @@
 #logo{
   font-weight: bold;
   padding: 0 0 0 2rem;
+  font-family: $paytone;
+  flex: 2;
 
   & .navigation__link {
     color: $primaryColor;
@@ -47,7 +54,7 @@
 
 #category {
   span {
-    border: 1px solid #eee;
+    border: 1px solid $primaryColor;
     line-height: 2rem;
     height: 2rem;
     display: inline-block;
@@ -55,5 +62,52 @@
     text-align: center;
     border-radius: 3px;
     margin-left: .5rem;
+
+    svg{
+      fill: $primaryColor;
+    }
   }
+}
+
+#category-item{
+  flex: 3;
+}
+
+#search-item{
+  flex: 3;
+  justify-content: flex-end;
+  margin-right: 1rem;
+
+  input{
+    border: none;
+    box-shadow: 0 1px 0 #ccc;
+    line-height: 2rem;
+    color: #888;
+    font-size: .8rem;
+    width: 60%;
+    max-width: 420px
+  }
+
+  &__submit{
+    border: none;
+    margin-bottom: -10px;
+    margin-left: 2px;
+    cursor: pointer;
+  }
+}
+
+#search-form{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;   
+}
+
+#login-item{
+  flex: 1;
+  margin-right: 1rem;
+}
+
+#signup-item{
+  flex: 1;
+  margin-right: 1rem;
 }

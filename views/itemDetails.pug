@@ -2,7 +2,7 @@ extends layout
 
 block content
   .item-details
-    if item.status === 'approved' || user && ( user.level < 30 || user._id.toString() === item.author._id.toString() )
+    if item.itemStatus === 'approved' || user && ( user.level < 30 || user._id.toString() === item.author._id.toString() )
       if preview
         p.item__preview This is just a preview URL
       

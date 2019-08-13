@@ -31,6 +31,7 @@ const itemSchema = new mongoose.Schema({
     default: 'new'
   },
   itemCreated: Date,
+  itemPublished: Date,
   author: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
@@ -77,5 +78,6 @@ function autoPopulate(next){
 
 itemSchema.pre('find', autoPopulate);
 itemSchema.pre('findOne', autoPopulate);
+itemSchema.pre('findOneAndUpdate', autoPopulate);
 
 module.exports = mongoose.model('Item', itemSchema);

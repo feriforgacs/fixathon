@@ -75,7 +75,7 @@ exports.createItem = async (req, res) => {
   /**
    * Send notification to admin about the new item
    */
-  const confirmURL = `http://${req.headers.host}/item/confirm/${item.itemToken}/${item._id}`;
+  const approveURL = `http://${req.headers.host}/item/approve/${item.itemToken}/${item._id}`;
   const previewURL = `http://${req.headers.host}/item/preview/${item.itemToken}/${item._id}`;
   const user = {
     name: process.env.ADMIN_NOTIFICATION_NAME,
@@ -85,7 +85,7 @@ exports.createItem = async (req, res) => {
   await mail.send({
     user,
     subject: 'New Re-Product item 🚀 Review it!',
-    confirmURL,
+    approveURL,
     previewURL,
     filename: 'item-confirm'
   });
@@ -167,4 +167,42 @@ exports.previewItem = async (req, res, next) => {
     preview: true,
     item
   });
+}
+
+/**
+ * Approve item
+ */
+exports.approveItem = async (req, res, next) => {
+  // get item from the database and change status to approved
+  const itemToken = req.params.token;
+  const itemId = req.params.id;
+
+  const item = await Item.findOneAndUpdate({
+    _id: itemId,
+    itemToken
+  }, {
+    itemStatus: 'approved',
+    itemPublished: Date.now()
+  }, {
+    new: true
+  }).exec();
+
+  // send notification to user
+  const user = {
+    name: item.author.name,
+    email: item.author.email
+  };
+
+  const itemURL = `http://${req.headers.host}/item/${item.itemSlug}`;
+
+  await mail.send({
+    user,
+    subject: '🎉 You Re-Product has been approved',
+    itemURL,
+    filename: 'item-approved'
+  });
+
+  // redirect to item page
+  req.flash('success', `🎉 Product approved`);
+  res.redirect(`/item/${item.itemSlug}`);
 }

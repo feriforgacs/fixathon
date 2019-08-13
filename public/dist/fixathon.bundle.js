@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -98,6 +98,82 @@ exports.$$ = $$;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.forgotFormCheck = forgotFormCheck;
+exports.resetFormCheck = resetFormCheck;
+
+var _bling = __webpack_require__(0);
+
+function forgotFormCheck(e) {
+  e.preventDefault();
+  var error = 0;
+  var errorMessage = "";
+
+  // display spin icon
+  (0, _bling.$)("#form-forgot .button--primary i").classList.remove("hidden");
+  (0, _bling.$)('#form-forgot').submit();
+}
+
+function resetFormCheck(e) {
+  e.preventDefault();
+  var error = 0;
+  var errorMessage = "";
+
+  if ((0, _bling.$)("#password").value !== (0, _bling.$)("#password-confirm").value) {
+    errorMessage += "Please, check your passwords. They don't match.<br />";
+    error++;
+  }
+
+  if (error) {
+    // add error message to result div
+    (0, _bling.$)("#form-reset .form--error").innerHTML = "";
+    (0, _bling.$)("#form-reset .form--error").innerHTML = errorMessage;
+
+    // display result div
+    (0, _bling.$)("#form-reset .form--error").classList.remove("hidden");
+
+    return false;
+  } else {
+    (0, _bling.$)("#form-reset .form--error").classList.add("hidden");
+    // display spin icon
+    (0, _bling.$)("#form-reset .button--primary i").classList.remove("hidden");
+    (0, _bling.$)('#form-reset').submit();
+  }
+}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loginFormCheck = loginFormCheck;
+
+var _bling = __webpack_require__(0);
+
+function loginFormCheck(e) {
+  e.preventDefault();
+  var error = 0;
+  var errorMessage = "";
+
+  // display spin icon
+  (0, _bling.$)("#form-login .button--primary i").classList.remove("hidden");
+  (0, _bling.$)('#form-login').submit();
+}
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -158,27 +234,27 @@ function togglePassword(event, button, input) {
 }
 
 /***/ }),
-/* 2 */
+/* 4 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(2);
+__webpack_require__(4);
 
 var _bling = __webpack_require__(0);
 
-var _register = __webpack_require__(1);
+var _register = __webpack_require__(3);
 
-var _login = __webpack_require__(5);
+var _login = __webpack_require__(2);
 
-var _forgot = __webpack_require__(6);
+var _forgot = __webpack_require__(1);
 
 /**
  * Registration form
@@ -238,83 +314,6 @@ if (resetForm) {
 /**
  * END Reset Form
  */
-
-/***/ }),
-/* 4 */,
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.loginFormCheck = loginFormCheck;
-
-var _bling = __webpack_require__(0);
-
-function loginFormCheck(e) {
-  e.preventDefault();
-  var error = 0;
-  var errorMessage = "";
-
-  // display spin icon
-  (0, _bling.$)("#form-login .button--primary i").classList.remove("hidden");
-  (0, _bling.$)('#form-login').submit();
-}
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.forgotFormCheck = forgotFormCheck;
-exports.resetFormCheck = resetFormCheck;
-
-var _bling = __webpack_require__(0);
-
-function forgotFormCheck(e) {
-  e.preventDefault();
-  var error = 0;
-  var errorMessage = "";
-
-  // display spin icon
-  (0, _bling.$)("#form-forgot .button--primary i").classList.remove("hidden");
-  (0, _bling.$)('#form-forgot').submit();
-}
-
-function resetFormCheck(e) {
-  e.preventDefault();
-  var error = 0;
-  var errorMessage = "";
-
-  if ((0, _bling.$)("#password").value !== (0, _bling.$)("#password-confirm").value) {
-    errorMessage += "Please, check your passwords. They don't match.<br />";
-    error++;
-  }
-
-  if (error) {
-    // add error message to result div
-    (0, _bling.$)("#form-reset .form--error").innerHTML = "";
-    (0, _bling.$)("#form-reset .form--error").innerHTML = errorMessage;
-
-    // display result div
-    (0, _bling.$)("#form-reset .form--error").classList.remove("hidden");
-
-    return false;
-  } else {
-    (0, _bling.$)("#form-reset .form--error").classList.add("hidden");
-    // display spin icon
-    (0, _bling.$)("#form-reset .button--primary i").classList.remove("hidden");
-    (0, _bling.$)('#form-reset').submit();
-  }
-}
 
 /***/ })
 /******/ ]);

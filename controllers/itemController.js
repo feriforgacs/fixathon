@@ -3,6 +3,8 @@ const Item = mongoose.model('Item');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
+const crypto = require('crypto');
+const mail = require('../handlers/mail');
 
 /**
  * Image upload settings
@@ -61,7 +63,32 @@ exports.addItem = (req, res) => {
  * Save new item to database
  */
 exports.createItem = async (req, res) => {
+  /**
+   * Generate item token
+   */
+  req.body.itemToken = crypto.randomBytes(20).toString('hex');
+  req.body.itemCreated = Date.now();
+
   const item = await (new Item(req.body)).save();
+
+  /**
+   * Send notification to admin about the new item
+   */
+  const confirmURL = `http://${req.headers.host}/item/confirm/${item.itemToken}/${item._id}`;
+  const previewURL = `http://${req.headers.host}/item/preview/${item.itemToken}/${item._id}`;
+  const user = {
+    name: process.env.ADMIN_NOTIFICATION_NAME,
+    email: process.env.ADMIN_NOTIFICATION_EMAIL
+  };
+
+  await mail.send({
+    user,
+    subject: 'New Re-Product item 🚀 Review it!',
+    confirmURL,
+    previewURL,
+    filename: 'item-confirm'
+  });
+
   req.flash('success', `🎉 Successfully created ${item.itemName}. We'll review it soon (24-48 hours) and send you and email when it's live.`);
   res.redirect(`/item/${item.itemSlug}`);
 }

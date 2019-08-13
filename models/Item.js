@@ -21,7 +21,16 @@ const itemSchema = new mongoose.Schema({
   itemPhoto: {
     type: String,
     required: 'Please, select a photo for your item'
-  }
+  },
+  itemToken: {
+    type: String,
+    trim: true
+  },
+  itemStatus: {
+    type: String,
+    default: 'new'
+  },
+  itemCreated: Date
 });
 
 itemSchema.pre('save', async function(next){

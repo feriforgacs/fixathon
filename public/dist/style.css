@@ -452,9 +452,15 @@ h1 {
   text-align: left;
   height: 4.5rem;
   line-height: 4.5rem;
-  border-bottom: 1px solid #eee; }
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  background: #fff; }
   #header__navigation {
     width: 100%; }
+
+body {
+  padding-top: 4.5rem; }
 
 .navigation__list {
   display: -ms-flexbox;

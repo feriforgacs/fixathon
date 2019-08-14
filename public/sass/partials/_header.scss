@@ -5,10 +5,17 @@
   height: 4.5rem;
   line-height: 4.5rem;
   border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  background: #fff;
 
   &__navigation {
     width: 100%;
   }
+}
+
+body{
+  padding-top: 4.5rem;
 }
 
 .navigation__list{

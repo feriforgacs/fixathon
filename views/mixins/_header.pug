@@ -8,8 +8,10 @@ mixin header(search = '')
         if user
           li.navigation__item.logged-in#category-item
             a(href='').navigation__link#category Categories
-              span
+              span.default
                 != h.icon('categories_button')
+              span.opened
+                != h.icon('categories_close_button')
           
           li.navigation__item.logged-in#search-item
             form(method='GET' action='search')#search-form
@@ -19,8 +21,10 @@ mixin header(search = '')
         else
           li.navigation__item#category-item
             a(href='').navigation__link#category Categories
-              span
+              span.default
                 != h.icon('categories_button')
+              span.opened
+                != h.icon('categories_close_button')
         
           li.navigation__item#search-item
             form(method='GET' action='search')#search-form
@@ -49,3 +53,50 @@ mixin header(search = '')
       a(href='/account') Update account
       a(href='/my-items') Your uploaded items
       a(href='/logout') Logout
+
+  #categories-dropdown
+    ul#categories-dropdown__list
+      li.categories-dropdown__item
+        a.categories-dropdown__link(href='#')
+          span(aria-label='Woman Artist icon').icon 👩‍🎨
+          span.label Arts & Crafts
+
+      li.categories-dropdown__item
+        a.categories-dropdown__link(href='#')
+          span(aria-label='Books icon').icon 📚
+          span.label Books
+
+      li.categories-dropdown__item
+        a.categories-dropdown__link(href='#')
+          span(aria-label='Robot icon').icon 🤖
+          span.label Electronics
+
+      li.categories-dropdown__item
+        a.categories-dropdown__link(href='#')
+          span(aria-label='Woman Shirt Icon').icon 👚
+          span.label Fashion & Clothes
+
+      li.categories-dropdown__item
+        a.categories-dropdown__link(href='#')
+          span(aria-label='Tree Icon').icon 🌳
+          span.label Garden
+
+      li.categories-dropdown__item
+        a.categories-dropdown__link(href='#')
+          span(aria-label='House Icon').icon 🏠
+          span.label Home & Household
+
+      li.categories-dropdown__item
+        a.categories-dropdown__link(href='#')
+          span(aria-label='Dice Icon').icon 🎲
+          span.label Toys & Games
+      
+      li.categories-dropdown__item
+        a.categories-dropdown__link(href='#')
+          span(aria-label='Person Walking Icon').icon 🚶
+          span.label Outdoors
+
+      li.categories-dropdown__item
+        a.categories-dropdown__link(href='#')
+          span(aria-label='Box Icon').icon 📦
+          span.label Other

@@ -4,7 +4,7 @@ import { $, $$ } from './modules/bling';
 import { registerFormCheck, togglePassword } from './modules/register';
 import { loginFormCheck } from './modules/login';
 import { forgotFormCheck, resetFormCheck } from './modules/forgot';
-import { profileDropdownToggle, hideProfileDropdown } from './modules/navigation';
+import { profileDropdownToggle, profileDropdownHide, categoryDropdownToggle, categoryDropdownHide } from './modules/navigation';
 
 /**
  * Registration form
@@ -67,9 +67,20 @@ if(resetForm){
 const profileNavigationItem = $('#profile__link');
 if(profileNavigationItem){
   profileNavigationItem.on('click', (e) => profileDropdownToggle(e));
-  $('body').on('click', (e) => hideProfileDropdown(e));
+  $('body').on('click', (e) => profileDropdownHide(e));
 }
-
 /**
  * END Profile navigation dropdown
+ */
+
+/**
+ * Category navigation dropdown
+ */
+const categoryNavigationItem = $('#category');
+if(categoryNavigationItem){
+  categoryNavigationItem.on('click', (e) => categoryDropdownToggle(e));
+  $('body').on('click', (e) => categoryDropdownHide(e));
+}
+/**
+ * END Category navigation dropdown
  */

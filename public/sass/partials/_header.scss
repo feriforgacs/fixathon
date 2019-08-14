@@ -60,6 +60,15 @@ body{
 }
 
 #category {
+  &.dropdown-visible{
+    span.default{
+      display: none;
+    }
+
+    span.opened{
+      display: inline-block;
+    }
+  }
   span {
     border: 1px solid $primaryColor;
     line-height: 2rem;
@@ -73,6 +82,10 @@ body{
     svg{
       fill: $primaryColor;
     }
+  }
+
+  span.opened{
+    display: none;
   }
 }
 
@@ -201,5 +214,43 @@ body{
 .profile-dropdown--visible{
   #profile__dropdown{
     display: flex;
+  }
+}
+
+#categories-dropdown{
+  position: fixed;
+  top: 4.5rem;
+  background: #13B296;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 2000;
+
+  &__list{
+    display: flex;
+    justify-content: stretch;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.categories-dropdown{
+  &__item{
+    flex-grow: 1;
+    padding: .5rem .2rem;
+    text-align: center;
+  }
+
+  &__link{
+    color: #fff;
+    font-weight: bold;
+    font-size: .7rem;
+  }
+}
+
+.categories-dropdown--visible{
+  #categories-dropdown{
+    display: block;
   }
 }

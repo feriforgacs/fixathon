@@ -326,12 +326,27 @@ if (profileNavigationItem) {
     return (0, _navigation.profileDropdownToggle)(e);
   });
   (0, _bling.$)('body').on('click', function (e) {
-    return (0, _navigation.hideProfileDropdown)(e);
+    return (0, _navigation.profileDropdownHide)(e);
   });
 }
-
 /**
  * END Profile navigation dropdown
+ */
+
+/**
+ * Category navigation dropdown
+ */
+var categoryNavigationItem = (0, _bling.$)('#category');
+if (categoryNavigationItem) {
+  categoryNavigationItem.on('click', function (e) {
+    return (0, _navigation.categoryDropdownToggle)(e);
+  });
+  (0, _bling.$)('body').on('click', function (e) {
+    return (0, _navigation.categoryDropdownHide)(e);
+  });
+}
+/**
+ * END Category navigation dropdown
  */
 
 /***/ }),
@@ -346,7 +361,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.profileDropdownToggle = profileDropdownToggle;
-exports.hideProfileDropdown = hideProfileDropdown;
+exports.profileDropdownHide = profileDropdownHide;
+exports.categoryDropdownToggle = categoryDropdownToggle;
+exports.categoryDropdownHide = categoryDropdownHide;
 
 var _bling = __webpack_require__(0);
 
@@ -362,16 +379,41 @@ function profileDropdownToggle(e) {
   }
 }
 
-function hideProfileDropdown(e) {
+function profileDropdownHide(e) {
   var profileLink = (0, _bling.$)('#profile__link');
   var profileDropdown = (0, _bling.$)('#profile__dropdown');
 
-  if (profileLink.contains(e.target) || profileDropdown.contains(e.targe)) {
+  if (profileLink.contains(e.target) || profileDropdown.contains(e.target)) {
     return;
   }
 
   profileLink.classList.remove('dropdown-visible');
   (0, _bling.$)('body').classList.remove('profile-dropdown--visible');
+}
+
+function categoryDropdownToggle(e) {
+  e.preventDefault();
+  if ((0, _bling.$)('#category').classList.contains('dropdown-visible')) {
+    // hide dropdown
+    (0, _bling.$)('#category').classList.remove('dropdown-visible');
+    (0, _bling.$)('body').classList.remove('categories-dropdown--visible');
+  } else {
+    // display dropdown
+    (0, _bling.$)('#category').classList.add('dropdown-visible');
+    (0, _bling.$)('body').classList.add('categories-dropdown--visible');
+  }
+}
+
+function categoryDropdownHide(e) {
+  var categoryLink = (0, _bling.$)('#category');
+  var categoryDropdown = (0, _bling.$)('#categories-dropdown');
+
+  if (categoryLink.contains(e.target) || categoryDropdown.contains(e.target)) {
+    return;
+  }
+
+  categoryLink.classList.remove('dropdown-visible');
+  (0, _bling.$)('body').classList.remove('categories-dropdown--visible');
 }
 
 /***/ })

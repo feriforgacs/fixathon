@@ -256,6 +256,8 @@ var _login = __webpack_require__(2);
 
 var _forgot = __webpack_require__(1);
 
+var _navigation = __webpack_require__(7);
+
 /**
  * Registration form
  */
@@ -314,6 +316,63 @@ if (resetForm) {
 /**
  * END Reset Form
  */
+
+/**
+ * Profile navigation dropdown
+ */
+var profileNavigationItem = (0, _bling.$)('#profile__link');
+if (profileNavigationItem) {
+  profileNavigationItem.on('click', function (e) {
+    return (0, _navigation.profileDropdownToggle)(e);
+  });
+  (0, _bling.$)('body').on('click', function (e) {
+    return (0, _navigation.hideProfileDropdown)(e);
+  });
+}
+
+/**
+ * END Profile navigation dropdown
+ */
+
+/***/ }),
+/* 6 */,
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.profileDropdownToggle = profileDropdownToggle;
+exports.hideProfileDropdown = hideProfileDropdown;
+
+var _bling = __webpack_require__(0);
+
+function profileDropdownToggle(e) {
+  if ((0, _bling.$)('#profile__link').classList.contains('dropdown-visible')) {
+    // hide dropdown
+    (0, _bling.$)('#profile__link').classList.remove('dropdown-visible');
+    (0, _bling.$)('body').classList.remove('profile-dropdown--visible');
+  } else {
+    // display dropdown
+    (0, _bling.$)('#profile__link').classList.add('dropdown-visible');
+    (0, _bling.$)('body').classList.add('profile-dropdown--visible');
+  }
+}
+
+function hideProfileDropdown(e) {
+  var profileLink = (0, _bling.$)('#profile__link');
+  var profileDropdown = (0, _bling.$)('#profile__dropdown');
+
+  if (profileLink.contains(e.target) || profileDropdown.contains(e.targe)) {
+    return;
+  }
+
+  profileLink.classList.remove('dropdown-visible');
+  (0, _bling.$)('body').classList.remove('profile-dropdown--visible');
+}
 
 /***/ })
 /******/ ]);

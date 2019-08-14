@@ -141,6 +141,14 @@
   &__link{
     display: flex;
     align-items: center;
+    max-width: 175px;
+
+    &.dropdown-visible{
+      &:after{
+        transform: rotate(135deg);
+        margin-top: .2rem;
+      } 
+    }
 
     &:after{
       border: 1px solid $primaryColor;
@@ -161,4 +169,30 @@
 
 #add-item{
   flex: 1;
+}
+
+#profile__dropdown{
+  position: absolute;
+  top: 4.45rem;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  padding: 0 1rem .5rem;
+  border-radius: 0 0 3px 3px;
+  border-right: 1px solid #eee;
+  border-left: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-size: .7rem;
+  margin-right: .5rem;
+  line-height: 2rem;
+  z-index: 10;
+  max-width: 175px;
+  width: 100%;
+}
+
+.profile-dropdown--visible{
+  #profile__dropdown{
+    display: flex;
+  }
 }

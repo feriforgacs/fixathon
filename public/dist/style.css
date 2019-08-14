@@ -572,7 +572,12 @@ h1 {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
-        align-items: center; }
+        align-items: center;
+    max-width: 175px; }
+    #profile__link.dropdown-visible:after {
+      -ms-transform: rotate(135deg);
+          transform: rotate(135deg);
+      margin-top: .2rem; }
     #profile__link:after {
       border: 1px solid #13B296;
       border-right: 0;
@@ -592,6 +597,30 @@ h1 {
 #add-item {
   -ms-flex: 1;
       flex: 1; }
+
+#profile__dropdown {
+  position: absolute;
+  top: 4.45rem;
+  right: 0;
+  display: none;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  background: #fff;
+  padding: 0 1rem .5rem;
+  border-radius: 0 0 3px 3px;
+  border-right: 1px solid #eee;
+  border-left: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-size: .7rem;
+  margin-right: .5rem;
+  line-height: 2rem;
+  z-index: 10;
+  max-width: 175px;
+  width: 100%; }
+
+.profile-dropdown--visible #profile__dropdown {
+  display: -ms-flexbox;
+  display: flex; }
 
 .form-info {
   text-align: center;

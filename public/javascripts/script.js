@@ -4,6 +4,7 @@ import { $, $$ } from './modules/bling';
 import { registerFormCheck, togglePassword } from './modules/register';
 import { loginFormCheck } from './modules/login';
 import { forgotFormCheck, resetFormCheck } from './modules/forgot';
+import { profileDropdownToggle, hideProfileDropdown } from './modules/navigation';
 
 /**
  * Registration form
@@ -58,4 +59,17 @@ if(resetForm){
 }
 /**
  * END Reset Form
+ */
+
+/**
+ * Profile navigation dropdown
+ */
+const profileNavigationItem = $('#profile__link');
+if(profileNavigationItem){
+  profileNavigationItem.on('click', (e) => profileDropdownToggle(e));
+  $('body').on('click', (e) => hideProfileDropdown(e));
+}
+
+/**
+ * END Profile navigation dropdown
  */

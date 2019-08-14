@@ -36,10 +36,6 @@ mixin header(search = '')
             #profile__link
               img(src=`${user.gravatar}`).profile__image
               span.profile__name #{user.name}
-            #profile__dropdown.hidden
-              a(href='/account') Update account
-              a(href='/my-items') Your uploaded items
-              a(href='/logout') Logout
             
         else
           li.navigation__item#login-item
@@ -47,3 +43,9 @@ mixin header(search = '')
 
           li.navigation__item#signup-item
             a(href='/register').navigation__link.button.button--primary.button--small Sign Up
+
+  if user
+    #profile__dropdown
+      a(href='/account') Update account
+      a(href='/my-items') Your uploaded items
+      a(href='/logout') Logout

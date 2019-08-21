@@ -15,7 +15,7 @@ const itemSchema = new mongoose.Schema({
     required: 'Please, enter an item description.'
   },
   itemCategory: {
-    type: Number,
+    type: String,
     required: 'Please, select a category.'
   },
   itemPhoto: {

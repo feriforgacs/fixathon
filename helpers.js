@@ -4,19 +4,49 @@ exports.siteName = `Fixathon Project 1.0.0`;
 
 exports.itemCategories = [
   {
-    id: 1,
-    name: 'First category',
-    slug: 'first-category'
+    name: 'Arts & Crafts',
+    slug: 'arts-and-crafts',
+    icon: '👩‍🎨'
   },
   {
-    id: 2,
-    name: 'Second category',
-    slug: 'second-category'
+    name: 'Books',
+    slug: 'books',
+    icon: '📚',
   },
   {
-    id: 3,
-    name: 'Third category',
-    slug: 'third-category'
+    name: 'Electronics',
+    slug: 'electronics',
+    icon: '🤖'
+  },
+  {
+    name: 'Fashion & Clothes',
+    slug: 'fashion-and-clothes',
+    icon: '👚',
+  },
+  {
+    name: 'Garden',
+    slug: 'garden',
+    icon: '🌳',
+  },
+  {
+    name: 'Home & Household',
+    slug: 'home-and-household',
+    icon: '🏠',
+  },
+  {
+    name: 'Toys & Games',
+    slug: 'toys-and-games',
+    icon: '🎲',
+  },
+  {
+    name: 'Outdoors',
+    slug: 'outdoors',
+    icon: '🚶',
+  },
+  {
+    name: 'Other',
+    slug: 'other',
+    icon: '📦',
   }
 ]
 

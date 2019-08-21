@@ -56,47 +56,8 @@ mixin header(search = '')
 
   #categories-dropdown
     ul#categories-dropdown__list
-      li.categories-dropdown__item
-        a.categories-dropdown__link(href='#')
-          span(aria-label='Woman Artist icon').icon 👩‍🎨
-          span.label Arts & Crafts
-
-      li.categories-dropdown__item
-        a.categories-dropdown__link(href='#')
-          span(aria-label='Books icon').icon 📚
-          span.label Books
-
-      li.categories-dropdown__item
-        a.categories-dropdown__link(href='#')
-          span(aria-label='Robot icon').icon 🤖
-          span.label Electronics
-
-      li.categories-dropdown__item
-        a.categories-dropdown__link(href='#')
-          span(aria-label='Woman Shirt Icon').icon 👚
-          span.label Fashion & Clothes
-
-      li.categories-dropdown__item
-        a.categories-dropdown__link(href='#')
-          span(aria-label='Tree Icon').icon 🌳
-          span.label Garden
-
-      li.categories-dropdown__item
-        a.categories-dropdown__link(href='#')
-          span(aria-label='House Icon').icon 🏠
-          span.label Home & Household
-
-      li.categories-dropdown__item
-        a.categories-dropdown__link(href='#')
-          span(aria-label='Dice Icon').icon 🎲
-          span.label Toys & Games
-      
-      li.categories-dropdown__item
-        a.categories-dropdown__link(href='#')
-          span(aria-label='Person Walking Icon').icon 🚶
-          span.label Outdoors
-
-      li.categories-dropdown__item
-        a.categories-dropdown__link(href='#')
-          span(aria-label='Box Icon').icon 📦
-          span.label Other
+      each category in h.itemCategories
+        li.categories-dropdown__item
+          a.categories-dropdown__link(href=`/category/${category.slug}` title=`View items in the ${category.name} category`)
+            span(aria-label=`${category.name}`).icon #{category.icon} 
+            span.label= category.name

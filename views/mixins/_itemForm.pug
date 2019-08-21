@@ -19,7 +19,7 @@ mixin itemForm(item = {})
       select#itemCategory(name='itemCategory')
         option Please, select a category
         each category in h.itemCategories
-          option(value=category.id selected=(item.itemCategory == category.id) )= category.name
+          option(value=category.slug selected=(item.itemCategory == category.slug)) #{category.icon} #{category.name}
 
     .form-group
       input#saveItem(type='submit' name='itemSave' value='Save item')

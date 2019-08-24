@@ -3,6 +3,6 @@ extends layout
 include mixins/_itemForm
 
 block content
-  .inner
-    h2= title
+  .container--small#item-edit
+    h1= title
     +itemForm(item)

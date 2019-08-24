@@ -55,7 +55,9 @@ exports.resize = async (req, res, next) => {
  */
 exports.addItem = (req, res) => {
   res.render('itemEdit', {
-    title: 'Add New Item'
+    title: 'Add New Item',
+    buttonText: 'Create new item',
+    newItem: true
   });
 };
 
@@ -205,4 +207,45 @@ exports.approveItem = async (req, res, next) => {
   // redirect to item page
   req.flash('success', `🎉 Product approved`);
   res.redirect(`/item/${item.itemSlug}`);
+}
+
+exports.displayCategoryItems = async (req, res) => {
+  const itemCategory = req.params.category || '';
+  const page = req.params.page || 1;
+  const itemLimit = 10;
+  const skip = (page * itemLimit) - itemLimit;
+  const itemsPromise = Item
+    .find({
+      itemStatus: 'approved',
+      itemCategory
+    })
+    .skip(skip)
+    .limit(itemLimit)
+    .sort({
+      itemCreated: 'desc'
+    });
+  
+  const countPromise = Item.count({
+    itemStatus: 'approved',
+    itemCategory
+  });
+
+  const [items, count] = await Promise.all([itemsPromise, countPromise]);
+  const pages = Math.ceil(count / itemLimit);
+
+  // page doesn't exists, redirect to last page
+  if(!items.length && skip){
+    req.flash('info', `Page ${page} doesn't exists. You've been redirected to page ${pages}`);
+    req.redirect(`/category/${itemCategory}/page/${pages}`);
+    return;
+  }
+
+  // render category page
+  res.render('category', {
+    title: 'Category',
+    items,
+    page,
+    pages,
+    count
+  });
 }

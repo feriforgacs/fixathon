@@ -1,25 +1,63 @@
 mixin itemForm(item = {})
+  .form-info
+    p 
+      span(aria-label='Backhand Index Pointing Right') 👉 
+      | Please, fill all the fields below.
+      span(aria-label='Backhand Index Pointing Left')  👈
   form(method='POST' action=`/item/save/${item._id || ''}` enctype='multipart/form-data').form
     .form-group
       label(for='itemPhoto') Item photo
-      input#itemPhoto(type='file' name='itemPhoto')
+        br
+        small Allowed file types: JPEG, PNG, GIF
+          br
+          | Ideal size: 800x800px
+          br
+          | Max. file size: 1024kb (Please, try to avoid huge images, so we can save some energy and protect the climate 
+          span(aria-label='praying hand icon') 🙏
+          | )
+      label(for='itemPhoto')#itemPhoto__label.file-upload
+        span(aria-label='Framed Picture') 🖼️ 
+        | Click here to select an image... 
+      input#itemPhoto(type='file' name='itemPhoto' accepts='image/x-png,image/gif,image/jpeg' required='required').hidden
+
+      #itemPhoto__preview.hidden
+        img
 
       if item.itemPhoto
         img.itemPhoto(src=`/uploads/${item.itemPhoto}` alt=`${item.itemName}`)
 
     .form-group
       label(for='itemName') Item name
-      input#itemName(type='text' name='itemName' required='required' value=item.itemName)
+        br
+        small Make sure the name describes your item as much as possible. Don't use too regular names like "book", "smartphone".
+          br
+          strong Max length 100 chars
+      input#itemName(type='text' name='itemName' required='required' value=item.itemName maxlength='100')
 
     .form-group
       label(for='itemDescription') Description
-      textarea#itemDescription(name='itemDescription' required='required' maxlength='500')= item.itemDescription
+        br
+        small Describe your item with as many details as possible. Write about the the condition of the product, why you would like to trade it, share details about the shipping or how to take over the package, etc.
+          br
+          | You can also add links to your description (eg. a link that points to a video where potential re-producters can learn more about the item, or a link to the original product page, etc)
+          br
+          strong Max length 1000 chars
+      textarea#itemDescription(name='itemDescription' required='required' maxlength='1000')= item.itemDescription
 
     .form-group
+      label(for='itemCategory') Item category
+        br
+        small If you think your item doesn't fit to any of the categories, select the "Other" option
       select#itemCategory(name='itemCategory')
         option Please, select a category
         each category in h.itemCategories
           option(value=category.slug selected=(item.itemCategory == category.slug)) #{category.icon} #{category.name}
 
+    if newItem
+      .form-group
+        p.message.message--info
+          span(aria-label='Warning') ⚠️ 
+          | After you've created your item, it'll go through an approvement process. Before pressing the submit button check all the information you've added above to make sure that this process will be as fast as possible.
+
     .form-group
-      input#saveItem(type='submit' name='itemSave' value='Save item')
+      input#saveItem(type='submit' name='itemSave' value=`${buttonText || 'Save item'}`).button.button--primary

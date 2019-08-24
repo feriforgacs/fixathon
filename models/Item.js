@@ -32,6 +32,10 @@ const itemSchema = new mongoose.Schema({
   },
   itemCreated: Date,
   itemPublished: Date,
+  itemLocation: {
+    type: String,
+    required: 'Please, add a location to your item'
+  },
   author: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',

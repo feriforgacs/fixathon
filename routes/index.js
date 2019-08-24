@@ -164,6 +164,11 @@ router.post('/item/save/:id',
 router.get('/item/:slug', catchErrors(itemController.displayItem));
 
 /**
+ * Display item category page
+ */
+router.get('/category/:category', catchErrors(itemController.displayCategoryItems));
+
+/**
  * Display item preview
  */
 router.get('/item/preview/:token/:id', catchErrors(itemController.previewItem));

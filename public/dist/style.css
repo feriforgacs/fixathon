@@ -455,7 +455,8 @@ h1 {
   border-bottom: 1px solid #eee;
   position: fixed;
   top: 0;
-  background: #fff; }
+  background: #fff;
+  z-index: 1000; }
   #header__navigation {
     width: 100%; }
 
@@ -674,7 +675,7 @@ body {
   margin: 0 auto 3rem; }
 
 .form-group {
-  margin: 0 0 15px 0; }
+  margin: 0 0 1.5rem 0; }
   .form-group label {
     display: block;
     width: 100%;
@@ -687,10 +688,33 @@ body {
   .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"] {
     width: 100%;
     font-size: 0.777778rem;
-    line-height: 2rem;
-    padding: 0 .5rem; }
+    line-height: 2.5rem;
+    padding: 0 .5rem;
+    border: 1px solid #ccc;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.05);
+    background: #fff; }
   .form-group input[type="checkbox"] {
     margin-right: .5rem; }
+  .form-group textarea {
+    width: 100%;
+    font-size: 0.777778rem;
+    line-height: 1.5rem;
+    padding: 0 .5rem;
+    height: 300px;
+    resize: vertical;
+    border: 1px solid #ccc;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.05);
+    background: #fff; }
+  .form-group select {
+    background: linear-gradient(180deg, #fff 0, #e5e5e5 100%);
+    width: 100%;
+    font-size: 0.777778rem;
+    line-height: 2.5rem;
+    height: 2.5rem;
+    padding: 0 .5rem;
+    border: 1px solid #ccc;
+    border-radius: none;
+    box-shadow: none; }
 
 .form--error {
   color: #CD0D3B;
@@ -709,6 +733,28 @@ body {
 @keyframes spin {
   100% {
     transform: rotate(360deg); } }
+
+.file-upload {
+  background: linear-gradient(180deg, #fff 0, #e5e5e5 100%);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: none;
+  display: inline-block;
+  padding: 0 2rem;
+  margin: 1rem 0;
+  line-height: 2.5rem;
+  height: 2.5rem;
+  font-size: .8rem;
+  font-weight: normal;
+  cursor: pointer; }
+
+.message {
+  padding: 1rem; }
+  .message--info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    font-size: 0.777778rem; }
 
 .button {
   border: none;
@@ -862,5 +908,9 @@ body {
     display: inline-block; }
   #reset #showpassword.hide .show, #reset #showpassword-confirm.hide .show {
     display: none; }
+
+#item-edit h1 {
+  text-align: center;
+  margin: 3rem auto; }
 
 /*# sourceMappingURL=style.css.map*/

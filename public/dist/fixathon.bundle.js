@@ -324,6 +324,8 @@ var _forgot = __webpack_require__(1);
 
 var _navigation = __webpack_require__(3);
 
+var _itemEdit = __webpack_require__(8);
+
 /**
  * Registration form
  */
@@ -414,6 +416,49 @@ if (categoryNavigationItem) {
 /**
  * END Category navigation dropdown
  */
+
+/**
+ * Item create, edit form
+ */
+var itemPhotoField = (0, _bling.$)("#itemPhoto");
+if (itemPhotoField) {
+  itemPhotoField.on("change", function (e) {
+    return (0, _itemEdit.itemPhotoPreview)(e);
+  });
+}
+
+/***/ }),
+/* 7 */,
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.itemPhotoPreview = itemPhotoPreview;
+
+var _bling = __webpack_require__(0);
+
+function itemPhotoPreview(event) {
+  var itemPhotoLabel = (0, _bling.$)("#itemPhoto__label");
+  var previewContainer = (0, _bling.$)("#itemPhoto__preview");
+  var previewImage = (0, _bling.$)("#itemPhoto__preview img");
+  var itemPhoto = (0, _bling.$)("#itemPhoto");
+
+  itemPhotoLabel.innerHTML = '<span aria-label="Framed Picture">🖼️ </span>Select another image... ';
+
+  if (event.target.files[0].size > 1048576) {
+    itemPhoto.value = "";
+    alert("The selected file is bigger than 1MB. Please, choose another one.");
+    return;
+  }
+
+  previewImage.src = URL.createObjectURL(event.target.files[0]);
+  previewContainer.classList.remove("hidden");
+}
 
 /***/ })
 /******/ ]);

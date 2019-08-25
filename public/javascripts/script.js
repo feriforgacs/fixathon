@@ -5,6 +5,7 @@ import { registerFormCheck, togglePassword } from './modules/register';
 import { loginFormCheck } from './modules/login';
 import { forgotFormCheck, resetFormCheck } from './modules/forgot';
 import { profileDropdownToggle, profileDropdownHide, categoryDropdownToggle, categoryDropdownHide } from './modules/navigation';
+import { itemPhotoPreview } from './modules/itemEdit';
 
 /**
  * Registration form
@@ -84,3 +85,11 @@ if(categoryNavigationItem){
 /**
  * END Category navigation dropdown
  */
+
+ /**
+  * Item create, edit form
+  */
+const itemPhotoField = $("#itemPhoto");
+if(itemPhotoField){
+  itemPhotoField.on("change", (e) => itemPhotoPreview(e));
+}

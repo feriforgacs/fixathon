@@ -45,11 +45,18 @@ mixin itemForm(item = {})
       textarea#itemDescription(name='itemDescription' required='required' maxlength='1000')= item.itemDescription
 
     .form-group
+      label(for='itemLocation') Item location
+        br
+        small City, Country. The exact location is not necessary. We'd like to avoid transferring items to long distances, that's why this information is necessary.
+          br
+          strong Max length 100 chars
+      input#itemLocation(type='text' name='itemLocation' required='required' value=item.itemLocation maxlength='100')
+
+    .form-group
       label(for='itemCategory') Item category
         br
         small If you think your item doesn't fit to any of the categories, select the "Other" option
-      select#itemCategory(name='itemCategory')
-        option Please, select a category
+      select#itemCategory(name='itemCategory' required='required')
         each category in h.itemCategories
           option(value=category.slug selected=(item.itemCategory == category.slug)) #{category.icon} #{category.name}
 

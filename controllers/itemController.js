@@ -11,6 +11,10 @@ const mail = require('../handlers/mail');
  */
 const multerOptions = {
   storage: multer.memoryStorage(),
+  limits: {
+    files: 1,
+    fileSize: 1024 * 1024
+  },
   fileFilter(req, file, next) {
     // check file format
     if(file.mimetype.startsWith('image/')){

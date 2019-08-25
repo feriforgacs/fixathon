@@ -420,12 +420,44 @@ if (categoryNavigationItem) {
 /**
  * Item create, edit form
  */
+// image preview
 var itemPhotoField = (0, _bling.$)("#itemPhoto");
 if (itemPhotoField) {
   itemPhotoField.on("change", function (e) {
     return (0, _itemEdit.itemPhotoPreview)(e);
   });
 }
+
+// character counter - item name
+var itemName = (0, _bling.$)("#itemName");
+if (itemName) {
+  var itemNameCounter = (0, _bling.$)("#itemNameCounter");
+  itemName.on("keyup", function (e) {
+    return (0, _itemEdit.charCounter)(100, itemName, itemNameCounter);
+  });
+}
+
+// character counter - item description
+var itemDescription = (0, _bling.$)("#itemDescription");
+if (itemDescription) {
+  var itemDescriptionCounter = (0, _bling.$)("#itemDescriptionCounter");
+  itemDescription.on("keyup", function (e) {
+    return (0, _itemEdit.charCounter)(1000, itemDescription, itemDescriptionCounter);
+  });
+}
+
+// character counter - item location
+var itemLocation = (0, _bling.$)("#itemLocation");
+if (itemLocation) {
+  var itemLocationCounter = (0, _bling.$)("#itemLocationCounter");
+  itemLocation.on("keyup", function (e) {
+    return (0, _itemEdit.charCounter)(100, itemLocation, itemLocationCounter);
+  });
+}
+
+/**
+ * END Item create, edit form
+ */
 
 /***/ }),
 /* 7 */,
@@ -439,6 +471,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.itemPhotoPreview = itemPhotoPreview;
+exports.charCounter = charCounter;
 
 var _bling = __webpack_require__(0);
 
@@ -458,6 +491,12 @@ function itemPhotoPreview(event) {
 
   previewImage.src = URL.createObjectURL(event.target.files[0]);
   previewContainer.classList.remove("hidden");
+}
+
+function charCounter(maxChars, inputField, charCounter) {
+  var valueLength = inputField.value.length;
+  var remaining = maxChars - valueLength;
+  charCounter.innerHTML = remaining + " chars remaining";
 }
 
 /***/ })

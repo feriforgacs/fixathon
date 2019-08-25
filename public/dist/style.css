@@ -756,6 +756,12 @@ body {
     border-color: #bee5eb;
     font-size: 0.777778rem; }
 
+.char-counter {
+  text-align: right;
+  font-size: .6rem;
+  color: #888;
+  font-style: italic; }
+
 .button {
   border: none;
   cursor: pointer;

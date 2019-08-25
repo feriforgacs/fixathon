@@ -6,17 +6,20 @@ const itemSchema = new mongoose.Schema({
   itemName: {
     type: String,
     trim: true,
-    required: 'Please, enter an item name.'
+    required: 'Please, enter an item name.',
+    maxlength: 100
   },
   itemSlug: String,
   itemDescription: {
     type: String,
     trim: true,
-    required: 'Please, enter an item description.'
+    required: 'Please, enter an item description.',
+    maxlength: 1000
   },
   itemCategory: {
     type: String,
-    required: 'Please, select a category.'
+    required: 'Please, select a category.',
+    maxlength: 30
   },
   itemPhoto: {
     type: String,
@@ -34,7 +37,8 @@ const itemSchema = new mongoose.Schema({
   itemPublished: Date,
   itemLocation: {
     type: String,
-    required: 'Please, add a location to your item'
+    required: 'Please, add a location to your item',
+    maxlength: 100
   },
   author: {
     type: mongoose.Schema.ObjectId,

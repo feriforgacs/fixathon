@@ -17,3 +17,9 @@ export function itemPhotoPreview(event){
   previewImage.src = URL.createObjectURL(event.target.files[0]);
   previewContainer.classList.remove("hidden");
 }
+
+export function charCounter(maxChars, inputField, charCounter){
+  const valueLength = inputField.value.length;
+  const remaining = maxChars - valueLength;
+  charCounter.innerHTML = `${remaining} chars remaining`;
+}

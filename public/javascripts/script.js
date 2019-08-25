@@ -5,7 +5,7 @@ import { registerFormCheck, togglePassword } from './modules/register';
 import { loginFormCheck } from './modules/login';
 import { forgotFormCheck, resetFormCheck } from './modules/forgot';
 import { profileDropdownToggle, profileDropdownHide, categoryDropdownToggle, categoryDropdownHide } from './modules/navigation';
-import { itemPhotoPreview } from './modules/itemEdit';
+import { itemPhotoPreview, charCounter } from './modules/itemEdit';
 
 /**
  * Registration form
@@ -86,10 +86,36 @@ if(categoryNavigationItem){
  * END Category navigation dropdown
  */
 
- /**
-  * Item create, edit form
-  */
+/**
+ * Item create, edit form
+ */
+// image preview
 const itemPhotoField = $("#itemPhoto");
 if(itemPhotoField){
   itemPhotoField.on("change", (e) => itemPhotoPreview(e));
 }
+
+// character counter - item name
+const itemName = $("#itemName");
+if(itemName){
+  const itemNameCounter = $("#itemNameCounter");
+  itemName.on("keyup", (e) => charCounter(100, itemName, itemNameCounter));
+}
+
+// character counter - item description
+const itemDescription = $("#itemDescription");
+if(itemDescription){
+  const itemDescriptionCounter = $("#itemDescriptionCounter");
+  itemDescription.on("keyup", (e) => charCounter(1000, itemDescription, itemDescriptionCounter));
+}
+
+// character counter - item location
+const itemLocation = $("#itemLocation");
+if(itemLocation){
+  const itemLocationCounter = $("#itemLocationCounter");
+  itemLocation.on("keyup", (e) => charCounter(100, itemLocation, itemLocationCounter));
+}
+
+/**
+ * END Item create, edit form
+ */

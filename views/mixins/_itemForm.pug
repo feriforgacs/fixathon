@@ -33,6 +33,7 @@ mixin itemForm(item = {})
           br
           strong Max length 100 chars
       input#itemName(type='text' name='itemName' required='required' value=item.itemName maxlength='100')
+      p.char-counter#itemNameCounter 100 chars remaining
 
     .form-group
       label(for='itemDescription') Description
@@ -43,6 +44,7 @@ mixin itemForm(item = {})
           br
           strong Max length 1000 chars
       textarea#itemDescription(name='itemDescription' required='required' maxlength='1000')= item.itemDescription
+      p.char-counter#itemDescriptionCounter 1000 chars remaining
 
     .form-group
       label(for='itemLocation') Item location
@@ -51,6 +53,7 @@ mixin itemForm(item = {})
           br
           strong Max length 100 chars
       input#itemLocation(type='text' name='itemLocation' required='required' value=item.itemLocation maxlength='100')
+      p.char-counter#itemLocationCounter 100 chars remaining
 
     .form-group
       label(for='itemCategory') Item category

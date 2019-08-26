@@ -13,9 +13,21 @@ const walletHistorySchema = new mongoose.Schema({
     type: String,
     required: 'You must supply a wallet history type'
   },
+  item: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Item'
+  },
   transaction: String,
   created: Date
 });
+
+function autoPopulate(next){
+  this.populate('item');
+  next();
+}
+
+walletHistorySchema.pre('find', autoPopulate);
+walletHistorySchema.pre('findOne', autoPopulate);
 
 walletHistorySchema.plugin(mongodbErrorHandler);
 

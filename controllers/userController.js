@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Wallet = mongoose.model('Wallet');
+const WalletHistory = mongoose.model('WalletHistory');
 const promisify = require('es6-promisify');
 const crypto = require('crypto');
 const mail = require('../handlers/mail');
@@ -150,6 +151,13 @@ exports.confirmAccount = async (req, res) => {
       created: Date.now(),
       updated: Date.now()
     })).save();
+
+    const walletHistory = await new WalletHistory({
+      wallet: wallet._id,
+      historyType: "addition",
+      transaction: "Wallet was created with 10 coins",
+      created: Date.now()
+    }).save();
   }
 
   const updates = {

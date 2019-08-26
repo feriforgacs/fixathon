@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  .container--mid
+    h1= title
+    p.info Bewlo, you can see your wallett history and the current amount of coins you have.
+    
+    table#wallet
+      tr
+        td
+          strong
+            span(aria-label='Money Bag') 💰 
+            | Your Coins:
+        td #{wallet.coins}
+      tr
+        td
+          strong
+            span(aria-label='Calendar') 🗓️ 
+            | Last updated: 
+        td #{h.moment(wallet.updated).fromNow()}
+
+    h2 Wallet History
+
+    table#wallet-history
+      tr
+        th Date
+        th Transaction
+        th Related item
+      each history in walletHistory
+        tr
+          td
+            strong #{h.moment(history.created).format('MMMM Do YYYY, h:mm:ss a')}
+
+          td #{history.transaction}
+
+          if history.item
+            td 
+              a(href=`/item/${history.item.itemSlug}`)= #{history.item.itemName}
+          else
+            td -

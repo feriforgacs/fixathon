@@ -768,6 +768,13 @@ body {
   color: #888;
   font-style: italic; }
 
+table {
+  border: 1px solid #eee;
+  width: 100%; }
+  table td {
+    text-align: left;
+    padding: .5rem; }
+
 .button {
   border: none;
   cursor: pointer;
@@ -928,5 +935,11 @@ body {
 #account h1 {
   text-align: center;
   margin: 3rem auto; }
+
+#wallet {
+  margin: 3rem 0; }
+
+#wallet-history {
+  font-size: .6rem; }
 
 /*# sourceMappingURL=style.css.map*/

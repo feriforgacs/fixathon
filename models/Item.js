@@ -27,6 +27,11 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: 'Please, select a photo for your item'
   },
+  itemPrice: {
+    type: Number,
+    trim: true,
+    required: 'Please, add a price for your item'
+  },
   itemToken: {
     type: String,
     trim: true

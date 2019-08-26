@@ -159,10 +159,16 @@ body{
   color: $primaryColor;
   cursor: pointer;
 
+  .profile{
+    &__name{
+      line-height: 150%;
+    }
+  }
+
   &__link{
     display: flex;
     align-items: center;
-    max-width: 175px;
+    max-width: 210px;
 
     &.dropdown-visible{
       &:after{

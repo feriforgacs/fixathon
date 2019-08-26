@@ -584,12 +584,14 @@ body {
   font-weight: bold;
   color: #13B296;
   cursor: pointer; }
+  #profile .profile__name {
+    line-height: 150%; }
   #profile__link {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
         align-items: center;
-    max-width: 175px; }
+    max-width: 210px; }
     #profile__link.dropdown-visible:after {
       -ms-transform: rotate(135deg);
           transform: rotate(135deg);

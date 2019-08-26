@@ -455,6 +455,22 @@ if (itemLocation) {
   });
 }
 
+// submit button loading animation
+var saveItemBtn = (0, _bling.$)("#saveItem");
+var itemEditForm = (0, _bling.$)("#itemEditForm");
+if (saveItemBtn && itemEditForm) {
+  itemEditForm.on("submit", function (e) {
+    // check item photo field
+    if (!itemPhotoField.value) {
+      e.preventDefault();
+      alert("Please, select an image for your item.");
+      return;
+    }
+
+    (0, _itemEdit.displaySpin)(saveItemBtn);
+  });
+}
+
 /**
  * END Item create, edit form
  */
@@ -472,6 +488,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.itemPhotoPreview = itemPhotoPreview;
 exports.charCounter = charCounter;
+exports.displaySpin = displaySpin;
 
 var _bling = __webpack_require__(0);
 
@@ -497,6 +514,11 @@ function charCounter(maxChars, inputField, charCounter) {
   var valueLength = inputField.value.length;
   var remaining = maxChars - valueLength;
   charCounter.innerHTML = remaining + " chars remaining";
+}
+
+function displaySpin(button) {
+  var spinIcon = button.querySelector("i");
+  spinIcon.classList.remove("hidden");
 }
 
 /***/ })

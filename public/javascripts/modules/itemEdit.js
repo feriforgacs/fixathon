@@ -23,3 +23,8 @@ export function charCounter(maxChars, inputField, charCounter){
   const remaining = maxChars - valueLength;
   charCounter.innerHTML = `${remaining} chars remaining`;
 }
+
+export function displaySpin(button){
+  const spinIcon = button.querySelector("i");
+  spinIcon.classList.remove("hidden");
+}

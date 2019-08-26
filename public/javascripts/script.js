@@ -5,7 +5,7 @@ import { registerFormCheck, togglePassword } from './modules/register';
 import { loginFormCheck } from './modules/login';
 import { forgotFormCheck, resetFormCheck } from './modules/forgot';
 import { profileDropdownToggle, profileDropdownHide, categoryDropdownToggle, categoryDropdownHide } from './modules/navigation';
-import { itemPhotoPreview, charCounter } from './modules/itemEdit';
+import { itemPhotoPreview, charCounter, displaySpin } from './modules/itemEdit';
 
 /**
  * Registration form
@@ -114,6 +114,22 @@ const itemLocation = $("#itemLocation");
 if(itemLocation){
   const itemLocationCounter = $("#itemLocationCounter");
   itemLocation.on("keyup", (e) => charCounter(100, itemLocation, itemLocationCounter));
+}
+
+// submit button loading animation
+const saveItemBtn = $("#saveItem");
+const itemEditForm = $("#itemEditForm");
+if(saveItemBtn && itemEditForm){
+  itemEditForm.on("submit", (e) => {
+    // check item photo field
+    if(!itemPhotoField.value){
+      e.preventDefault();
+      alert("Please, select an image for your item.");
+      return;
+    }
+
+    displaySpin(saveItemBtn)
+  });
 }
 
 /**

@@ -96,7 +96,7 @@ exports.createItem = async (req, res) => {
     filename: 'item-confirm'
   });
 
-  req.flash('success', `🎉 Successfully created ${item.itemName}. We'll review it soon (24-48 hours) and send you and email when it's live.`);
+  req.flash('success', `🎉 Your item was created successfully. We'll review it soon (24-48 hours) and send you an email when it's live.`);
   res.redirect(`/item/${item.itemSlug}`);
 }
 
@@ -133,7 +133,7 @@ exports.updateItem = async (req, res) => {
     runValidators: true
   }).exec();
 
-  req.flash('success', `Successfully updated ${item.itemName}.`);
+  req.flash('success', `🎉 Item data has been updated.`);
   res.redirect(`/item/${item._id}/edit`);
 }
 
@@ -205,6 +205,7 @@ exports.approveItem = async (req, res, next) => {
     user,
     subject: '🎉 You Re-Product has been approved',
     itemURL,
+    item,
     filename: 'item-approved'
   });
 

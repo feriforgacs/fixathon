@@ -4,6 +4,7 @@ const itemController = require('../controllers/itemController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const cmsController = require('../controllers/cmsController');
+const walletController = require('../controllers/walletController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 /**
@@ -141,6 +142,7 @@ router.get('/item/add',
  */
 router.post('/item/save/',
   authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
   itemController.upload,
   catchErrors(itemController.resize),
   catchErrors(itemController.createItem)
@@ -184,6 +186,13 @@ router.get('/item/preview/:token/:id', catchErrors(itemController.previewItem));
  */
 router.get('/item/approve/:token/:id', catchErrors(itemController.approveItem));
 
+/**
+ * Display user wallet
+ */
+router.get('/wallet',
+  catchErrors(userController.isConfirmed),
+  catchErrors(walletController.display)
+);
 
 // DEBUG
 // email layout preview

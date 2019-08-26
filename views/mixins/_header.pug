@@ -50,10 +50,26 @@ mixin header(search = '')
 
   if user
     #profile__dropdown
-      a(href='/confirmed') Getting started
-      a(href='/account') Edit profile
-      a(href='/my-items') Your uploaded items
-      a(href='/logout') Logout
+      if user.status == 'confirmed'
+        a(href='/wallet')
+          span(aria-label='Money Bag') 💰
+          |  Wallet
+
+      a(href='/confirmed')
+        span(aria-label='Backhand Index Pointing Right') 👉
+        |  Getting started
+
+      a(href='/account')
+        span(aria-label='Gear') ⚙️
+        |  Edit profile
+
+      a(href='/my-items')
+        span(aria-label='Box') 📦
+        |  Your uploaded items
+
+      a(href='/logout')
+        span(aria-label='Waving Hand') 👋
+        |  Logout
 
   #categories-dropdown
     ul#categories-dropdown__list

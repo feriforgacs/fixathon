@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
 
+const mongodbErrorHandler = require('mongoose-mongodb-errors');
+
 const itemSchema = new mongoose.Schema({
   itemName: {
     type: String,
@@ -87,5 +89,7 @@ function autoPopulate(next){
 itemSchema.pre('find', autoPopulate);
 itemSchema.pre('findOne', autoPopulate);
 itemSchema.pre('findOneAndUpdate', autoPopulate);
+
+itemSchema.plugin(mongodbErrorHandler);
 
 module.exports = mongoose.model('Item', itemSchema);

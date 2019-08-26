@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const Wallet = mongoose.model('Wallet');
 const promisify = require('es6-promisify');
 const crypto = require('crypto');
 const mail = require('../handlers/mail');
@@ -135,6 +136,22 @@ exports.updateAccount = async (req, res) => {
  * Confirm registered account
  */
 exports.confirmAccount = async (req, res) => {
+  /**
+   * Check user status in the database
+   */
+  const userTemp = await User.findOne({
+    _id: req.user._id
+  });
+
+  if(userTemp.status == "new"){
+    // new user, create wallet
+    const wallet = await (new Wallet({
+      owner: req.user._id,
+      created: Date.now(),
+      updated: Date.now()
+    })).save();
+  }
+
   const updates = {
     status: 'confirmed',
     confirmedAt: Date.now()

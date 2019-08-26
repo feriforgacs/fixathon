@@ -69,6 +69,7 @@ userSchema.plugin(passportLocalMongoose, {
     UserExistsError: 'An account with the selected email address already exists. Please, use an other one.'
   }
 });
+
 userSchema.plugin(mongodbErrorHandler);
 
 module.exports = mongoose.model('User', userSchema);

@@ -809,35 +809,38 @@ table {
 
 .flash-messages {
   position: fixed;
-  top: 3rem;
+  top: 0;
   width: 100%;
   z-index: 2000; }
   .flash-messages .flash {
-    max-width: 900px;
-    margin: 0 auto 1rem;
-    border-radius: 3px;
+    width: 100%;
+    margin: 0;
     font-size: 0.77777778rem;
     padding: .5rem;
     position: relative;
-    text-align: center; }
+    text-align: center;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 4.6rem;
+    -ms-flex-align: center;
+        align-items: center; }
     .flash-messages .flash--success {
       color: #fff;
-      background: #27ae60;
+      background: rgba(39, 174, 96, 0.9);
       box-shadow: 0px 0px 20px rgba(0, 255, 109, 0.5); }
     .flash-messages .flash--error {
       color: #fff;
-      background: #CD0D3B;
+      background: rgba(205, 13, 59, 0.9);
       box-shadow: 0px 0px 20px rgba(205, 13, 59, 0.5); }
     .flash-messages .flash__text {
       padding: 0;
       margin: 0;
-      max-width: calc(100% - 50px); }
+      width: calc(100% - 50px); }
     .flash-messages .flash__remove {
       cursor: pointer;
       border: none;
       background: none;
       color: #fff;
-      position: absolute;
       top: 0;
       right: 0;
       height: 45px;

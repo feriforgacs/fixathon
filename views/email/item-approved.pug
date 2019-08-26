@@ -1,17 +1,18 @@
-p
-  strong Hi #{user.name},
-  br
+extends email-layout
 
-p Your item (#{item.itemName}) has been approved on Re-Product.
-p Use the following link to share it with the world: 
-a(href=`${itemURL}`)= itemURL
+block content
+  h1 Hi #{user.name},
+  p Your item (#{item.itemName}) has been approved on Re-Product. Now you can share it with the world and it's also became public on the website.
+  p You can view or share it by using the following link:
+  a(href=`${itemURL}`)= itemURL
+  p
+    br
+    | You'll receive email notifications when someone wants to "buy" your product and you'll also see these request on the following URL: 
+    br
+    a(href=`${itemURL}/requests`) #{itemURL}/requests
+  
+  p You can select anyone from the request list as the lucky one who will get your item. It's up to you.
+  p If you want to get in touch with one of the requesters, check their profile for contact information.
 
-p
-  br
-  | You'll receive email notifications when someone wants to "buy" your product and you'll also see these request on the following URL: 
-  br
-  a(href=`${itemURL}/requests`) #{itemURL}/requests
-  br
-  | You can select anyone from the request list as the lucky one who will get your item. It's up to you.
-  br
-  | If you want to get in touch with one of the requesters, check their profile for contact information.
+block footer
+  p.footer-legal You are receiving this email because you uploaded an item to Re-Product and it was approved.

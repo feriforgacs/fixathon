@@ -36,6 +36,14 @@ mixin itemForm(item = {})
       p.char-counter#itemNameCounter 100 chars remaining
 
     .form-group
+      label(for='itemPrice') Item price
+        br
+        small As there is no real money on Re-Product, it's up to you how much coin you ask for your product.
+          br
+          | If you want to, you can give it away for free. In that case, add 0 to the price field.
+      input#itemPrice(type='text' name='itemPrice' required='required' value=item.itemPrice maxlength='100')
+
+    .form-group
       label(for='itemDescription') Description
         br
         small Describe your item with as many details as possible. Write about the condition of the product, why you would like to trade it, share details about the shipping or how to take over the package, etc.

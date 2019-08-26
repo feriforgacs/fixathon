@@ -178,4 +178,12 @@ router.get('/item/preview/:token/:id', catchErrors(itemController.previewItem));
  */
 router.get('/item/approve/:token/:id', catchErrors(itemController.approveItem));
 
+
+// DEBUG
+// email layout preview
+router.get('/debug/email/:email', (req, res) => {
+  const email = req.params.email;
+  res.render(`email/${email}`);
+});
+
 module.exports = router;

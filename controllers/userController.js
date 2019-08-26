@@ -154,6 +154,6 @@ exports.confirmAccount = async (req, res) => {
     { new: true, runValidators: true, context: 'query' }
   );
 
-  req.flash('success', `Thank you ${user.name} for confirming your account. Now you can start to create items.`);
+  req.flash('success', `Thank you for confirming your account. Now you can start creating and requesting items 🎉`);
   res.redirect('/confirmed');
 }

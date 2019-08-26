@@ -1,2 +1,11 @@
-p Confirm your account
-a(href=`${confirmURL}`)= confirmURL
+extends email-layout
+
+block content
+  h1 Hi #{user.name},
+  p Welcome to Re-Product. Please, confirm your account by clicking the button below so you can start to create and request items.
+  +button(confirmURL, 'Confirm Account')
+  p If you can't click the button above, please, visit the following link in your browser: 
+  a(href=`${confirmURL}`)= confirmURL
+
+block footer
+  p.footer-legal You are receiving this email because you created a profile at reproduct.io. If it wasn't you, please get in touch with us by sending a reply to this message.

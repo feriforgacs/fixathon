@@ -60,3 +60,12 @@ exports.confirmed = (req, res) => {
     title: 'Things you can do with a confirmed account'
   });
 }
+
+/**
+ * Unverified account
+ */
+exports.unverified = (req, res) => {
+  res.render('unverified', {
+    title: 'Please, verify your profile'
+  });
+}

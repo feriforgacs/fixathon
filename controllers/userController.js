@@ -151,3 +151,18 @@ exports.confirmAccount = async (req, res) => {
   req.flash('success', `Thank you for confirming your account. Now you can start creating and requesting items 🎉`);
   res.redirect('/confirmed');
 }
+
+/**
+ * Check if user account is confirmed
+ */
+exports.isConfirmed = async (req, res, next) => {
+  const user = await User.findOne({
+    _id: req.user._id
+  });
+
+  if(user && user.status == "confirmed"){
+    return next();
+  }
+
+  res.redirect('/unverified');
+}

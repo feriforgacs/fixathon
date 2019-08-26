@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .container--mid
+    h1= title
+    p You need to verify your account before you can create or request an item. Please, check your inbox 
+      strong (#{user.email}) 
+      | for the verification mail you received after your registration, and follow the instructions.
+    p If you've registered more than an hour ago and haven't received your email yet, please 
+      a(href="/contact") get in touch
+      | .

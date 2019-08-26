@@ -36,6 +36,11 @@ router.get('/faq', cmsController.faq);
  */
 router.get('/contact', cmsController.contact);
 
+/**
+ * Basic pages - Unverified user profile
+ */
+router.get('/unverified', cmsController.unverified);
+
 
 /**
  * Display all items
@@ -127,6 +132,7 @@ router.get('/confirmed', cmsController.confirmed);
  */
 router.get('/item/add', 
   authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
   itemController.addItem
 );
 

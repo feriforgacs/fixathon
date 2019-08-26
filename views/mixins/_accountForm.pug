@@ -1,11 +1,15 @@
 mixin accountForm(user = {})
   .form-info
-    p Update your profile information below. If you'd like to change your confirmed email address, please, 
+    p Update your profile information below. If you'd like to change your confirmed 
+      strong email address, 
+      | please, 
       a(href="/contact") get in touch with us.
       br
       | We are using 
       a(target="_blank" href="https://en.gravatar.com/") gravatar 
-      | to display your profile picture. If you'd like to update it, please change it there.
+      | to display your 
+      strong profile picture. 
+      | If you'd like to update it, please change it there.
 
   form(method='POST')#form-account
     .form-group

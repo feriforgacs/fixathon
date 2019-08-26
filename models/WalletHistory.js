@@ -17,6 +17,10 @@ const walletHistorySchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'Item'
   },
+  order: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Order'
+  },
   transaction: String,
   created: Date
 });

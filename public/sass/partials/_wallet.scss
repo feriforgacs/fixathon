@@ -1,7 +1,13 @@
 #wallet{
   margin: 3rem 0;
+  border-spacing: 0;
 }
 
 #wallet-history{
   font-size: .6rem;
+  border-spacing: 0;
+
+  thead{
+    background: #eee;
+  }
 }

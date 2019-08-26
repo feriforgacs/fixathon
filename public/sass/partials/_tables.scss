@@ -5,5 +5,10 @@ table{
   td{
     text-align: left;
     padding: .5rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  tr:last-child td{
+    border-bottom: none;
   }
 }

@@ -773,7 +773,10 @@ table {
   width: 100%; }
   table td {
     text-align: left;
-    padding: .5rem; }
+    padding: .5rem;
+    border-bottom: 1px solid #eee; }
+  table tr:last-child td {
+    border-bottom: none; }
 
 .button {
   border: none;
@@ -937,9 +940,13 @@ table {
   margin: 3rem auto; }
 
 #wallet {
-  margin: 3rem 0; }
+  margin: 3rem 0;
+  border-spacing: 0; }
 
 #wallet-history {
-  font-size: .6rem; }
+  font-size: .6rem;
+  border-spacing: 0; }
+  #wallet-history thead {
+    background: #eee; }
 
 /*# sourceMappingURL=style.css.map*/

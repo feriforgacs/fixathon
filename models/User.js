@@ -63,6 +63,12 @@ userSchema.virtual('gravatar').get(function(){
   return `https://gravatar.com/avatar/${hash}?s=50`;
 });
 
+userSchema.virtual('wallet', {
+  ref: 'Wallet',
+  localField: '_id',
+  foreignField: 'owner'
+});
+
 userSchema.plugin(passportLocalMongoose, { 
   usernameField: 'email', 
   errorMessages: { 
@@ -71,5 +77,13 @@ userSchema.plugin(passportLocalMongoose, {
 });
 
 userSchema.plugin(mongodbErrorHandler);
+
+function autoPopulate(next){
+  this.populate('wallet');
+  next();
+}
+
+userSchema.pre('find', autoPopulate);
+userSchema.pre('findOne', autoPopulate);
 
 module.exports = mongoose.model('User', userSchema);

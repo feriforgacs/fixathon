@@ -138,14 +138,14 @@ exports.updateAccount = async (req, res) => {
  */
 exports.confirmAccount = async (req, res) => {
   /**
-   * Check user status in the database
+   * Check user wallet in the database
    */
-  const userTemp = await User.findOne({
-    _id: req.user._id
+  const walletTemp = await Wallet.findOne({
+    owner: req.user._id
   });
 
-  if(userTemp.status == "new"){
-    // new user, create wallet
+  if(!walletTemp){
+    // wallet doesn't exists, create one
     const wallet = await (new Wallet({
       owner: req.user._id,
       created: Date.now(),

@@ -952,4 +952,30 @@ table {
   #wallet-history thead {
     background: #eee; }
 
+#profile-page h1 {
+  text-align: center;
+  margin: 1rem auto 2rem;
+  padding: 0 0 2rem;
+  border-bottom: 1px solid #eee; }
+
+#profile-page h3 {
+  margin: 1rem 0; }
+
+#profile-page__avatar {
+  margin: 3rem auto 0;
+  display: block;
+  border-radius: 50px; }
+
+#profile-page__bio {
+  padding: 0 0 2rem;
+  border-bottom: 1px solid #eee;
+  margin: 0 0 2rem;
+  white-space: pre-wrap; }
+
+#profile-page__contact {
+  padding: 0 0 2rem;
+  border-bottom: 1px solid #eee;
+  margin: 0 0 2rem;
+  white-space: pre-wrap; }
+
 /*# sourceMappingURL=style.css.map*/

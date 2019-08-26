@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  .container--small
-    img(src=`${user.gravatar}`)
+  .container--small#profile-page
+    img(src=`${user.gravatar}`)#profile-page__avatar
     
     h1= user.name
 
     h3 About
-    p.profile-bio= user.userBio
+    p#profile-page__bio= user.userBio
 
     h3 Contact information
-    p.profile-contact= user.userContact
+    p#profile-page__contact= user.userContact

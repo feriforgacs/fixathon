@@ -179,6 +179,13 @@ exports.previewItem = async (req, res, next) => {
  * Approve item
  */
 exports.approveItem = async (req, res, next) => {
+  // check user's level
+  if(req.user.level > 10){
+    req.flash('error', "You don't have the necessary permissions to approve an item.");
+    res.redirect('/');
+    return;
+  }
+
   // get item from the database and change status to approved
   const itemToken = req.params.token;
   const itemId = req.params.id;

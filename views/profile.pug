@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  .container--small
+    img(src=`${user.gravatar}`)
+    
+    h1= user.name
+
+    h3 About
+    p.profile-bio= user.userBio
+
+    h3 Contact information
+    p.profile-contact= user.userContact

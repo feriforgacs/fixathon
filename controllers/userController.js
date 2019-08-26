@@ -191,3 +191,17 @@ exports.isConfirmed = async (req, res, next) => {
 
   res.redirect('/unverified');
 }
+
+/**
+ * Display a users profile
+ */
+exports.profileDisplay = async (req, res) => {
+  const user = await User.findOne({
+    _id: req.params.id
+  });
+
+  res.render('profile', {
+    title: `Re-Product profile of ${user.name}`,
+    user
+  });
+}

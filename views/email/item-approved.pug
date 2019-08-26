@@ -2,7 +2,9 @@ extends email-layout
 
 block content
   h1 Hi #{user.name},
-  p Your item (#{item.itemName}) has been approved on Re-Product. Now you can share it with the world and it's also became public on the website.
+  p Your item (#{item.itemName}) has been approved on Re-Product 
+    span(aria-label='Party Popper') 🎉
+    | . Now you can share it with the world and it's also became public on the website.
   p You can view or share it by using the following link:
   a(href=`${itemURL}`)= itemURL
   p

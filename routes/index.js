@@ -194,6 +194,14 @@ router.get('/wallet',
   catchErrors(walletController.display)
 );
 
+/**
+ * Display a users profile
+ */
+router.get('/profile/:id', 
+  authController.isLoggedIn,
+  catchErrors(userController.profileDisplay)
+);
+
 // DEBUG
 // email layout preview
 router.get('/debug/email/:email', (req, res) => {

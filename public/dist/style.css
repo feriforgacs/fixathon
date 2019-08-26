@@ -707,6 +707,10 @@ body {
     border: 1px solid #ccc;
     box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.05);
     background: #fff; }
+  .form-group .textarea--small {
+    height: 100px; }
+  .form-group .textarea--medium {
+    height: 200px; }
   .form-group select {
     background: linear-gradient(180deg, #fff 0, #e5e5e5 100%);
     width: 100%;
@@ -794,8 +798,8 @@ body {
     font-size: .7rem; }
 
 .flash-messages {
-  position: absolute;
-  top: 1rem;
+  position: fixed;
+  top: 3rem;
   width: 100%;
   z-index: 2000; }
   .flash-messages .flash {
@@ -918,6 +922,10 @@ body {
     display: none; }
 
 #item-edit h1 {
+  text-align: center;
+  margin: 3rem auto; }
+
+#account h1 {
   text-align: center;
   margin: 3rem auto; }
 

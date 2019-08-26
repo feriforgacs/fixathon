@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -158,6 +158,51 @@ function resetFormCheck(e) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.itemPhotoPreview = itemPhotoPreview;
+exports.charCounter = charCounter;
+exports.displaySpin = displaySpin;
+
+var _bling = __webpack_require__(0);
+
+function itemPhotoPreview(event) {
+  var itemPhotoLabel = (0, _bling.$)("#itemPhoto__label");
+  var previewContainer = (0, _bling.$)("#itemPhoto__preview");
+  var previewImage = (0, _bling.$)("#itemPhoto__preview img");
+  var itemPhoto = (0, _bling.$)("#itemPhoto");
+
+  itemPhotoLabel.innerHTML = '<span aria-label="Framed Picture">🖼️ </span>Select another image... ';
+
+  if (event.target.files[0].size > 1048576) {
+    itemPhoto.value = "";
+    alert("The selected file is bigger than 1MB. Please, choose another one.");
+    return;
+  }
+
+  previewImage.src = URL.createObjectURL(event.target.files[0]);
+  previewContainer.classList.remove("hidden");
+}
+
+function charCounter(maxChars, inputField, charCounter) {
+  var valueLength = inputField.value.length;
+  var remaining = maxChars - valueLength;
+  charCounter.innerHTML = remaining + " chars remaining";
+}
+
+function displaySpin(button) {
+  var spinIcon = button.querySelector("i");
+  spinIcon.classList.remove("hidden");
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.loginFormCheck = loginFormCheck;
 
 var _bling = __webpack_require__(0);
@@ -173,7 +218,7 @@ function loginFormCheck(e) {
 }
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -239,7 +284,7 @@ function categoryDropdownHide(e) {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -300,31 +345,31 @@ function togglePassword(event, button, input) {
 }
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(5);
+__webpack_require__(6);
 
 var _bling = __webpack_require__(0);
 
-var _register = __webpack_require__(4);
+var _register = __webpack_require__(5);
 
-var _login = __webpack_require__(2);
+var _login = __webpack_require__(3);
 
 var _forgot = __webpack_require__(1);
 
-var _navigation = __webpack_require__(3);
+var _navigation = __webpack_require__(4);
 
-var _itemEdit = __webpack_require__(8);
+var _itemEdit = __webpack_require__(2);
 
 /**
  * Registration form
@@ -456,9 +501,9 @@ if (itemLocation) {
 }
 
 // submit button loading animation
-var saveItemBtn = (0, _bling.$)("#saveItem");
+var itemSaveBtn = (0, _bling.$)("#saveItem");
 var itemEditForm = (0, _bling.$)("#itemEditForm");
-if (saveItemBtn && itemEditForm) {
+if (itemSaveBtn && itemEditForm) {
   itemEditForm.on("submit", function (e) {
     // check item photo field
     if (!itemPhotoField.value) {
@@ -467,59 +512,43 @@ if (saveItemBtn && itemEditForm) {
       return;
     }
 
-    (0, _itemEdit.displaySpin)(saveItemBtn);
+    (0, _itemEdit.displaySpin)(itemSaveBtn);
   });
 }
-
 /**
  * END Item create, edit form
  */
 
-/***/ }),
-/* 7 */,
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.itemPhotoPreview = itemPhotoPreview;
-exports.charCounter = charCounter;
-exports.displaySpin = displaySpin;
-
-var _bling = __webpack_require__(0);
-
-function itemPhotoPreview(event) {
-  var itemPhotoLabel = (0, _bling.$)("#itemPhoto__label");
-  var previewContainer = (0, _bling.$)("#itemPhoto__preview");
-  var previewImage = (0, _bling.$)("#itemPhoto__preview img");
-  var itemPhoto = (0, _bling.$)("#itemPhoto");
-
-  itemPhotoLabel.innerHTML = '<span aria-label="Framed Picture">🖼️ </span>Select another image... ';
-
-  if (event.target.files[0].size > 1048576) {
-    itemPhoto.value = "";
-    alert("The selected file is bigger than 1MB. Please, choose another one.");
-    return;
-  }
-
-  previewImage.src = URL.createObjectURL(event.target.files[0]);
-  previewContainer.classList.remove("hidden");
+/**
+ * Account update form
+ */
+var accountBio = (0, _bling.$)("#userBio");
+if (accountBio) {
+  var accountBioCounter = (0, _bling.$)("#userBioCounter");
+  accountBio.on("keyup", function (e) {
+    return (0, _itemEdit.charCounter)(100, accountBio, accountBioCounter);
+  });
 }
 
-function charCounter(maxChars, inputField, charCounter) {
-  var valueLength = inputField.value.length;
-  var remaining = maxChars - valueLength;
-  charCounter.innerHTML = remaining + " chars remaining";
+var accountContact = (0, _bling.$)("#userContact");
+if (accountContact) {
+  var accountContactCounter = (0, _bling.$)("#userContactCounter");
+  accountContact.on("keyup", function (e) {
+    return (0, _itemEdit.charCounter)(100, accountContact, accountContactCounter);
+  });
 }
 
-function displaySpin(button) {
-  var spinIcon = button.querySelector("i");
-  spinIcon.classList.remove("hidden");
+var accountForm = (0, _bling.$)("#form-account");
+var accountSaveBtn = (0, _bling.$)("#saveAccount");
+if (accountForm) {
+  accountForm.on("submit", function () {
+    return (0, _itemEdit.displaySpin)(accountSaveBtn);
+  });
 }
+
+/**
+ * END Account update form
+ */
 
 /***/ })
 /******/ ]);

@@ -109,22 +109,16 @@ exports.account = (req, res) => {
  * Update existing account
  */
 exports.updateAccount = async (req, res) => {
+  /**
+   * TODO
+   * Allow users to update their email address
+   * Allow user to update a profile image
+   */
   const updates = {
     name: req.body.name,
-    email: req.body.email
+    userBio: req.body.userBio,
+    userContact: req.body.userContact
   };
-
-  /* 
-  // TODO - check other user with the same email address
-  const tempUser = await User.findOne({
-    email: req.body.email
-  });
-
-  if(tempUser._id !== req.user._id){
-    req.flash('error', 'This email address is taken by an other account. Please, use a different one.');
-    res.redirect('/account');
-    return;
-  } */
 
   const user = await User.findOneAndUpdate(
     { _id: req.user._id },

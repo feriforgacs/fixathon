@@ -1,12 +1,40 @@
 mixin accountForm(user = {})
-  form(method='POST')
+  .form-info
+    p Update your profile information below. If you'd like to change your confirmed email address, please, 
+      a(href="/contact") get in touch with us.
+      br
+      | We are using 
+      a(target="_blank" href="https://en.gravatar.com/") gravatar 
+      | to display your profile picture. If you'd like to update it, please change it there.
+
+  form(method='POST')#form-account
     .form-group
       label(for='name') Your Name
       input#name(type='text' name='name' required value=(user && user.name))
 
     .form-group
-      label(for='email') Your Email address
-      input#email(type='email' name='email' required value=(user && user.email))
+      label(for='userBio') A few words about you (bio)
+        br
+        small This will be visible on your profile.
+          br 
+          strong Only logged in user will see this information.
+          br 
+          | Max length 100 chars.
+      textarea#userBio.textarea--small(name="userBio" cols="30" rows="10" maxlength="100")= user && user.userBio
+      p.char-counter#userBioCounter 100 chars remaining
 
     .form-group
-      input(type='submit' value='Save profile data')
+      label(for='userContact') Public contact information
+        br
+        small This will be visible on your profile.
+          br 
+          strong Only logged in user will see this information.
+          br 
+          | Max length 100 chars.
+      textarea#userContact.textarea--small(name="userContact" cols="30" rows="10" maxlength="100")= user && user.userContact
+      p.char-counter#userContactCounter 100 chars remaining
+
+    .form-group
+      button(type='submit').button.button--primary#saveAccount Save profile data
+       i.hidden
+          != h.icon('spin')

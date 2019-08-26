@@ -117,9 +117,9 @@ if(itemLocation){
 }
 
 // submit button loading animation
-const saveItemBtn = $("#saveItem");
+const itemSaveBtn = $("#saveItem");
 const itemEditForm = $("#itemEditForm");
-if(saveItemBtn && itemEditForm){
+if(itemSaveBtn && itemEditForm){
   itemEditForm.on("submit", (e) => {
     // check item photo field
     if(!itemPhotoField.value){
@@ -128,10 +128,34 @@ if(saveItemBtn && itemEditForm){
       return;
     }
 
-    displaySpin(saveItemBtn)
+    displaySpin(itemSaveBtn)
   });
+}
+/**
+ * END Item create, edit form
+ */
+
+/**
+ * Account update form
+ */
+const accountBio = $("#userBio");
+if(accountBio){
+  const accountBioCounter = $("#userBioCounter");
+  accountBio.on("keyup", (e) => charCounter(100, accountBio, accountBioCounter));
+}
+
+const accountContact = $("#userContact");
+if(accountContact){
+  const accountContactCounter = $("#userContactCounter");
+  accountContact.on("keyup", (e) => charCounter(100, accountContact, accountContactCounter));
+}
+
+const accountForm = $("#form-account");
+const accountSaveBtn = $("#saveAccount");
+if(accountForm){
+  accountForm.on("submit", () => displaySpin(accountSaveBtn));
 }
 
 /**
- * END Item create, edit form
+ * END Account update form
  */

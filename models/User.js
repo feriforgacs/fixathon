@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: 'We like to know each other 😊 Please, provide a name',
+    maxlength: 100
   },
   email: {
     type: String,
@@ -23,7 +24,16 @@ const userSchema = new mongoose.Schema({
     validate: [
       validator.isEmail,
       'Please, check your email address. It looks invalid.'
-    ]
+    ],
+    maxlength: 100
+  },
+  userBio: {
+    type: String,
+    maxlength: 200
+  },
+  userContact: {
+    type: String,
+    maxlength: 200
   },
   legal: {
     type: Number,

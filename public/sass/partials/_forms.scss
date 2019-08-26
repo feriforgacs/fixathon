@@ -46,6 +46,16 @@
     background: #fff;
   }
 
+  .textarea{
+    &--small{
+      height: 100px;
+    }
+
+    &--medium{
+      height: 200px;
+    }
+  }
+
   select{
     background: linear-gradient(180deg,#fff 0,#e5e5e5 100%);
     width: 100%;

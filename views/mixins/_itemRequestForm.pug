@@ -1,0 +1,20 @@
+mixin itemRequestForm()
+  form(method="POST").form#itemRequestForm.hidden
+    .form-group
+      p.message.message--info
+        span(aria-label='Information') ℹ️ 
+        strong We won't charge your wallet when you send a request, only if the seller accepts it.
+        br
+        | Make sure that you won't run out of coins before that.
+
+    .form-group
+      label(for='itemRequestMessage') Request message
+        br
+        small As it's up to the seller who will get this item, please write a few sentances about why you would be the best choice. You can write about what you are goind to do with the item, how you are goind to use it, etc.
+          br
+          strong Max. length 500 chars
+      textarea(name='itemRequestMessage' cols='30' rows='10' required='required' maxlength='500').textarea--small#itemRequestMessage
+      p.char-counter#itemRequestMessageCounter 500 chars remaining
+    
+    .form-group
+      button(type='submit' name='itemRequestSubmit').button.button--primary Submit request

@@ -1,16 +1,50 @@
 extends layout
 
-block content
-  .item-details
-    if item.itemStatus === 'approved' || user && ( user.level < 30 || user._id.toString() === item.author._id.toString() )
-      if preview
-        p.item__preview This is just a preview URL
-      
-      img.item-image(src=`/uploads/${item.itemPhoto}` alt=`${item.itemName}` title=`${item.itemName}`)
-      h1.item-name= item.itemName
+include mixins/_itemRequestForm
 
-      each category in h.itemCategories
-        if item.itemCategory === category.id
-          a.item-category(href=`/category/${category.slug}` title=`View more items in the ${category.name} category`)= category.name
-            
-      p.item-description= item.itemDescription
+block content
+  .container--wide
+    .item-details
+      .item-details__header
+        if item.itemStatus === 'approved' || user && ( user.level < 30 || user._id.toString() === item.author._id.toString() )
+          if preview
+            p.item__preview This is just a preview URL
+
+      .item-details__content
+        .item-details__image  
+          img.item-image(src=`/uploads/${item.itemPhoto}` alt=`${item.itemName}` title=`${item.itemName}`)
+
+        .item-details__info
+          h1.item__name= item.itemName
+          h3.item__price Price: 
+            if item.itemPrice == 1
+              | #{item.itemPrice} coin
+            else
+              | #{item.itemPrice} coins
+          
+          .item__meta
+            .location Location: 
+              a(href=`https://www.google.com/maps/search/${item.itemLocation}/` target='_blank')  #{item.itemLocation}
+
+            .created Published #{h.moment(item.itemPublished).fromNow()}
+
+            .category
+              each category in h.itemCategories
+                if item.itemCategory === category.slug
+                  a.item__category(href=`/category/${category.slug}` title=`View more items in ${category.name} category`)
+                    span #{category.icon} #{category.name}
+
+            .seller
+              a.seller__profile(href=`/profile/${item.author._id}` title=`View the profile of ${item.author.name}` target='_blank')
+                | by  
+                img(src=item.author.gravatar).seller__avatar
+                span.seller__name= item.author.name          
+          .item__description
+            div= item.itemDescription
+
+          .item__actions
+            a(href=`/profile/${item.author._id}` target='_blank').button.button--secondary.button--small.seller-profile-button View seller's profile
+            button.button.button--primary.button--small#item-request-button Request this item
+
+          .item-details__request-form
+            +itemRequestForm()

@@ -6,6 +6,7 @@ import { loginFormCheck } from './modules/login';
 import { forgotFormCheck, resetFormCheck } from './modules/forgot';
 import { profileDropdownToggle, profileDropdownHide, categoryDropdownToggle, categoryDropdownHide } from './modules/navigation';
 import { itemPhotoPreview, charCounter, displaySpin } from './modules/itemEdit';
+import { displayRequestForm } from './modules/itemDetails';
 
 /**
  * Registration form
@@ -99,7 +100,7 @@ if(itemPhotoField){
 const itemName = $("#itemName");
 if(itemName){
   const itemNameCounter = $("#itemNameCounter");
-  itemName.on("keyup", (e) => charCounter(100, itemName, itemNameCounter));
+  itemName.on("keyup", () => charCounter(100, itemName, itemNameCounter));
 }
 
 // character counter - item description
@@ -113,7 +114,7 @@ if(itemDescription){
 const itemLocation = $("#itemLocation");
 if(itemLocation){
   const itemLocationCounter = $("#itemLocationCounter");
-  itemLocation.on("keyup", (e) => charCounter(100, itemLocation, itemLocationCounter));
+  itemLocation.on("keyup", () => charCounter(100, itemLocation, itemLocationCounter));
 }
 
 // submit button loading animation
@@ -141,13 +142,13 @@ if(itemSaveBtn && itemEditForm){
 const accountBio = $("#userBio");
 if(accountBio){
   const accountBioCounter = $("#userBioCounter");
-  accountBio.on("keyup", (e) => charCounter(100, accountBio, accountBioCounter));
+  accountBio.on("keyup", () => charCounter(100, accountBio, accountBioCounter));
 }
 
 const accountContact = $("#userContact");
 if(accountContact){
   const accountContactCounter = $("#userContactCounter");
-  accountContact.on("keyup", (e) => charCounter(100, accountContact, accountContactCounter));
+  accountContact.on("keyup", () => charCounter(100, accountContact, accountContactCounter));
 }
 
 const accountForm = $("#form-account");
@@ -158,4 +159,23 @@ if(accountForm){
 
 /**
  * END Account update form
+ */
+
+/**
+ * Item request form
+ */
+const itemRequestButton = $("#item-request-button");
+if(itemRequestButton){
+  const itemRequestForm = $("#itemRequestForm");
+  itemRequestButton.on("click", () => displayRequestForm(itemRequestForm));
+}
+
+const itemRequestMessage = $("#itemRequestMessage");
+if(itemRequestMessage){
+  const itemRequestMessageCounter = $("#itemRequestMessageCounter");
+  itemRequestMessage.on("keyup", () => charCounter(500, itemRequestMessage, itemRequestMessageCounter));
+}
+
+/**
+ * END Item request form
  */

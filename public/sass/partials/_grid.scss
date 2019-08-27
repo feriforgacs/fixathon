@@ -2,6 +2,12 @@
   width: 90%;
   max-width: 960px;
   margin: 0 auto;
+  
+  &--small{
+    width: 90%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
 
   &--mid{
     width: 90%;
@@ -9,11 +15,12 @@
     margin: 0 auto;
   }
 
-  &--small{
+  &--wide{
     width: 90%;
-    max-width: 420px;
+    max-width: 1400px;
     margin: 0 auto;
   }
+
 }
 
 .hidden{

@@ -371,6 +371,8 @@ var _navigation = __webpack_require__(4);
 
 var _itemEdit = __webpack_require__(2);
 
+var _itemDetails = __webpack_require__(9);
+
 /**
  * Registration form
  */
@@ -477,7 +479,7 @@ if (itemPhotoField) {
 var itemName = (0, _bling.$)("#itemName");
 if (itemName) {
   var itemNameCounter = (0, _bling.$)("#itemNameCounter");
-  itemName.on("keyup", function (e) {
+  itemName.on("keyup", function () {
     return (0, _itemEdit.charCounter)(100, itemName, itemNameCounter);
   });
 }
@@ -495,7 +497,7 @@ if (itemDescription) {
 var itemLocation = (0, _bling.$)("#itemLocation");
 if (itemLocation) {
   var itemLocationCounter = (0, _bling.$)("#itemLocationCounter");
-  itemLocation.on("keyup", function (e) {
+  itemLocation.on("keyup", function () {
     return (0, _itemEdit.charCounter)(100, itemLocation, itemLocationCounter);
   });
 }
@@ -525,7 +527,7 @@ if (itemSaveBtn && itemEditForm) {
 var accountBio = (0, _bling.$)("#userBio");
 if (accountBio) {
   var accountBioCounter = (0, _bling.$)("#userBioCounter");
-  accountBio.on("keyup", function (e) {
+  accountBio.on("keyup", function () {
     return (0, _itemEdit.charCounter)(100, accountBio, accountBioCounter);
   });
 }
@@ -533,7 +535,7 @@ if (accountBio) {
 var accountContact = (0, _bling.$)("#userContact");
 if (accountContact) {
   var accountContactCounter = (0, _bling.$)("#userContactCounter");
-  accountContact.on("keyup", function (e) {
+  accountContact.on("keyup", function () {
     return (0, _itemEdit.charCounter)(100, accountContact, accountContactCounter);
   });
 }
@@ -549,6 +551,49 @@ if (accountForm) {
 /**
  * END Account update form
  */
+
+/**
+ * Item request form
+ */
+var itemRequestButton = (0, _bling.$)("#item-request-button");
+if (itemRequestButton) {
+  var itemRequestForm = (0, _bling.$)("#itemRequestForm");
+  itemRequestButton.on("click", function () {
+    return (0, _itemDetails.displayRequestForm)(itemRequestForm);
+  });
+}
+
+var itemRequestMessage = (0, _bling.$)("#itemRequestMessage");
+if (itemRequestMessage) {
+  var itemRequestMessageCounter = (0, _bling.$)("#itemRequestMessageCounter");
+  itemRequestMessage.on("keyup", function () {
+    return (0, _itemEdit.charCounter)(500, itemRequestMessage, itemRequestMessageCounter);
+  });
+}
+
+/**
+ * END Item request form
+ */
+
+/***/ }),
+/* 8 */,
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.displayRequestForm = displayRequestForm;
+
+var _bling = __webpack_require__(0);
+
+function displayRequestForm(itemRequestForm) {
+  itemRequestForm.classList.remove("hidden");
+  itemRequestForm.scrollIntoView();
+}
 
 /***/ })
 /******/ ]);

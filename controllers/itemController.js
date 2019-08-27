@@ -146,10 +146,41 @@ exports.displayItem = async (req, res, next) => {
     return next();
   }
 
+  /**
+   * Check user and item connection
+   */
+  let itemCreatedByUser = false;
+  let notEnoughCoins = false;
+  let enoughCoins = false;
+  let userNotConfirmed = false;
+
+  if(req.user && req.user._id.toString() == item.author._id.toString()){
+    itemCreatedByUser = true;
+  }
+
+  // check item price and user coins
+  if(req.user && req.user.wallet.length){
+    if(req.user.wallet[0].coins >= item.itemPrice){
+      enoughCoins = true;
+    } else {
+      notEnoughCoins = true;
+    }
+  }
+
+  // check account status
+
+  if(req.user && req.user.status !== "confirmed"){
+    userNotConfirmed = true;
+  }
+
   res.render('itemDetails', {
     title: item.itemName,
-    item
-  })
+    item,
+    itemCreatedByUser,
+    enoughCoins,
+    notEnoughCoins,
+    userNotConfirmed
+  });
 }
 
 /**

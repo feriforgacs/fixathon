@@ -553,7 +553,8 @@ body {
     border: none;
     margin-bottom: -10px;
     margin-left: 2px;
-    cursor: pointer; }
+    cursor: pointer;
+    background: none; }
 
 #search-form {
   display: -ms-flexbox;

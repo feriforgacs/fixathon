@@ -179,3 +179,11 @@ if(itemRequestMessage){
 /**
  * END Item request form
  */
+
+// automatically hide flash messages
+const flashes = $(".flash-messages");
+if(flashes){
+  setTimeout(() => {
+    flashes.style.display = "none";
+  }, 5000);
+}

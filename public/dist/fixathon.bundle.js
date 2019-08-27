@@ -594,6 +594,14 @@ if (itemRequestMessage) {
  * END Item request form
  */
 
+// automatically hide flash messages
+var flashes = (0, _bling.$)(".flash-messages");
+if (flashes) {
+  setTimeout(function () {
+    flashes.style.display = "none";
+  }, 5000);
+}
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=fixathon.bundle.js.map

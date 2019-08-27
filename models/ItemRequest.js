@@ -33,6 +33,14 @@ const itemRequestSchema = new mongoose.Schema({
     default: 'new',
     trim: true,
     required: 'ItemRequest - You must supply a status for your request'
+  },
+  updated: {
+    type: Date
+  },
+  acceptMessage: {
+    type: String,
+    maxlength: 500,
+    trim: true
   }
 });
 

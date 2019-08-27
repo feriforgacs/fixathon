@@ -638,9 +638,9 @@ if (requestAcceptMessage) {
 // automatically hide flash messages
 var flashes = (0, _bling.$)(".flash-messages");
 if (flashes) {
-  setTimeout(function () {
+  /* setTimeout(() => {
     flashes.style.display = "none";
-  }, 5000);
+  }, 5000); */
 }
 
 /***/ }),

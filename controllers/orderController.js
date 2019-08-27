@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const mail = require('../handlers/mail');
 const Item = mongoose.model('Item');
 const Wallet = mongoose.model('Wallet');
+const WalletHistory = mongoose.model('WalletHistory');
+const User = mongoose.model('User');
 const ItemRequest = mongoose.model('ItemRequest');
+const Order = mongoose.model('Order');
 
 /**
  * Process item request
@@ -129,4 +132,144 @@ exports.displayRequest = async (req, res) => {
     item,
     request
   });
+}
+
+/**
+ * Accept item request
+ */
+exports.acceptRequest = async (req, res) => {
+  const item = await Item.findOne({
+    _id: req.params.itemid
+  });
+
+  /**
+   * Check item author and current user
+   */
+  if(item.author._id.toString() != req.user.id){
+    req.flash("error", "You don't have permission to view this page.");
+    res.redirect("/");
+    return;
+  }
+
+  const request = await ItemRequest.findOne({
+    _id: req.params.requestid
+  }).populate('author');
+
+  const buyer = await User.findOne({
+    _id: request.author._id
+  });
+
+  if(!item || !request || !buyer){
+    req.flash("error", "The request you are looking for doesn't exists.")
+    res.redirect("/");
+    return;
+  }
+
+  /**
+   * Check if requester still have enough coins
+   */
+  if(buyer.wallet.coins < item.itemPrice){
+    req.flash("error", "There is not enough coins in the buyer's wallet for this action. Please, choose another requester or get in touch with the user.")
+    res.redirect("back");
+    return;
+  }
+
+  /**
+   * Add coins to sellers wallet and wallet history
+   */
+  const sellerWallet = await Wallet.findOneAndUpdate({
+    owner: item.author._id
+  }, {
+    $inc: {
+      coins: +item.price
+    }
+  }, {
+    new: true
+  });
+
+  const sellerWalletHistoryPromise = new WalletHistory({
+    wallet: sellerWallet._id,
+    historyType: 'addition',
+    item: req.params.itemid,
+    transaction: `You sold an item (${item.itemName}) for ${item.itemPrice} coins.`,
+    created: Date.now()
+  });
+
+  /**
+   * Remove coins from buyers wallet and add it to wallet history
+   */
+  const buyerWallet = await Wallet.findOneAndUpdate({
+    owner: buyer._id
+  }, {
+    $inc: {
+      coins: -item.price
+    }
+  }, {
+    new: true
+  });
+
+  const buyerWalletHistoryPromise = new WalletHistory({
+    wallet: buyerWallet._id,
+    historyType: 'deduction',
+    item: req.params.itemid,
+    transaction: `You bought an item (${item.itemName}) for ${item.itemPrice} coins.`,
+    created: Date.now()
+  });
+
+  /**
+   * Change item status to sold
+   */
+  const itemUpdatePromise = Item.findOneAndUpdate({
+    _id: req.params.itemid
+  }, {
+    itemStatus: 'sold'
+  }, {
+    new: true
+  });
+
+  const [sellerWalletHistory, buyersWalletHistory, updatedItem] = await Promise.all([sellerWalletHistoryPromise, buyerWalletHistoryPromise, itemUpdatePromise]);
+
+  /**
+   * Save order
+   */
+  const order = await (new Order({
+    created: Date.now(),
+    seller: item.author._id,
+    sellerWalletHistory: sellerWalletHistory._id,
+    buyer: buyer._id,
+    buyerWalletHistory: buyersWalletHistory._id,
+    item: updatedItem._id
+  })).save();
+
+  /**
+   * Send notification to buyer
+   */
+  const orderURL = `http://${req.headers.host}/order/${order._id}`;
+
+  const buyerNotificationPromise = mail.send({
+    user: buyer.email,
+    subject: 'The seller accepted your product request on Re-Product',
+    orderURL,
+    updatedItem,
+    filename: 'request-accepted-buyer'
+  });
+
+  /**
+   * Send confirmation to seller
+   */
+  const sellerNotificationPromise = mail.send({
+    user: buyer.email,
+    subject: 'You successfully sold on of your products on Re-Product',
+    orderURL,
+    updatedItem,
+    filename: 'request-accepted-seller'
+  });
+
+  await Promise.all([buyerNotificationPromise, sellerNotificationPromise]);
+
+  /**
+   * Reload page and display success message
+   */
+  req.flash("success", "You successfully accepted the product request. We've sent a notification mail to the buyer and a confirmation mail to you as well.");
+  req.redirect("back");
 }

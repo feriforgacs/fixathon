@@ -14,10 +14,20 @@ const ordersSchema = new mongoose.Schema({
     ref: 'User',
     required: 'Order - Seller is required'
   },
+  sellerWalletHistory: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'WalletHistory',
+    required: 'Order - Seller Wallet History is required'
+  },
   buyer: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
     required: 'Order - Buyer is required'
+  },
+  buyerWalletHistory: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'WalletHistory',
+    required: 'Order - Buyer Wallet History is required'
   },
   item: {
     type: mongoose.Schema.ObjectId,

@@ -214,7 +214,7 @@ if(requestAcceptMessage){
 // automatically hide flash messages
 const flashes = $(".flash-messages");
 if(flashes){
-  setTimeout(() => {
+  /* setTimeout(() => {
     flashes.style.display = "none";
-  }, 5000);
+  }, 5000); */
 }

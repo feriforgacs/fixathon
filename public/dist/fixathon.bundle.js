@@ -580,6 +580,13 @@ if (itemRequestButton) {
   itemRequestButton.on("click", function () {
     return (0, _itemDetails.displayRequestForm)(itemRequestForm);
   });
+
+  /**
+   * Check form parameter in the url
+   */
+  if (window.location.hash.includes("#request")) {
+    (0, _itemDetails.displayRequestForm)(itemRequestForm);
+  }
 }
 
 var itemRequestMessage = (0, _bling.$)("#itemRequestMessage");

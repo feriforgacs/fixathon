@@ -1,0 +1,11 @@
+extends email-layout
+
+block content
+  h1 Hi #{user.name},
+  p You received a new request for #{item.itemName} on Re-Product. Take a look at the request details on the following link:
+  +button(requestURL, '👉 View Request')
+  p If you can't click the button above, please, visit the following link in your browser: 
+  a(href=`${requestURL}`)= requestURL
+
+block footer
+  p.footer-legal You are receiving this email because you listed an item on Re-Product.

@@ -21,6 +21,12 @@ const itemRequestSchema = new mongoose.Schema({
     required: 'ItemRequest - You must supply an author for your request',
     trim: true
   },
+  message: {
+    type: String,
+    maxlength: 500,
+    trim: true,
+    required: 'Please, add a message to your request.'
+  },
   status: {
     type: String,
     maxlength: 10,

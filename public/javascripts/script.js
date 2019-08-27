@@ -168,6 +168,13 @@ const itemRequestButton = $("#item-request-button");
 if(itemRequestButton){
   const itemRequestForm = $("#itemRequestForm");
   itemRequestButton.on("click", () => displayRequestForm(itemRequestForm));
+
+  /**
+   * Check form parameter in the url
+   */
+  if (window.location.hash.includes("#request")) {
+    displayRequestForm(itemRequestForm);
+  }
 }
 
 const itemRequestMessage = $("#itemRequestMessage");

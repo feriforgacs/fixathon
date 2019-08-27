@@ -5,6 +5,7 @@ const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const cmsController = require('../controllers/cmsController');
 const walletController = require('../controllers/walletController');
+const orderController = require('../controllers/orderController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 /**
@@ -200,6 +201,15 @@ router.get('/wallet',
 router.get('/profile/:id', 
   authController.isLoggedIn,
   catchErrors(userController.profileDisplay)
+);
+
+/**
+ * Process item request
+ */
+router.post('/item/:slug',
+  authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
+  catchErrors(orderController.itemRequest)
 );
 
 // DEBUG

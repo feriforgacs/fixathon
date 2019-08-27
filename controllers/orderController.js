@@ -92,3 +92,32 @@ exports.itemRequest = async (req, res) => {
   req.flash("success", "🎉 Your request was sent successfully. You'll get an email if the seller selects you as the lucky one.");
   res.redirect("back");
 }
+
+/**
+ * Display item request
+ */
+exports.displayRequest = async (req, res) => {
+  const item = await Item.findOne({
+    _id: req.params.itemid
+  });
+
+  const request = await ItemRequest.findOneAndUpdate({
+    _id: req.params.requestid
+  }, {
+    status: "read"
+  }, {
+    new: true
+  }).populate(['author', 'item']);
+
+  if(!item || !request){
+    req.flash("error", "There was an error during the process. Please, wait a few minutes and try again.")
+    res.redirect("/");
+    return;
+  }
+
+  res.render('itemrequest', {
+    title: `Request for item: ${item.itemName}`,
+    item,
+    request
+  });
+}

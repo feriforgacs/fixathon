@@ -93,6 +93,8 @@ exports.createItem = async (req, res) => {
     subject: 'New Re-Product item 🚀 Review it!',
     approveURL,
     previewURL,
+    uploaderName: req.user.name,
+    uploaderEmail: req.user.email,
     filename: 'item-confirm'
   });
 

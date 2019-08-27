@@ -212,6 +212,15 @@ router.post('/item/:slug',
   catchErrors(orderController.itemRequest)
 );
 
+/**
+ * Display item request
+ */
+router.get('/item/:itemid/request/:requestid',
+  authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
+  catchErrors(orderController.displayRequest)
+);
+
 // DEBUG
 // email layout preview
 router.get('/debug/email/:email', (req, res) => {

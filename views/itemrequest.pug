@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .container--mid
+    #request
+      #request__header
+        h1= title
+        #request__meta
+          p.date Request sent #{h.moment(request.created).fromNow()}
+          a.author(href=`/profile/${request.author._id}` target='_blank' title=`View the profile of ${request.author.name}`)
+            | by  
+            img(src=request.author.gravatar).author__avatar
+            span.author__name= request.author.name
+
+      #request__body
+        h3 Request message
+        .request__message= request.message
+
+      #request__actions
+        a.button.button--secondary.button--small(href=`/profile/${request.author._id}` target='_blank') View requester's profile
+        a.button.button--secondary.button--small(href=`/item/${item._id}/requests`) View all requests for this item
+        a.button.button--secondary.button--small(href=`/item/${item.itemSlug}`) View item details
+        a.button.button--primary.button--small(href=`/request/accept/${request._id}`)#request-accept-button Accept request

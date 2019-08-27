@@ -3,11 +3,13 @@ extends email-layout
 block content
   h1 Hi #{user.name},
   
-  p You just sold the following item on Re-Product: #{updatedItem.itemName}
+  p You just sold the following item on Re-Product: 
+    strong #{updatedItem.itemName}
   
   p And sent the following message to the buyer:
   
-  p #{orderMessage}
+  p
+    em #{orderMessage}
   
   p You can view the order details on the following page:
   +button(orderURL, '👉 View Order Details')

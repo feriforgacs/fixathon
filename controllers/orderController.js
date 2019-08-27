@@ -227,7 +227,18 @@ exports.acceptRequest = async (req, res) => {
     new: true
   });
 
-  const [sellerWalletHistory, buyersWalletHistory, updatedItem] = await Promise.all([sellerWalletHistoryPromise, buyerWalletHistoryPromise, itemUpdatePromise]);
+  /**
+   * Change request status to accepted
+   */
+  const requestUpdatePromise = ItemRequest.findOneAndUpdate({
+    _id: req.params.requestid
+  }, {
+    status: 'accepted'
+  }, {
+    new: true
+  });
+
+  const [sellerWalletHistory, buyersWalletHistory, updatedItem, updatedRequest] = await Promise.all([sellerWalletHistoryPromise, buyerWalletHistoryPromise, itemUpdatePromise, requestUpdatePromise]);
 
   /**
    * Save order
@@ -248,11 +259,11 @@ exports.acceptRequest = async (req, res) => {
   const orderURL = `http://${req.headers.host}/order/${order._id}`;
 
   const buyerNotificationPromise = mail.send({
-    user: buyer.email,
+    user: buyer,
     subject: 'The seller accepted your product request on Re-Product',
     orderURL,
     updatedItem,
-    orderMessage: requestAcceptMessage,
+    orderMessage: req.body.requestAcceptMessage,
     filename: 'request-accepted-buyer'
   });
 
@@ -260,11 +271,11 @@ exports.acceptRequest = async (req, res) => {
    * Send confirmation to seller
    */
   const sellerNotificationPromise = mail.send({
-    user: buyer.email,
-    subject: 'You successfully sold on of your products on Re-Product',
+    user: item.author,
+    subject: 'You successfully sold one of your products on Re-Product',
     orderURL,
     updatedItem,
-    orderMessage: requestAcceptMessage,
+    orderMessage: req.body.requestAcceptMessage,
     filename: 'request-accepted-seller'
   });
 
@@ -274,5 +285,5 @@ exports.acceptRequest = async (req, res) => {
    * Reload page and display success message
    */
   req.flash("success", "You successfully accepted the product request. We've sent a notification mail to the buyer and a confirmation mail to you as well.");
-  req.redirect(`/order/${order.id}`);
+  res.redirect(`/order/${order.id}`);
 }

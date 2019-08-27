@@ -788,9 +788,9 @@ table {
   cursor: pointer;
   display: block;
   width: 100%;
-  max-width: 420px;
+  max-width: 450px;
   font-weight: bold;
-  height: 3rem;
+  height: auto;
   line-height: 3rem;
   margin: 0 auto;
   border-radius: 3px;
@@ -811,6 +811,8 @@ table {
     height: 2rem;
     line-height: 2rem;
     font-size: .7rem; }
+  .button:disabled, .button[disabled] {
+    opacity: .5; }
 
 .flash-messages {
   position: fixed;

@@ -115,6 +115,15 @@ exports.displayRequest = async (req, res) => {
     return;
   }
 
+  /**
+   * Check item author and current user
+   */
+  if(item.author._id.toString() != req.user.id){
+    req.flash("error", "You don't have permission to view this page.");
+    res.redirect("/");
+    return;
+  }
+
   res.render('itemrequest', {
     title: `Request for item: ${item.itemName}`,
     item,

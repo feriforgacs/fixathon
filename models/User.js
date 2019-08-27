@@ -56,6 +56,9 @@ const userSchema = new mongoose.Schema({
   confirmedAt: Date,
   resetPasswordToken: String,
   resetPasswordExpires: Date
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
 userSchema.virtual('gravatar').get(function(){

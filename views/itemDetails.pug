@@ -34,17 +34,34 @@ block content
                   a.item__category(href=`/category/${category.slug}` title=`View more items in ${category.name} category`)
                     span #{category.icon} #{category.name}
 
-            .seller
-              a.seller__profile(href=`/profile/${item.author._id}` title=`View the profile of ${item.author.name}` target='_blank')
-                | by  
-                img(src=item.author.gravatar).seller__avatar
-                span.seller__name= item.author.name          
+            if user && user.wallet
+              .seller
+                a.seller__profile(href=`/profile/${item.author._id}` title=`View the profile of ${item.author.name}` target='_blank')
+                  | by  
+                  img(src=item.author.gravatar).seller__avatar
+                  span.seller__name= item.author.name          
+          
           .item__description
             div= item.itemDescription
 
-          .item__actions
-            a(href=`/profile/${item.author._id}` target='_blank').button.button--secondary.button--small.seller-profile-button View seller's profile
-            button.button.button--primary.button--small#item-request-button Request this item
+          if user && user.wallet && user.wallet[0].coins < item.itemPrice
+            p.message.message--info
+              span(aria-label='Pensive Face') 😔 
+              | You don't have enough coins to buy this item.
+              br
+              | Earn more coins by selling your unused items. 
 
-          .item-details__request-form
-            +itemRequestForm()
+          else if user && user.wallet && user.wallet[0].coins >= item.itemPrice
+            .item__actions
+              a(href=`/profile/${item.author._id}` target='_blank').button.button--secondary.button--small.seller-profile-button View seller's profile
+              button.button.button--primary.button--small#item-request-button Request this item
+
+            .item-details__request-form
+              +itemRequestForm()
+          
+          else if !user
+            p.message.message--info
+              span(aria-label='Backhand Index Pointing Right') 👉 
+              | Please, 
+              a(href='/login' target='_blank') log in
+              |  to request this item.

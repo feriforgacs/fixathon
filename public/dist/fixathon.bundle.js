@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -158,6 +158,25 @@ function resetFormCheck(e) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.displayRequestForm = displayRequestForm;
+
+var _bling = __webpack_require__(0);
+
+function displayRequestForm(itemRequestForm) {
+  itemRequestForm.classList.remove("hidden");
+  itemRequestForm.scrollIntoView();
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.itemPhotoPreview = itemPhotoPreview;
 exports.charCounter = charCounter;
 exports.displaySpin = displaySpin;
@@ -194,7 +213,7 @@ function displaySpin(button) {
 }
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -218,7 +237,7 @@ function loginFormCheck(e) {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -284,7 +303,7 @@ function categoryDropdownHide(e) {
 }
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -345,33 +364,33 @@ function togglePassword(event, button, input) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(6);
+__webpack_require__(7);
 
 var _bling = __webpack_require__(0);
 
-var _register = __webpack_require__(5);
+var _register = __webpack_require__(6);
 
-var _login = __webpack_require__(3);
+var _login = __webpack_require__(4);
 
 var _forgot = __webpack_require__(1);
 
-var _navigation = __webpack_require__(4);
+var _navigation = __webpack_require__(5);
 
-var _itemEdit = __webpack_require__(2);
+var _itemEdit = __webpack_require__(3);
 
-var _itemDetails = __webpack_require__(9);
+var _itemDetails = __webpack_require__(2);
 
 /**
  * Registration form
@@ -574,26 +593,6 @@ if (itemRequestMessage) {
 /**
  * END Item request form
  */
-
-/***/ }),
-/* 8 */,
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.displayRequestForm = displayRequestForm;
-
-var _bling = __webpack_require__(0);
-
-function displayRequestForm(itemRequestForm) {
-  itemRequestForm.classList.remove("hidden");
-  itemRequestForm.scrollIntoView();
-}
 
 /***/ })
 /******/ ]);

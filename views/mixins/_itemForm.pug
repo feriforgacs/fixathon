@@ -50,6 +50,8 @@ mixin itemForm(item = {})
           br
           | You can also add links to your description (eg. a link that points to a video where potential re-producters can learn more about the item, or a link to the original product page, etc)
           br
+          | This information will be visible on the items detail page, so make sure you don't share sensitive information here.
+          br
           strong Max length 1000 chars
       textarea#itemDescription(name='itemDescription' required='required' maxlength='1000')= item.itemDescription
       p.char-counter#itemDescriptionCounter 1000 chars remaining

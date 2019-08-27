@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  .container--mid#order
+    h1= title
+
+    #order__body
+      table
+        tr
+          td
+            strong Order id:
+          td #{order._id}
+
+        tr
+          td
+            strong Order date:
+          td #{h.moment(order.created).format('MMMM Do YYYY, h:mm:ss a')}
+
+        tr
+          td
+            strong Item name:
+          td 
+            a(href=`/item/${order.item.itemSlug}` target='_blank' title=`View ${order.item.itemName}`) #{order.item.itemName}
+
+        tr
+          td
+            strong Item price:
+          td #{order.item.itemPrice}
+
+        tr
+          td
+            strong Item location:
+          td #{order.item.itemLocation}
+
+        tr
+          td
+            strong Item description:
+          td #{order.item.itemDescription}
+
+        tr
+          td
+            strong Buyer name:
+          td 
+            a(href=`/profile/${order.buyer._id}` target='_blank' title=`View the profile of ${order.buyer.name}`) #{order.buyer.name}
+
+        tr
+          td
+            strong Buyer bio:
+          td #{order.buyer.bio}
+
+        tr
+          td
+            strong Buyer contact info:
+          td #{order.buyer.contact}
+
+    #order__footer
+      p
+        a.button.button--small(href='/orders') Back to orders list

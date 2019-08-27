@@ -622,7 +622,7 @@ body {
       flex: 1; }
 
 #profile__dropdown {
-  position: absolute;
+  position: fixed;
   top: 4.45rem;
   right: 0;
   display: none;

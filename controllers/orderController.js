@@ -289,3 +289,21 @@ exports.acceptRequest = async (req, res) => {
   req.flash("success", "You successfully accepted the product request. We've sent a notification mail to the buyer and a confirmation mail to you as well.");
   res.redirect(`/order/${order.id}`);
 }
+
+exports.displayOrder = async (req, res, next) => {
+  /**
+   * Get order details from the database
+   */
+  const order = await Order.findOne({
+    _id: req.params.id
+  });
+
+  if(!order){
+    return next();
+  }
+
+  res.render('order-details', {
+    title: 'Order details',
+    order
+  });
+}

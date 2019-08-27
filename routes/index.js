@@ -231,6 +231,15 @@ router.post('/item/:itemid/request/:requestid',
   catchErrors(orderController.acceptRequest)
 );
 
+/**
+ * Display order details
+ */
+router.get('/order/:id',
+  authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
+  catchErrors(orderController.displayOrder)
+);
+
 // DEBUG
 // email layout preview
 router.get('/debug/email/:email', (req, res) => {

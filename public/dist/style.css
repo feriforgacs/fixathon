@@ -1113,12 +1113,12 @@ table {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 0 0 2rem; }
-  #request__actions a {
+  #request__actions .button {
     -ms-flex: calc(50% - 1rem);
         flex: calc(50% - 1rem);
     margin-bottom: 1rem;
     font-size: .6rem; }
-  #request__actions a:nth-child(2n) {
+  #request__actions .button:nth-child(2n) {
     margin-left: 1rem; }
 
 /*# sourceMappingURL=style.css.map*/

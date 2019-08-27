@@ -110,7 +110,7 @@ exports.displayRequest = async (req, res) => {
   }).populate(['author', 'item']);
 
   if(!item || !request){
-    req.flash("error", "There was an error during the process. Please, wait a few minutes and try again.")
+    req.flash("error", "The request you are looking for doesn't exists.")
     res.redirect("/");
     return;
   }

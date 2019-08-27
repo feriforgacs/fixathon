@@ -208,6 +208,7 @@ function charCounter(maxChars, inputField, charCounter) {
 }
 
 function displaySpin(button) {
+  button.disabled = true;
   var spinIcon = button.querySelector("i");
   spinIcon.classList.remove("hidden");
 }
@@ -391,6 +392,8 @@ var _navigation = __webpack_require__(5);
 var _itemEdit = __webpack_require__(3);
 
 var _itemDetails = __webpack_require__(2);
+
+var _request = __webpack_require__(10);
 
 /**
  * Registration form
@@ -587,6 +590,11 @@ if (itemRequestButton) {
   if (window.location.hash.includes("#request")) {
     (0, _itemDetails.displayRequestForm)(itemRequestForm);
   }
+
+  var itemRequestSubmitButton = (0, _bling.$)("#request-submit-button");
+  itemRequestForm.on("submit", function () {
+    return (0, _itemEdit.displaySpin)(itemRequestSubmitButton);
+  });
 }
 
 var itemRequestMessage = (0, _bling.$)("#itemRequestMessage");
@@ -596,9 +604,35 @@ if (itemRequestMessage) {
     return (0, _itemEdit.charCounter)(500, itemRequestMessage, itemRequestMessageCounter);
   });
 }
-
 /**
  * END Item request form
+ */
+
+/**
+ * Accept request form
+ */
+var requestAcceptButton = (0, _bling.$)("#request-accept-button");
+if (requestAcceptButton) {
+  var requestAcceptForm = (0, _bling.$)("#request-accept__form");
+  var requestAcceptSubmitButton = (0, _bling.$)("#request-accept-submit-button");
+
+  requestAcceptButton.on("click", function () {
+    return (0, _request.displayAcceptRequestForm)(requestAcceptForm);
+  });
+  requestAcceptForm.on("submit", function () {
+    return (0, _itemEdit.displaySpin)(requestAcceptSubmitButton);
+  });
+}
+
+var requestAcceptMessage = (0, _bling.$)("#requestAcceptMessage");
+if (requestAcceptMessage) {
+  var requestAcceptMessageCounter = (0, _bling.$)("#requestAcceptMessageCounter");
+  requestAcceptMessage.on("keyup", function () {
+    return (0, _itemEdit.charCounter)(500, requestAcceptMessage, requestAcceptMessageCounter);
+  });
+}
+/**
+ * END Accept request form
  */
 
 // automatically hide flash messages
@@ -607,6 +641,26 @@ if (flashes) {
   setTimeout(function () {
     flashes.style.display = "none";
   }, 5000);
+}
+
+/***/ }),
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.displayAcceptRequestForm = displayAcceptRequestForm;
+
+var _bling = __webpack_require__(0);
+
+function displayAcceptRequestForm(acceptRequestForm) {
+  acceptRequestForm.classList.remove("hidden");
+  acceptRequestForm.scrollIntoView();
 }
 
 /***/ })

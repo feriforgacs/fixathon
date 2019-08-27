@@ -19,4 +19,6 @@ mixin itemRequestForm(item)
     input(type='hidden' name='item' value=item._id)
     
     .form-group
-      button(type='submit' name='itemRequestSubmit').button.button--primary Submit request
+      button(type='submit' name='itemRequestSubmit').button.button--primary#request-submit-button Submit request
+        i.hidden
+          != h.icon('spin')

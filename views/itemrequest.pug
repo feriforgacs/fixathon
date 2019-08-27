@@ -20,4 +20,24 @@ block content
         a.button.button--secondary.button--small(href=`/profile/${request.author._id}` target='_blank') View requester's profile
         a.button.button--secondary.button--small(href=`/item/${item._id}/requests`) View all requests for this item
         a.button.button--secondary.button--small(href=`/item/${item.itemSlug}`) View item details
-        a.button.button--primary.button--small(href=`/request/accept/${request._id}`)#request-accept-button Accept request
+        button.button.button--primary.button--small#request-accept-button Accept request
+
+      #request-accept
+        form(method='POST')#request-accept__form.hidden
+          p.message.message--info
+            span(aria-label='Warning') ⚠️ 
+            | Make sure, that this is the request you would like to accept. As soon as you click the button below, the requesters wallet will be charged.
+
+          .form-group
+            label(for='requestAcceptMessage') Acceptance message
+              br
+              small The requester will receive this message, so you can add additional information here to make the delivery as easy as possible
+              br
+              strong Max length 500 chars
+            textarea#requestAcceptMessage(name='requestAcceptMessage' cols='30' rows='10' required='required').textarea--small
+            p.char-counter#requestAcceptMessageCounter 500 chars remaining
+
+          .form-group
+            button(type='submit').button.button--primary#request-accept-submit-button Accept request and send message
+              i.hidden
+                != h.icon('spin')

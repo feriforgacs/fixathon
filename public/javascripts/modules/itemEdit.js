@@ -25,6 +25,7 @@ export function charCounter(maxChars, inputField, charCounter){
 }
 
 export function displaySpin(button){
+  button.disabled = true;
   const spinIcon = button.querySelector("i");
   spinIcon.classList.remove("hidden");
 }

@@ -59,13 +59,13 @@
     flex-wrap: wrap;
     margin: 0 0 2rem;
 
-    a {
+    .button {
       flex: calc(50% - 1rem);
       margin-bottom: 1rem;
       font-size: .6rem;
     }
 
-    a:nth-child(2n){
+    .button:nth-child(2n){
       margin-left: 1rem;
     }
   }

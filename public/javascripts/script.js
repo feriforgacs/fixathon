@@ -7,6 +7,7 @@ import { forgotFormCheck, resetFormCheck } from './modules/forgot';
 import { profileDropdownToggle, profileDropdownHide, categoryDropdownToggle, categoryDropdownHide } from './modules/navigation';
 import { itemPhotoPreview, charCounter, displaySpin } from './modules/itemEdit';
 import { displayRequestForm } from './modules/itemDetails';
+import { displayAcceptRequestForm } from './modules/request';
 
 /**
  * Registration form
@@ -175,6 +176,9 @@ if(itemRequestButton){
   if (window.location.hash.includes("#request")) {
     displayRequestForm(itemRequestForm);
   }
+
+  const itemRequestSubmitButton = $("#request-submit-button");
+  itemRequestForm.on("submit", () => displaySpin(itemRequestSubmitButton));
 }
 
 const itemRequestMessage = $("#itemRequestMessage");
@@ -182,9 +186,29 @@ if(itemRequestMessage){
   const itemRequestMessageCounter = $("#itemRequestMessageCounter");
   itemRequestMessage.on("keyup", () => charCounter(500, itemRequestMessage, itemRequestMessageCounter));
 }
-
 /**
  * END Item request form
+ */
+
+/**
+ * Accept request form
+ */
+const requestAcceptButton = $("#request-accept-button");
+if(requestAcceptButton){
+  const requestAcceptForm = $("#request-accept__form");
+  const requestAcceptSubmitButton = $("#request-accept-submit-button");
+
+  requestAcceptButton.on("click", () => displayAcceptRequestForm(requestAcceptForm));
+  requestAcceptForm.on("submit", () => displaySpin(requestAcceptSubmitButton));
+}
+
+const requestAcceptMessage = $("#requestAcceptMessage");
+if(requestAcceptMessage){
+  const requestAcceptMessageCounter = $("#requestAcceptMessageCounter");
+  requestAcceptMessage.on("keyup", () => charCounter(500, requestAcceptMessage, requestAcceptMessageCounter));
+}
+/**
+ * END Accept request form
  */
 
 // automatically hide flash messages

@@ -57,7 +57,11 @@ const itemSchema = new mongoose.Schema({
       type: mongoose.Schema.ObjectId,
       ref: 'ItemRequest'
     }
-  ]
+  ],
+  acceptedRequest: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'ItemRequest'
+  }
 }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true }

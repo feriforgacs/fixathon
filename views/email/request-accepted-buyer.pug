@@ -1,0 +1,29 @@
+extends email-layout
+
+block content
+  h1 Hi #{user.name},
+  
+  p Your request for the following product has been accepted on Re-Product: #{updatedItem.itemName}
+  
+  p The seller added the following message to the order:
+  
+  p #{orderMessage}
+  
+  p You can view the order details on the following page:
+  +button(orderURL, '👉 View Order Details')
+  
+  p If you can't click the button above, please, visit the following link in your browser: 
+  a(href=`${orderURL}`)= orderURL
+
+  p The price of the item has been charged on your wallet.
+
+  p Thank you for using Re-Product to decrease the amount of trash we produce 
+    span(aria-label='pray') 🙏 
+  
+  p
+    strong
+      span(aria-label='Earth') 🌍 
+      | Save the planet, fix the climate!
+
+block footer
+  p.footer-legal You are receiving this email because your item request was accepted on Re-Product.

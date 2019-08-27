@@ -181,7 +181,7 @@ exports.acceptRequest = async (req, res) => {
     owner: item.author._id
   }, {
     $inc: {
-      coins: +item.price
+      coins: +item.itemPrice
     }
   }, {
     new: true
@@ -202,7 +202,7 @@ exports.acceptRequest = async (req, res) => {
     owner: buyer._id
   }, {
     $inc: {
-      coins: -item.price
+      coins: -item.itemPrice
     }
   }, {
     new: true
@@ -238,7 +238,8 @@ exports.acceptRequest = async (req, res) => {
     sellerWalletHistory: sellerWalletHistory._id,
     buyer: buyer._id,
     buyerWalletHistory: buyersWalletHistory._id,
-    item: updatedItem._id
+    item: updatedItem._id,
+    orderMessage: req.body.requestAcceptMessage
   })).save();
 
   /**
@@ -251,6 +252,7 @@ exports.acceptRequest = async (req, res) => {
     subject: 'The seller accepted your product request on Re-Product',
     orderURL,
     updatedItem,
+    orderMessage: requestAcceptMessage,
     filename: 'request-accepted-buyer'
   });
 
@@ -262,6 +264,7 @@ exports.acceptRequest = async (req, res) => {
     subject: 'You successfully sold on of your products on Re-Product',
     orderURL,
     updatedItem,
+    orderMessage: requestAcceptMessage,
     filename: 'request-accepted-seller'
   });
 
@@ -271,5 +274,5 @@ exports.acceptRequest = async (req, res) => {
    * Reload page and display success message
    */
   req.flash("success", "You successfully accepted the product request. We've sent a notification mail to the buyer and a confirmation mail to you as well.");
-  req.redirect("back");
+  req.redirect(`/order/${order.id}`);
 }

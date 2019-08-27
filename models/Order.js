@@ -33,6 +33,11 @@ const ordersSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'Item',
     required: 'Order - Item is required'
+  },
+  orderMessage: {
+    type: String,
+    maxlength: 500,
+    trim: true
   }
 });
 

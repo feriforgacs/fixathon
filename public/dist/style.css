@@ -812,7 +812,8 @@ table {
     line-height: 2rem;
     font-size: .7rem; }
   .button:disabled, .button[disabled] {
-    opacity: .5; }
+    opacity: .5;
+    cursor: default; }
 
 .flash-messages {
   position: fixed;

@@ -165,11 +165,13 @@ exports.acceptRequest = async (req, res) => {
     return;
   }
 
+  console.log(buyer.wallet[0].coins);
+
   /**
    * Check if requester still have enough coins
    */
-  if(buyer.wallet.coins < item.itemPrice){
-    req.flash("error", "There is not enough coins in the buyer's wallet for this action. Please, choose another requester or get in touch with the user.")
+  if(buyer.wallet[0].coins < item.itemPrice){
+    req.flash("error", "There is not enough coins in the buyer's wallet for this action. Please, choose another buyer or get in touch with the user.")
     res.redirect("back");
     return;
   }
@@ -193,7 +195,7 @@ exports.acceptRequest = async (req, res) => {
     item: req.params.itemid,
     transaction: `You sold an item (${item.itemName}) for ${item.itemPrice} coins.`,
     created: Date.now()
-  });
+  }).save();
 
   /**
    * Remove coins from buyers wallet and add it to wallet history
@@ -214,7 +216,7 @@ exports.acceptRequest = async (req, res) => {
     item: req.params.itemid,
     transaction: `You bought an item (${item.itemName}) for ${item.itemPrice} coins.`,
     created: Date.now()
-  });
+  }).save();
 
   /**
    * Change item status to sold

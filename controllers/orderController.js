@@ -19,9 +19,23 @@ exports.itemRequest = async (req, res) => {
   }
 
   /**
+   * Check requests with the same item and user id
+   */
+  const requests = await ItemRequest.find({
+    item: req.body.item,
+    author: req.user._id
+  });
+
+  if(requests.length){
+    req.flash("error", "You've already sent a request for this item.");
+    res.redirect("back");
+    return;
+  }
+
+  /**
    * Get item data
    */
-  const item = await Item.findOne({
+  let item = await Item.findOne({
     _id: req.body.item
   });
 
@@ -51,6 +65,16 @@ exports.itemRequest = async (req, res) => {
     message: req.body.itemRequestMessage,
     status: "unread"
   })).save();
+
+  /**
+   * Update item with request
+   */
+  item = await Item.findByIdAndUpdate(req.body.item,
+    {
+      $addToSet: { requests: req.user._id }
+    },
+    { new: true }
+  );
 
   /**
    * Send mail to seller

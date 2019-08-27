@@ -51,7 +51,13 @@ const itemSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'User',
     required: 'You must supply a user'
-  }
+  },
+  requests: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'ItemRequest'
+    }
+  ]
 }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true }

@@ -9,6 +9,11 @@ block content
         if item.itemStatus === 'approved' || user && ( user.level < 30 || user._id.toString() === item.author._id.toString() )
           if preview
             p.item__preview This is just a preview URL
+        
+        if alreadyRequested
+          p.message.message--info
+            span(aria-label='Smiling Face') 😊 
+            | You've requested this item previously. Now wait for the response of the seller.
 
       .item-details__content
         .item-details__image  
@@ -60,7 +65,7 @@ block content
                 br
                 | Earn more coins by selling your unused items. 
 
-            else if enoughCoins
+            else if enoughCoins && !alreadyRequested
               .item__actions
                 a(href=`/profile/${item.author._id}` target='_blank').button.button--secondary.button--small.seller-profile-button View seller's profile
                 button.button.button--primary.button--small#item-request-button Request this item

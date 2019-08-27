@@ -36,13 +36,4 @@ const itemRequestSchema = new mongoose.Schema({
   }
 });
 
-function autoPopulate(next){
-  this.populate('item');
-  this.populate('author');
-  next();
-}
-
-itemRequestSchema.pre('find', autoPopulate);
-itemRequestSchema.pre('findOne', autoPopulate);
-
 module.exports = mongoose.model('ItemRequest', itemRequestSchema);

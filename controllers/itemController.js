@@ -153,6 +153,7 @@ exports.displayItem = async (req, res, next) => {
   let notEnoughCoins = false;
   let enoughCoins = false;
   let userNotConfirmed = false;
+  let alreadyRequested = false;
 
   if(req.user && req.user._id.toString() == item.author._id.toString()){
     itemCreatedByUser = true;
@@ -167,6 +168,11 @@ exports.displayItem = async (req, res, next) => {
     }
   }
 
+  if(req.user){
+    const requests = item.requests.map(obj => obj.toString());
+    alreadyRequested = requests.includes(req.user._id.toString()) ? true : false;
+  }
+
   // check account status
 
   if(req.user && req.user.status !== "confirmed"){
@@ -179,7 +185,8 @@ exports.displayItem = async (req, res, next) => {
     itemCreatedByUser,
     enoughCoins,
     notEnoughCoins,
-    userNotConfirmed
+    userNotConfirmed,
+    alreadyRequested
   });
 }
 

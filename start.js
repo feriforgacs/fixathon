@@ -15,6 +15,7 @@ require('./models/User');
 require('./models/Wallet');
 require('./models/WalletHistory');
 require('./models/Order');
+require('./models/ItemRequest');
 
 const app = require('./app');
 app.set('port', process.env.PORT || 7778);

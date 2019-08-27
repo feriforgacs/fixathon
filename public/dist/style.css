@@ -782,6 +782,14 @@ table {
     border-bottom: 1px solid #eee; }
   table tr:last-child td {
     border-bottom: none; }
+  table .addition td:nth-child(1) {
+    border-left: 5px solid #008013; }
+  table .addition td {
+    background: #e5fff0; }
+  table .deduction td:nth-child(1) {
+    border-left: 5px solid #ce0636; }
+  table .deduction td {
+    background: #fbdde4; }
 
 .button {
   border: none;

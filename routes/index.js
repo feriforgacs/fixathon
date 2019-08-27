@@ -191,6 +191,7 @@ router.get('/item/approve/:token/:id', catchErrors(itemController.approveItem));
  * Display user wallet
  */
 router.get('/wallet',
+  authController.isLoggedIn,
   catchErrors(userController.isConfirmed),
   catchErrors(walletController.display)
 );

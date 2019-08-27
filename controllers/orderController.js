@@ -165,8 +165,6 @@ exports.acceptRequest = async (req, res) => {
     return;
   }
 
-  console.log(buyer.wallet[0].coins);
-
   /**
    * Check if requester still have enough coins
    */
@@ -177,6 +175,17 @@ exports.acceptRequest = async (req, res) => {
   }
 
   /**
+   * Save order
+   */
+  const order = await (new Order({
+    created: Date.now(),
+    seller: item.author._id,
+    buyer: buyer._id,
+    item: item._id,
+    orderMessage: req.body.requestAcceptMessage
+  })).save();
+
+  /**
    * Add coins to sellers wallet and wallet history
    */
   const sellerWallet = await Wallet.findOneAndUpdate({
@@ -184,7 +193,8 @@ exports.acceptRequest = async (req, res) => {
   }, {
     $inc: {
       coins: +item.itemPrice
-    }
+    },
+    updated: Date.now()
   }, {
     new: true
   });
@@ -193,8 +203,9 @@ exports.acceptRequest = async (req, res) => {
     wallet: sellerWallet._id,
     historyType: 'addition',
     item: req.params.itemid,
+    order: order._id,
     transaction: `You sold an item (${item.itemName}) for ${item.itemPrice} coins.`,
-    created: Date.now()
+    created: Date.now()    
   }).save();
 
   /**
@@ -205,7 +216,8 @@ exports.acceptRequest = async (req, res) => {
   }, {
     $inc: {
       coins: -item.itemPrice
-    }
+    },
+    updated: Date.now()
   }, {
     new: true
   });
@@ -214,6 +226,7 @@ exports.acceptRequest = async (req, res) => {
     wallet: buyerWallet._id,
     historyType: 'deduction',
     item: req.params.itemid,
+    order: order._id,
     transaction: `You bought an item (${item.itemName}) for ${item.itemPrice} coins.`,
     created: Date.now()
   }).save();
@@ -241,19 +254,6 @@ exports.acceptRequest = async (req, res) => {
   });
 
   const [sellerWalletHistory, buyersWalletHistory, updatedItem, updatedRequest] = await Promise.all([sellerWalletHistoryPromise, buyerWalletHistoryPromise, itemUpdatePromise, requestUpdatePromise]);
-
-  /**
-   * Save order
-   */
-  const order = await (new Order({
-    created: Date.now(),
-    seller: item.author._id,
-    sellerWalletHistory: sellerWalletHistory._id,
-    buyer: buyer._id,
-    buyerWalletHistory: buyersWalletHistory._id,
-    item: updatedItem._id,
-    orderMessage: req.body.requestAcceptMessage
-  })).save();
 
   /**
    * Send notification to buyer

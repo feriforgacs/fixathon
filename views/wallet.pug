@@ -26,11 +26,11 @@ block content
         tr
           th Date
           th Transaction
-          th Related item
+          th Related Order
       
       tbody
         each history in walletHistory
-          tr
+          tr(class=`${history.historyType}`)
             td
               strong #{h.moment(history.created).format('MMMM Do YYYY, h:mm:ss a')}
 

@@ -11,4 +11,20 @@ table{
   tr:last-child td{
     border-bottom: none;
   }
+
+  .addition td:nth-child(1){
+    border-left: 5px solid #008013;
+  }
+
+  .addition td{
+    background: #e5fff0;
+  }
+
+  .deduction td:nth-child(1){
+    border-left: 5px solid #ce0636;
+  }
+
+  .deduction td{
+    background: #fbdde4;
+  }
 }

@@ -27,6 +27,7 @@ const walletHistorySchema = new mongoose.Schema({
 
 function autoPopulate(next){
   this.populate('item');
+  this.populate('order');
   next();
 }
 

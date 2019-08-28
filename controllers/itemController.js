@@ -112,7 +112,9 @@ exports.createItem = async (req, res) => {
  * Get items from the database
  */
 exports.getItems = async (req, res) => {
-  const items = await Item.find().sort({ _id: -1 });
+  const items = await Item.find({
+    itemStatus: 'approved'
+  }).sort({ _id: -1 });
   res.render('items', {
     title: 'Latest items',
     items

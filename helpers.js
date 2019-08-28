@@ -1,6 +1,9 @@
 const fs = require('fs');
 
-exports.siteName = `Fixathon Project 1.0.0`;
+exports.siteName = `Re-Product`;
+exports.siteTitle = 'An open market where you can trade with your unused stuff without involving real money.';
+exports.siteDescription = 'Trash for you? Could be a treasure for someone else. The goal of this tool is to generate less trash. A Fixathon project';
+exports.siteImage = '';
 
 exports.itemCategories = [
   {

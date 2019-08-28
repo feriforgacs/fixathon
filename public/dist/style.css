@@ -1148,7 +1148,7 @@ table {
 /**
  * Created items
  */
-#created-items .item-list, #requested-items .item-list {
+#created-items .item-list, #requested-items .item-list, #latest-items .item-list {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;

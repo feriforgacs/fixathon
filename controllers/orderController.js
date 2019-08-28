@@ -99,23 +99,28 @@ exports.itemRequest = async (req, res) => {
 /**
  * Display item request
  */
-exports.displayRequest = async (req, res) => {
+exports.displayRequest = async (req, res, next) => {
   const item = await Item.findOne({
     _id: req.params.itemid
   });
 
-  const request = await ItemRequest.findOneAndUpdate({
+  const request = await ItemRequest.findOne({
     _id: req.params.requestid
-  }, {
-    status: "read"
-  }, {
-    new: true
   }).populate(['author', 'item']);
 
   if(!item || !request){
-    req.flash("error", "The request you are looking for doesn't exists.")
-    res.redirect("/");
-    return;
+    return next();
+  }
+
+  /**
+   * Mark request as read if necessary
+   */
+  if(request.status == "unread"){
+    ItemRequest.findOneAndUpdate({
+      _id: req.params.requestid
+    }, {
+      status: "read"
+    });
   }
 
   /**
@@ -372,7 +377,7 @@ exports.displayItemRequests = async (req, res, next) => {
   });
 
   res.render('item-requests', {
-    title: `Requests for ${item.itemName}`,
+    title: `Requests for: ${item.itemName}`,
     itemRequests,
     item
   });

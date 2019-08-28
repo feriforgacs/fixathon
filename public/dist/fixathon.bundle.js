@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -366,18 +366,37 @@ function togglePassword(event, button, input) {
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(7);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.displayAcceptRequestForm = displayAcceptRequestForm;
+
+var _bling = __webpack_require__(0);
+
+function displayAcceptRequestForm(acceptRequestForm) {
+  acceptRequestForm.classList.remove("hidden");
+  acceptRequestForm.scrollIntoView();
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(8);
 
 var _bling = __webpack_require__(0);
 
@@ -393,7 +412,7 @@ var _itemEdit = __webpack_require__(3);
 
 var _itemDetails = __webpack_require__(2);
 
-var _request = __webpack_require__(10);
+var _request = __webpack_require__(7);
 
 /**
  * Registration form
@@ -641,26 +660,6 @@ if (flashes) {
   /* setTimeout(() => {
     flashes.style.display = "none";
   }, 5000); */
-}
-
-/***/ }),
-/* 9 */,
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.displayAcceptRequestForm = displayAcceptRequestForm;
-
-var _bling = __webpack_require__(0);
-
-function displayAcceptRequestForm(acceptRequestForm) {
-  acceptRequestForm.classList.remove("hidden");
-  acceptRequestForm.scrollIntoView();
 }
 
 /***/ })

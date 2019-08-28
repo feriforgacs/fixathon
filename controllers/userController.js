@@ -10,6 +10,11 @@ const mail = require('../handlers/mail');
  * Display registration form
  */
 exports.registerForm = (req, res) => {
+  if(req.user){
+    res.redirect('/account');
+    return;
+  }
+  
   res.render('register', {
     title: 'Create your account'
   });
@@ -96,6 +101,11 @@ exports.createUser = async (req, res, next) => {
  * Display login form
  */
 exports.loginForm = (req, res) => {
+  if(req.user){
+    res.redirect('/');
+    return;
+  }
+
   res.render('login', {
     title: 'Log in'
   });

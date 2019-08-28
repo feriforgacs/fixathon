@@ -301,3 +301,17 @@ exports.displayCategoryItems = async (req, res) => {
     count
   });
 }
+
+exports.dispalyCreatedItems = async (req, res) => {
+  const items = await Item.find({
+    author: req.user._id
+  }).sort({
+    itemCreated: -1
+  });
+
+  res.render('created-items', {
+    title: 'Uploaded items',
+    items,
+    displayStatus: true
+  });
+}

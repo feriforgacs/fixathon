@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/_itemCard
+
+block content
+  .container#created-items
+    h1= title
+
+    .item-list
+      if items.length > 0
+        each item in items
+          +itemCard(item)
+
+      else
+        p.message.message--info You haven't uploaded any items yet. Click the button below to crate your first one.
+        a.button.button--primary(href='/item/add') Add item

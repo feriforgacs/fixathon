@@ -43,7 +43,6 @@ router.get('/contact', cmsController.contact);
  */
 router.get('/unverified', cmsController.unverified);
 
-
 /**
  * Display all items
  */
@@ -238,6 +237,15 @@ router.get('/order/:id',
   authController.isLoggedIn,
   catchErrors(userController.isConfirmed),
   catchErrors(orderController.displayOrder)
+);
+
+/**
+ * List users created items
+ */
+router.get('/created-items',
+  authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
+  catchErrors(itemController.dispalyCreatedItems)
 );
 
 // DEBUG

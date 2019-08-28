@@ -24,7 +24,9 @@ block content
           h3.item__price 
             span(aria-label='Money bag') 💰 
             | Price: 
-            if item.itemPrice == 1
+            if item.itemPrice == 0
+              span.free Free
+            else if item.itemPrice == 1
               | #{item.itemPrice} coin
             else
               | #{item.itemPrice} coins

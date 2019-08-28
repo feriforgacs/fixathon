@@ -1132,4 +1132,68 @@ table {
   #request__actions .button:nth-child(2n) {
     margin-left: 1rem; }
 
+/**
+ * Created items
+ */
+#created-items .item-list {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+.item-card {
+  background: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  width: 300px;
+  margin: 0 .5rem 2rem; }
+  .item-card__name {
+    margin: 0;
+    padding: 0 1rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1rem;
+    font-family: "Paytone One", sans-serif; }
+    .item-card__name a {
+      color: #555; }
+  .item-card__image {
+    width: 300px;
+    height: 300px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    background: #f7f7f7; }
+  .item-card__description {
+    font-size: .7rem;
+    margin: .5rem 1rem;
+    padding: 0;
+    display: block; }
+  .item-card__actions {
+    display: -ms-flexbox;
+    display: flex;
+    border-top: 1px solid #eee;
+    padding: .3rem 0; }
+    .item-card__actions .view-item {
+      -ms-flex: 50%;
+          flex: 50%; }
+  .item-card__price {
+    padding: 0;
+    margin: 0;
+    -ms-flex: 50%;
+        flex: 50%;
+    text-align: center;
+    font-size: .7rem;
+    display: block;
+    height: 2rem;
+    line-height: 2rem; }
+  .item-card__status {
+    text-align: center;
+    border-top: 1px solid #eee;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: .7rem;
+    background: #ffffa8;
+    border-bottom: 1px solid #eee; }
+
 /*# sourceMappingURL=style.css.map*/

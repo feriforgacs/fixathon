@@ -1,7 +1,28 @@
 mixin itemCard(item = {})
   .item-card
-    img.item-image(src=`${item.itemPhoto || ''}` alt=`${item.itemName}`)
-    h3.item-name= item.itemName
-    p.item-description= item.itemDescription.split(' ').slice(0, 15).join(' ')
-    .item-actions
-      a.view-item(target='_blank' href=`/item/${item.itemSlug}`) View item details
+    h3.item-card__name
+      a(href=`/item/${item.itemSlug}` title=`View ${item.itemName}`)= item.itemName
+
+    if displayStatus
+      .item-card__status Status: 
+        strong= item.itemStatus
+
+    .item-card__image
+      a(href=`/item/${item.itemSlug}`)
+        img(src=`/uploads/${item.itemPhoto || ''}` alt=`${item.itemName}`)
+    
+    p.item-card__description= item.itemDescription.substring(0, 40)
+      | ...
+
+    .item-card__actions
+      p.item-card__price 
+        if item.itemPrice == 0
+          strong
+            span.free Free
+        else 
+          strong #{item.itemPrice}
+          if item.itemPrice == 1
+            |  coin
+          else
+            |  coins
+      a.view-item.button.button--small(target='_blank' href=`/item/${item.itemSlug}`) View details

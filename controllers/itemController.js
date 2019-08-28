@@ -7,6 +7,7 @@ const uuid = require('uuid');
 const crypto = require('crypto');
 const mail = require('../handlers/mail');
 const helper = require('../helpers');
+const fs = require('fs');
 
 /**
  * Image upload settings
@@ -55,6 +56,15 @@ exports.resize = async (req, res, next) => {
   } else {
     await itemPhoto.resize(800, jimp.AUTO);
   }
+
+  /**
+   * Check if folder exists and create if not
+   */
+  const uploadDir = './public/uploads/';
+  if (!fs.existsSync(uploadDir)){
+    fs.mkdirSync(uploadDir);
+  }
+
   await itemPhoto.write(`./public/uploads/${req.body.itemPhoto}`);
 
   next();

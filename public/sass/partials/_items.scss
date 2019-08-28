@@ -3,6 +3,9 @@
  */ 
 
 #created-items, #requested-items, #latest-items {
+  padding-bottom: 4rem;
+  min-height: 400px;
+
   .item-list{
     display: flex;
     flex-wrap: wrap;
@@ -18,11 +21,12 @@
 
   &__name{
     margin: 0;
-    padding: 0 1rem;
+    padding: 0 .5rem;
     height: 3rem;
     line-height: 3rem;
-    font-size: 1rem;
+    font-size: .8rem;
     font-family: $paytone;
+    overflow: hidden;
 
     a{
       color: #555;

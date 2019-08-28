@@ -970,13 +970,17 @@ table {
   #reset #showpassword.hide .show, #reset #showpassword-confirm.hide .show {
     display: none; }
 
-#item-edit h1 {
-  text-align: center;
-  margin: 3rem auto; }
+#item-edit {
+  padding-bottom: 4rem; }
+  #item-edit h1 {
+    text-align: center;
+    margin: 3rem auto; }
 
-#account h1 {
-  text-align: center;
-  margin: 3rem auto; }
+#account {
+  padding-bottom: 4rem; }
+  #account h1 {
+    text-align: center;
+    margin: 3rem auto; }
 
 #wallet {
   margin: 3rem 0;
@@ -984,7 +988,8 @@ table {
 
 #wallet-history {
   font-size: .6rem;
-  border-spacing: 0; }
+  border-spacing: 0;
+  margin-bottom: 4rem; }
   #wallet-history thead {
     background: #eee; }
 
@@ -1160,11 +1165,14 @@ table {
 /**
  * Created items
  */
-#created-items .item-list, #requested-items .item-list, #latest-items .item-list {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+#created-items, #requested-items, #latest-items {
+  padding-bottom: 4rem;
+  min-height: 400px; }
+  #created-items .item-list, #requested-items .item-list, #latest-items .item-list {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
 
 .item-card {
   background: #fff;
@@ -1174,11 +1182,12 @@ table {
   margin: 0 .5rem 2rem; }
   .item-card__name {
     margin: 0;
-    padding: 0 1rem;
+    padding: 0 .5rem;
     height: 3rem;
     line-height: 3rem;
-    font-size: 1rem;
-    font-family: "Paytone One", sans-serif; }
+    font-size: .8rem;
+    font-family: "Paytone One", sans-serif;
+    overflow: hidden; }
     .item-card__name a {
       color: #555; }
   .item-card__image {
@@ -1229,6 +1238,10 @@ table {
     padding: .5rem 0;
     font-style: italic;
     color: #888; }
+
+#orders {
+  padding-bottom: 4rem;
+  min-height: 400px; }
 
 #orders__buyer, #orders__seller, #item-requests {
   margin: 3rem 0; }
@@ -1394,5 +1407,9 @@ footer {
 
 #category-page {
   min-height: 400px; }
+
+#search-result, #about-page, #termsandconditions-page, #privacypolicy-page, #faq-page, #contact-page, #learnmore-page, #confirmed-page {
+  min-height: 400px;
+  padding-bottom: 4rem; }
 
 /*# sourceMappingURL=style.css.map*/

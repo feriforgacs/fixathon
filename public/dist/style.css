@@ -413,7 +413,7 @@ template {
 
 .container {
   width: 90%;
-  max-width: 960px;
+  max-width: 1140px;
   margin: 0 auto; }
   .container--small {
     width: 90%;
@@ -1262,29 +1262,31 @@ table {
 
 #homepage__hero {
   background: #7FD6C2;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-  color: #fff; }
-  #homepage__hero h2 {
-    font-size: 3.5rem;
-    margin: 2rem 0;
-    padding: 0; }
-  #homepage__hero h3 {
-    font-size: 1.5rem;
-    line-height: 2.5rem;
-    margin: 3rem 0;
-    padding: 0; }
-  #homepage__hero .image {
-    -ms-flex: 1;
-        flex: 1;
-    text-align: right; }
-  #homepage__hero .content {
-    -ms-flex: 1;
-        flex: 1; }
+  color: #fff;
+  padding: 2rem 0; }
+  #homepage__hero .container {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center; }
+    #homepage__hero .container h2 {
+      font-size: 3rem;
+      margin: 0 0 2rem;
+      padding: 0; }
+    #homepage__hero .container h3 {
+      font-size: 1.2rem;
+      line-height: 2.5rem;
+      margin: 2rem 0 1rem;
+      padding: 0; }
+    #homepage__hero .container .image {
+      -ms-flex: 1;
+          flex: 1;
+      text-align: right; }
+    #homepage__hero .container .content {
+      -ms-flex: 1;
+          flex: 1; }
 
 #homepage__products .section__header h3 {
   text-align: center;
@@ -1301,49 +1303,50 @@ table {
 
 #homepage__bottom-hero {
   background: #AAC6FC;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-  color: #fff; }
-  #homepage__bottom-hero h3 {
-    font-size: 2rem;
-    line-height: 3rem;
-    margin: 3rem 0;
-    padding: 0; }
-  #homepage__bottom-hero .image {
-    -ms-flex: 1;
-        flex: 1;
-    text-align: left; }
-  #homepage__bottom-hero .content {
-    -ms-flex: 1;
-        flex: 1;
+  color: #fff;
+  padding: 2rem 0; }
+  #homepage__bottom-hero .container {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    -ms-flex-align: end;
-        align-items: flex-end; }
-    #homepage__bottom-hero .content .actions {
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center; }
+    #homepage__bottom-hero .container h3 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin: 0 0 3rem;
+      padding: 0; }
+    #homepage__bottom-hero .container .image {
+      -ms-flex: 1;
+          flex: 1;
+      text-align: left; }
+    #homepage__bottom-hero .container .content {
+      -ms-flex: 1;
+          flex: 1;
       display: -ms-flexbox;
       display: flex;
-      -ms-flex-direction: row;
-          flex-direction: row;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-      width: 100%;
-      max-width: 640px;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-      line-height: 3rem; }
-      #homepage__bottom-hero .content .actions span {
-        display: block;
-        margin: 0 2rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: .7rem; }
+      -ms-flex-direction: column;
+          flex-direction: column;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+      #homepage__bottom-hero .container .content .actions {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: row;
+            flex-direction: row;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        width: 100%;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+        line-height: 3rem; }
+        #homepage__bottom-hero .container .content .actions span {
+          display: block;
+          margin: 0 1rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: .7rem; }
 
 footer {
   background: #2E1641;
@@ -1388,5 +1391,8 @@ footer {
     width: 100%;
     -ms-flex-pack: justify;
         justify-content: space-between; }
+
+#category-page {
+  min-height: 400px; }
 
 /*# sourceMappingURL=style.css.map*/

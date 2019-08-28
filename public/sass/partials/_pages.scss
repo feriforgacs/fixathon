@@ -13,31 +13,36 @@
 
   &__hero{
     background: #7FD6C2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #fff;
+    padding: 2rem 0;
 
-    h2{
-      font-size: 3.5rem;
-      margin: 2rem 0;
-      padding: 0;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      h2{
+        font-size: 3rem;
+        margin: 0 0 2rem;
+        padding: 0;
+      }
+  
+      h3{
+        font-size: 1.2rem;
+        line-height: 2.5rem;
+        margin: 2rem 0 1rem;
+        padding: 0;
+      }
+  
+      .image{
+        flex: 1;
+        text-align: right;
+      }
+      .content{
+        flex: 1;
+      }
     }
 
-    h3{
-      font-size: 1.5rem;
-      line-height: 2.5rem;
-      margin: 3rem 0;
-      padding: 0;
-    }
-
-    .image{
-      flex: 1;
-      text-align: right;
-    }
-    .content{
-      flex: 1;
-    }
   }
 
   &__products{
@@ -63,43 +68,46 @@
 
   &__bottom-hero{
     background: #AAC6FC;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #fff;
-
-    h3{
-      font-size: 2rem;
-      line-height: 3rem;
-      margin: 3rem 0;
-      padding: 0;
-    }
-
-    .image{
-      flex: 1;
-      text-align: left;
-    }
-    .content{
-      flex: 1;
+    padding: 2rem 0;
+    
+    .container{
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-
-      .actions{
+      align-items: center;
+      justify-content: center;
+  
+      h3{
+        font-size: 1.5rem;
+        line-height: 2rem;
+        margin: 0 0 3rem;
+        padding: 0;
+      }
+  
+      .image{
+        flex: 1;
+        text-align: left;
+      }
+      .content{
+        flex: 1;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-        max-width: 640px;
-        justify-content: flex-start;
-        line-height: 3rem;
-
-        span{
-          display: block;
-          margin: 0 2rem;
-          font-weight: bold;
-          text-transform: uppercase;
-          font-size: .7rem;
+        flex-direction: column;
+        align-items: flex-start;
+  
+        .actions{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+          justify-content: flex-start;
+          line-height: 3rem;
+  
+          span{
+            display: block;
+            margin: 0 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: .7rem;
+          }
         }
       }
     }
@@ -166,4 +174,8 @@ footer{
       justify-content: space-between;
     }
   }
+}
+
+#category-page{
+  min-height: 400px;
 }

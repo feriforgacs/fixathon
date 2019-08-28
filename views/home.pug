@@ -8,14 +8,15 @@ block content
     h1= title
 
     #homepage__hero
-      .image
-        img(src='/images/hero-image-header.png' alt='Hero Image Illustration')
-      .content
-        h2 Trash for you?
-        h3 Could be a treasure for someone else.
-          br
-          | Re-Product your "useless" goods.
-        a.button.button--hero(href='/learn-more') Learn More
+      .container
+        .image
+          img(src='/images/hero-image-header.png' alt='Hero Image Illustration')
+        .content
+          h2 Trash for you?
+          h3 Could be a treasure for someone else.
+            br
+            | Re-Product your "useless" goods.
+          a.button.button--hero(href='/learn-more') Learn More
 
     #homepage__products
       .container
@@ -28,15 +29,16 @@ block content
           a(href='/items') View all Re-Products...
 
     #homepage__bottom-hero
-      .content
-        h3 Protect the environment 
-          br
-          | by becoming a Re-Producter today.
+      .container
+        .content
+          h3 Protect the environment 
+            br
+            | by becoming a Re-Producter today.
 
-        .actions
-          a.button.button--hero(href='/learn-more') Learn More
-          span Or
-          a.button.button--hero--inverse(href='/register') Sign Up
+          .actions
+            a.button.button--hero(href='/learn-more') Learn More
+            span Or
+            a.button.button--hero--inverse(href='/register') Sign Up
 
-      .image
-        img(src='/images/hero-image-footer.png' alt='Hero Image Footer Illustration')
+        .image
+          img(src='/images/hero-image-footer.png' alt='Hero Image Footer Illustration')

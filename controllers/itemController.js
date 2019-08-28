@@ -149,6 +149,16 @@ exports.displayItem = async (req, res, next) => {
     return next();
   }
 
+  if(item.itemStatus == "new"){
+    if(!req.user){
+      return next();
+    }
+
+    if(req.user._id.toString() != item.author._id.toString()){
+      return next();
+    }
+  }
+
   /**
    * Check user and item connection
    */
@@ -207,6 +217,16 @@ exports.previewItem = async (req, res, next) => {
 
   if(!item){
     return next();
+  }
+
+  if(item.itemStatus == "new"){
+    if(!req.user){
+      return next();
+    }
+
+    if((req.user._id.toString() != item.author._id.toString()) && req.user.level > 10){
+      return next();
+    }
   }
 
   res.render('itemDetails', {

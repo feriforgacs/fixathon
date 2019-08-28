@@ -50,11 +50,6 @@ mixin header(search = '')
 
   if user
     #profile__dropdown
-      if user.status == 'confirmed'
-        a(href='/wallet')
-          span(aria-label='Money Bag') 💰
-          |  Wallet
-
       a(href='/confirmed')
         span(aria-label='Backhand Index Pointing Right') 👉
         |  Getting started
@@ -63,13 +58,22 @@ mixin header(search = '')
         span(aria-label='Gear') ⚙️
         |  Edit profile
 
-      a(href='/created-items')
-        span(aria-label='Box') 📦
-        |  Your uploaded items
+      if user.status == 'confirmed'
+        a(href='/wallet')
+          span(aria-label='Money Bag') 💰
+          |  Wallet
 
-      a(href='/requested-items')
-        span(aria-label='Wave') 🙋
-        |  Your requested items
+        a(href='/created-items')
+          span(aria-label='Box') 📦
+          |  Your uploaded items
+
+        a(href='/requested-items')
+          span(aria-label='Wave') 🙋
+          |  Your requested items
+
+        a(href='/orders')
+          span(aria-label='Delivery Truck') 🚚
+          |  Your orders
 
       a(href='/logout')
         span(aria-label='Waving Hand') 👋

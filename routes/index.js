@@ -179,7 +179,10 @@ router.get('/category/:category', catchErrors(itemController.displayCategoryItem
 /**
  * Display item preview
  */
-router.get('/item/preview/:token/:id', catchErrors(itemController.previewItem));
+router.get('/item/preview/:token/:id',
+  authController.isLoggedIn,
+  catchErrors(itemController.previewItem)
+);
 
 /**
  * Approve item
@@ -255,6 +258,15 @@ router.get('/requested-items',
   authController.isLoggedIn,
   catchErrors(userController.isConfirmed),
   catchErrors(itemController.displayRequestedItems)
+);
+
+/**
+ * List users orders list
+ */
+router.get('/orders',
+  authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
+  catchErrors(orderController.displayOrderList)
 );
 
 // DEBUG

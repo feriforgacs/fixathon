@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  .container#orders
+    h1= title
+
+    #orders__seller
+      h2 Your orders as a seller
+
+      table
+        thead
+          tr
+            th Order Id
+            th Order Date
+            th Order Item
+            th Buyer
+            th Details
+        tbody
+          each order in ordersSeller
+            tr
+              td
+                a(href=`/order/${order._id}`)= order._id
+              td #{h.moment(order.created).format('MMMM Do YYYY, h:mm:ss a')}
+              td
+                a(href=`/item/${order.item.itemSlug}` target='_blank' title=`View ${order.item.itemName}`)= order.item.itemName
+              td
+                a(href=`/profile/${order.buyer._id}` title=`View profile of ${order.buyer.name}` target='_blank')= order.buyer.name
+              td
+                a(href=`/order/${order._id}`) Details
+
+    #orders__buyer
+      h2 Your orders as a buyer
+      
+      table
+        thead
+          tr
+            th Order Id
+            th Order Date
+            th Order Item
+            th Seller
+            th Details
+        tbody
+          each order in ordersBuyer
+            tr
+              td
+                a(href=`/order/${order._id}`)= order._id
+              td #{h.moment(order.created).format('MMMM Do YYYY, h:mm:ss a')}
+              td
+                a(href=`/item/${order.item.itemSlug}` target='_blank' title=`View ${order.item.itemName}`)= order.item.itemName
+              td
+                a(href=`/profile/${order.seller._id}` title=`View profile of ${order.seller.name}` target='_blank')= order.seller.name
+              td
+                a(href=`/order/${order._id}`) Details

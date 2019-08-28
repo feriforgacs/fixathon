@@ -760,12 +760,17 @@ body {
   cursor: pointer; }
 
 .message {
-  padding: 1rem; }
+  padding: 1rem;
+  font-size: 0.777778rem; }
   .message--info {
     color: #0c5460;
     background-color: #d1ecf1;
-    border-color: #bee5eb;
-    font-size: 0.777778rem; }
+    border-color: #bee5eb; }
+  .message--warning {
+    color: #cd0d3b;
+    background-color: #f1d1d2;
+    border-color: #f1d1d2;
+    font-weight: bold; }
 
 .char-counter {
   text-align: right;
@@ -1201,5 +1206,17 @@ table {
     padding: .5rem 0;
     font-style: italic;
     color: #888; }
+
+#orders__buyer, #orders__seller {
+  margin: 3rem 0; }
+  #orders__buyer h2, #orders__seller h2 {
+    margin: 0 0 2rem;
+    padding: 0;
+    font-size: 1.5rem; }
+  #orders__buyer table, #orders__seller table {
+    font-size: .6rem;
+    border-spacing: 0; }
+  #orders__buyer thead, #orders__seller thead {
+    background: #eee; }
 
 /*# sourceMappingURL=style.css.map*/

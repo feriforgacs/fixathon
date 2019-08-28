@@ -109,12 +109,19 @@
 
 .message{
   padding: 1rem;
+  font-size: 0.777778rem;
   
   &--info{
     color: #0c5460;
     background-color: #d1ecf1;
     border-color: #bee5eb;
-    font-size: 0.777778rem;
+  }
+
+  &--warning{
+    color: #cd0d3b;
+    background-color: #f1d1d2;
+    border-color: #f1d1d2;
+    font-weight: bold;
   }
 }
 

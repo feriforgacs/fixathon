@@ -314,3 +314,25 @@ exports.displayOrder = async (req, res, next) => {
     return next();
   }
 }
+
+exports.displayOrderList = async (req, res) => {
+  const ordersSellerPromise = Order.find({
+    seller: req.user._id
+  }).sort({
+    created: -1
+  });
+
+  const ordersBuyerPromise = Order.find({
+    buyer: req.user._id
+  }).sort({
+    created: -1
+  });
+
+  const [ordersSeller, ordersBuyer] = await Promise.all([ordersSellerPromise, ordersBuyerPromise]);
+
+  res.render('orders', {
+    title: 'Orders',
+    ordersSeller,
+    ordersBuyer
+  });
+}

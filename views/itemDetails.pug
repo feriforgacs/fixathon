@@ -8,7 +8,22 @@ block content
       .item-details__header
         if item.itemStatus === 'approved' || user && ( user.level < 30 || user._id.toString() === item.author._id.toString() )
           if preview
-            p.item__preview This is just a preview URL
+            p.item__preview.message.message--info
+              span(aria-label='Warning') ⚠️ 
+              | This is just a preview URL
+
+        if item.itemStatus === "sold"
+          p.message.message--warning
+            span(aria-label='Warning') ⚠️ 
+              | This is has been sold. Please, find another item.
+
+        if item.itemStatus === "new"
+          p.message.message--info
+            span(aria-label='Warning') ⚠️ 
+              | This item is under review. You'll receive and email notification when the review process was completed (24-48 hours).
+              br
+              | Thank you for your patience 
+              span(aria-label='Smiling Face') 😊 
         
         if alreadyRequested
           p.message.message--info
@@ -67,7 +82,7 @@ block content
                 br
                 | Earn more coins by selling your unused items. 
 
-            else if enoughCoins && !alreadyRequested
+            else if enoughCoins && !alreadyRequested && item.itemStatus != "sold" && item.itemStatus != "new"
               .item__actions
                 a(href=`/profile/${item.author._id}` target='_blank').button.button--secondary.button--small.seller-profile-button View seller's profile
                 button.button.button--primary.button--small#item-request-button Request this item

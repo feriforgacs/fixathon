@@ -6,6 +6,7 @@ const jimp = require('jimp');
 const uuid = require('uuid');
 const crypto = require('crypto');
 const mail = require('../handlers/mail');
+const helper = require('../helpers');
 
 /**
  * Image upload settings
@@ -339,9 +340,16 @@ exports.displayCategoryItems = async (req, res) => {
     return;
   }
 
+  let currentCategory = '';
+  helper.itemCategories.forEach((category) => {
+    if(category.slug == itemCategory)
+    currentCategory = `${category.icon} ${category.name}`;
+  });
+
   // render category page
   res.render('category', {
-    title: 'Category',
+    title: `Items in ${currentCategory}`,
+    itemCategory,
     items,
     page,
     pages,
@@ -379,7 +387,6 @@ exports.displayRequestedItems = async (req, res) => {
   res.render('requested-items', {
     title: 'Requested items',
     items,
-    displayStatus: true,
     displayRequestDate: true
   });
 }

@@ -1,0 +1,21 @@
+extends layout
+
+include mixins/_itemCard
+
+block content
+  .container
+    #category-page
+      h1 Items in 
+        each category in h.itemCategories
+          if category.slug == itemCategory
+            span(aria-label=`${category.name}`)= category.icon
+            |  #{category.name} category
+
+      if items.length == 0
+        p.message.message--info There are no items in this category. Please, choose another category or use the search at the top of the page. Or 
+          a(href='/item/add') add one 
+          | by yourself.
+
+      else 
+        each item in items
+          +itemCard(item)

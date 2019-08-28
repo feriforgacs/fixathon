@@ -1135,7 +1135,7 @@ table {
 /**
  * Created items
  */
-#created-items .item-list {
+#created-items .item-list, #requested-items .item-list {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -1195,5 +1195,11 @@ table {
     font-size: .7rem;
     background: #ffffa8;
     border-bottom: 1px solid #eee; }
+  .item-card__request-date {
+    font-size: .7rem;
+    text-align: center;
+    padding: .5rem 0;
+    font-style: italic;
+    color: #888; }
 
 /*# sourceMappingURL=style.css.map*/

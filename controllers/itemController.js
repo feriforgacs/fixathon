@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Item = mongoose.model('Item');
+const ItemRequest = mongoose.model('ItemRequest');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
@@ -313,5 +314,20 @@ exports.dispalyCreatedItems = async (req, res) => {
     title: 'Uploaded items',
     items,
     displayStatus: true
+  });
+}
+
+exports.displayRequestedItems = async (req, res) => {
+  const items = await ItemRequest.find({
+    author: req.user._id
+  }).sort({
+    created: -1
+  }).populate('item');
+
+  res.render('requested-items', {
+    title: 'Requested items',
+    items,
+    displayStatus: true,
+    displayRequestDate: true
   });
 }

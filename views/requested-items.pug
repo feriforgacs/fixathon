@@ -1,0 +1,15 @@
+extends layout
+
+include mixins/_itemCard
+
+block content
+  .container#requested-items
+    h1= title
+
+    .item-list
+      if items.length > 0
+        each item in items
+          +itemCard(item.item, item.created)
+
+      else
+        p.message.message--info You haven't requested any items yet.

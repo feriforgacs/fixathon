@@ -302,8 +302,15 @@ exports.displayOrder = async (req, res, next) => {
     return next();
   }
 
-  res.render('order-details', {
-    title: 'Order details',
-    order
-  });
+  /**
+   * Check buyer and seller
+   */
+  if(order.buyer._id.toString() == req.user._id || order.seller._id.toString() == req.user._id){
+    res.render('order-details', {
+      title: 'Order details',
+      order
+    });
+  } else {
+    return next();
+  }
 }

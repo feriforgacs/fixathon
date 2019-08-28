@@ -1,4 +1,4 @@
-mixin itemCard(item = {})
+mixin itemCard(item = {}, requestDate = '')
   .item-card
     h3.item-card__name
       a(href=`/item/${item.itemSlug}` title=`View ${item.itemName}`)= item.itemName
@@ -6,6 +6,12 @@ mixin itemCard(item = {})
     if displayStatus
       .item-card__status Status: 
         strong= item.itemStatus
+
+    if displayRequestDate && requestDate
+      .item-card__request-date 
+        span(aria-label='Hourglass') ⏳ 
+        | Request sent: 
+        strong #{h.moment(requestDate).fromNow()}
 
     .item-card__image
       a(href=`/item/${item.itemSlug}`)
@@ -16,6 +22,7 @@ mixin itemCard(item = {})
 
     .item-card__actions
       p.item-card__price 
+        span(aria-label='Money Bag') 💰 
         if item.itemPrice == 0
           strong
             span.free Free

@@ -248,6 +248,15 @@ router.get('/created-items',
   catchErrors(itemController.dispalyCreatedItems)
 );
 
+/**
+ * Lists users requested items
+ */
+router.get('/requested-items',
+  authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
+  catchErrors(itemController.displayRequestedItems)
+);
+
 // DEBUG
 // email layout preview
 router.get('/debug/email/:email', (req, res) => {

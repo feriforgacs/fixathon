@@ -2,7 +2,7 @@
  * Created items
  */ 
 
-#created-items {
+#created-items, #requested-items {
   .item-list{
     display: flex;
     flex-wrap: wrap;
@@ -73,5 +73,13 @@
     font-size: .7rem;
     background: #ffffa8;
     border-bottom: 1px solid #eee;
+  }
+
+  &__request-date{
+    font-size: .7rem;
+    text-align: center;
+    padding: .5rem 0;
+    font-style: italic;
+    color: #888;
   }
 }

@@ -34,7 +34,9 @@
     height: 300px;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: #f7f7f7;
+    overflow: hidden;
   }
 
   &__description{

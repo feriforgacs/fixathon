@@ -16,6 +16,11 @@ export function itemPhotoPreview(event){
   
   previewImage.src = URL.createObjectURL(event.target.files[0]);
   previewContainer.classList.remove("hidden");
+
+  const itemPhotoUploaded = $("#itemPhotoUploaded");
+  if(itemPhotoUploaded){
+    itemPhotoUploaded.classList.add("hidden");
+  }
 }
 
 export function charCounter(maxChars, inputField, charCounter){

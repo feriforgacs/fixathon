@@ -4,6 +4,12 @@ mixin itemForm(item = {})
       span(aria-label='Backhand Index Pointing Right') 👉 
       | Please, fill all the fields below.
       span(aria-label='Backhand Index Pointing Left')  👈
+
+  if item.itemSlug
+    p.message.message--info
+      span(aria-label='Backhand Index Pointing Right') 👉 
+      a(href=`/item/${item.itemSlug}` target='_blank') Click here to view the item as a normal visitor.
+
   form(method='POST' action=`/item/save/${item._id || ''}` enctype='multipart/form-data').form#itemEditForm
     .form-group
       label(for='itemPhoto') Item photo
@@ -24,7 +30,7 @@ mixin itemForm(item = {})
         img
 
       if item.itemPhoto
-        img.itemPhoto(src=`/uploads/${item.itemPhoto}` alt=`${item.itemName}`)
+        img.itemPhoto#itemPhotoUploaded(src=`/uploads/${item.itemPhoto}` alt=`${item.itemName}`)
 
     .form-group
       label(for='itemName') Item name

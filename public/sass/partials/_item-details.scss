@@ -10,12 +10,16 @@
     max-height: 600px;
     display: flex;
     flex: 0 0 50%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow: hidden;
 
     .item-image{
-      width: 100%;
+      width: auto;
+      max-width: 100%;
       height: auto;
-      flex: 1;
-      align-self: flex-start;
+      max-height: 100%;
     }
   }
 

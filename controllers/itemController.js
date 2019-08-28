@@ -49,7 +49,11 @@ exports.resize = async (req, res, next) => {
 
   // resize
   const itemPhoto = await jimp.read(req.file.buffer);
-  await itemPhoto.resize(800, jimp.AUTO);
+  if(itemPhoto.bitmap.height > itemPhoto.bitmap.width){
+    await itemPhoto.resize(jimp.AUTO, 800);
+  } else {
+    await itemPhoto.resize(800, jimp.AUTO);
+  }
   await itemPhoto.write(`./public/uploads/${req.body.itemPhoto}`);
 
   next();
@@ -117,8 +121,25 @@ exports.getItems = async (req, res) => {
 /**
  * Edit item - Display edit form
  */
-exports.editItem = async (req, res) => {
+exports.editItem = async (req, res, next) => {
   const item = await Item.findOne({ _id: req.params.id });
+
+  /**
+   * Check item and user connection
+   */
+  if((item.author._id.toString() != req.user._id.toString()) && req.user.level > 10){
+    return next();
+  }
+
+  /**
+   * Check item status
+   */
+  if(item.itemStatus != "new" && req.user.level > 10){
+    req.flash("error", "You can't edit an item after it's been approved.");
+    res.redirect("back");
+    return;
+  }
+
   res.render('itemEdit', {
     title: `Edit ${item.itemName}`,
     item
@@ -268,12 +289,14 @@ exports.approveItem = async (req, res, next) => {
   };
 
   const itemURL = `http://${req.headers.host}/item/${item.itemSlug}`;
+  const itemRequestsURL = `http://${req.headers.host}/item/${item._id}/requests`;
 
   await mail.send({
     user,
     subject: '🎉 You Re-Product has been approved',
     itemURL,
     item,
+    itemRequestsURL,
     filename: 'item-approved'
   });
 

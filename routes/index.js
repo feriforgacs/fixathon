@@ -153,6 +153,7 @@ router.post('/item/save/',
  */
 router.get('/item/:id/edit', 
   authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
   catchErrors(itemController.editItem)
 );
 

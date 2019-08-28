@@ -1010,14 +1010,19 @@ table {
     display: -ms-flexbox;
     display: flex;
     -ms-flex: 0 0 50%;
-        flex: 0 0 50%; }
+        flex: 0 0 50%;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: start;
+        align-items: flex-start;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    overflow: hidden; }
     .item-details__image .item-image {
-      width: 100%;
+      width: auto;
+      max-width: 100%;
       height: auto;
-      -ms-flex: 1;
-          flex: 1;
-      -ms-flex-item-align: start;
-          align-self: flex-start; }
+      max-height: 100%; }
   .item-details__info {
     -ms-flex: 0 0 50%;
         flex: 0 0 50%;
@@ -1168,7 +1173,10 @@ table {
     display: flex;
     -ms-flex-align: center;
         align-items: center;
-    background: #f7f7f7; }
+    -ms-flex-pack: center;
+        justify-content: center;
+    background: #f7f7f7;
+    overflow: hidden; }
   .item-card__description {
     font-size: .7rem;
     margin: .5rem 1rem;

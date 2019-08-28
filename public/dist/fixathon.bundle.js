@@ -199,6 +199,11 @@ function itemPhotoPreview(event) {
 
   previewImage.src = URL.createObjectURL(event.target.files[0]);
   previewContainer.classList.remove("hidden");
+
+  var itemPhotoUploaded = (0, _bling.$)("#itemPhotoUploaded");
+  if (itemPhotoUploaded) {
+    itemPhotoUploaded.classList.add("hidden");
+  }
 }
 
 function charCounter(maxChars, inputField, charCounter) {

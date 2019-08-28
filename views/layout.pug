@@ -32,26 +32,59 @@ html(lang="en")
   block content
     p Default content
 
-  nav.footer-navigation
-    hr
-    ul
-      li
-        a(href='/') Home
+  footer
+    .footer__content.container
+      nav.footer__categories
+        p
+          strong Re-Product categories
 
-      li
-        a(href='/about') About
+        ul
+          each category in h.itemCategories
+            li
+              a(href=`/category/${category.slug}`)
+                span(aria-label=`${category.name}`)= category.icon
+                |  #{category.name}
 
-      li
-        a(href='/terms-and-conditions') Terms and Conditions
+      .footer__author
+        a(href='https://feriforgacs.me' target='_blank')
+          img(src='https://www.gravatar.com/avatar/86458dee9699b879181baa5d3f70d92e' alt='Learn more about Ferenc Forgacs')
+        
+        p Re-Product was built by Ferenc Forgacs (
+          a(href='https://twitter.com/feriforgacs' target='_blank') @feriforgacs
+          | ) for 
+          a(href='https://fixathon.io/' target='_blank')
+            span(aria-label='earth icon') 🌍 
+            | Fixathon - The world's first online hackathon to help fix the climate
+        
+        p If you like it, you can 
+          a.buy-coffee(href='https://www.paypal.me/feriforgacs/3usd' target='_blank') buy me a coffee 
+            span(role='img' aria-label='coffee icon') ☕ 
+          | to support the development of the project.
 
-      li
-        a(href='/privacy-policy') Privacy Policy
-      
-      li
-        a(href='/faq') FAQ
+    nav.footer__navigation.container
+      ul
+        li
+          a(href='/') Home
 
-      li
-        a(href='/contact') Contact
+        li
+          a(href='/about') About
+
+        li
+          a(href='/terms-and-conditions') Terms and Conditions
+
+        li
+          a(href='/privacy-policy') Privacy Policy
+        
+        li
+          a(href='/faq') FAQ
+
+        li
+          a(href='/contact') Contact
+
+        li (c) 2019. Some Rights Reserved
+
+        li
+          a(href='https://icons8.com/ouch/' target='_blank') illustration by Ouch.pics
   
   block scripts
     script(src="/dist/fixathon.bundle.js")

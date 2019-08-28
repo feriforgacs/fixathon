@@ -1,9 +1,24 @@
+const mongoose = require('mongoose');
+const Item = mongoose.model('Item');
+const helpers = require('../helpers');
+
+
 /**
  * Homepage
  */
-exports.home = (req, res) => {
+exports.home = async (req, res) => {
+  /**
+   * Get latest items for homepage
+   */
+  const items = await Item.find({
+    itemStatus: 'approved'
+  }).sort({
+    itemPublished: -1
+  }).limit(5);
+
   res.render('home', {
-    title: 'Home'
+    title: `${helpers.siteName} - ${helpers.siteTitle}`,
+    items
   });
 }
 

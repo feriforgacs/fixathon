@@ -41,4 +41,20 @@
     opacity: .5;
     cursor: default;
   }
+
+  &--hero{
+    color: #fff;
+    border: 1px solid #fff;
+    max-width: 200px;
+    margin: 0;
+    background: rgba(255, 255, 255, .2);
+  }
+
+  &--hero--inverse{
+    background: #fff;
+    border: 1px solid #fff;
+    color: #4A7EE3;
+    max-width: 200px;
+    margin: 0;
+  }
 }

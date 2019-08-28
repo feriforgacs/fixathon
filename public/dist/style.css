@@ -830,6 +830,18 @@ table {
   .button:disabled, .button[disabled] {
     opacity: .5;
     cursor: default; }
+  .button--hero {
+    color: #fff;
+    border: 1px solid #fff;
+    max-width: 200px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.2); }
+  .button--hero--inverse {
+    background: #fff;
+    border: 1px solid #fff;
+    color: #4A7EE3;
+    max-width: 200px;
+    margin: 0; }
 
 .flash-messages {
   position: fixed;
@@ -1238,5 +1250,143 @@ table {
     background: #e5fff0; }
   #orders__buyer .accepted td:nth-child(1), #orders__seller .accepted td:nth-child(1), #item-requests .accepted td:nth-child(1) {
     border-left: 5px solid #008013; }
+
+/**
+ * Homepage
+ */
+#homepage h1 {
+  display: none; }
+
+#homepage h2, #homepage h3 {
+  font-family: "Paytone One", sans-serif; }
+
+#homepage__hero {
+  background: #7FD6C2;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  color: #fff; }
+  #homepage__hero h2 {
+    font-size: 3.5rem;
+    margin: 2rem 0;
+    padding: 0; }
+  #homepage__hero h3 {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin: 3rem 0;
+    padding: 0; }
+  #homepage__hero .image {
+    -ms-flex: 1;
+        flex: 1;
+    text-align: right; }
+  #homepage__hero .content {
+    -ms-flex: 1;
+        flex: 1; }
+
+#homepage__products .section__header h3 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #888;
+  font-size: 1.3rem;
+  margin: 3rem 0; }
+
+#homepage__products .section__footer a {
+  display: block;
+  margin: 1rem auto;
+  text-align: center;
+  font-size: .8rem; }
+
+#homepage__bottom-hero {
+  background: #AAC6FC;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  color: #fff; }
+  #homepage__bottom-hero h3 {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin: 3rem 0;
+    padding: 0; }
+  #homepage__bottom-hero .image {
+    -ms-flex: 1;
+        flex: 1;
+    text-align: left; }
+  #homepage__bottom-hero .content {
+    -ms-flex: 1;
+        flex: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: end;
+        align-items: flex-end; }
+    #homepage__bottom-hero .content .actions {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: row;
+          flex-direction: row;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      width: 100%;
+      max-width: 640px;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+      line-height: 3rem; }
+      #homepage__bottom-hero .content .actions span {
+        display: block;
+        margin: 0 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: .7rem; }
+
+footer {
+  background: #2E1641;
+  margin: 0;
+  padding: 2rem;
+  color: #fff;
+  font-size: .7rem; }
+  footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+  footer a {
+    color: #ccc; }
+  footer .footer__content {
+    display: -ms-flexbox;
+    display: flex; }
+    footer .footer__content .footer__categories {
+      -ms-flex: 1;
+          flex: 1; }
+      footer .footer__content .footer__categories p {
+        margin: 1rem 0;
+        padding: 0;
+        text-transform: uppercase; }
+      footer .footer__content .footer__categories li {
+        line-height: 2rem; }
+    footer .footer__content .footer__author {
+      -ms-flex: 1;
+          flex: 1; }
+      footer .footer__content .footer__author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        margin-top: 2rem; }
+      footer .footer__content .footer__author .buy-coffee {
+        text-decoration: underline; }
+  footer .footer__navigation ul {
+    display: -ms-flexbox;
+    display: flex;
+    margin: 2rem 0 0;
+    padding: 2rem 0 0;
+    border-top: 2px solid #280940;
+    width: 100%;
+    -ms-flex-pack: justify;
+        justify-content: space-between; }
 
 /*# sourceMappingURL=style.css.map*/

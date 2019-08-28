@@ -11,7 +11,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 /**
  * Basic pages - Home
  */
-router.get('/', cmsController.home);
+router.get('/', catchErrors(cmsController.home));
 
 /**
  * Basic pages - About

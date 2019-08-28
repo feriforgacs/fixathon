@@ -1,0 +1,169 @@
+/**
+ * Homepage
+ */ 
+
+#homepage{
+  h1{
+    display: none;
+  }
+
+  h2, h3 {
+    font-family: $paytone;
+  }
+
+  &__hero{
+    background: #7FD6C2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    h2{
+      font-size: 3.5rem;
+      margin: 2rem 0;
+      padding: 0;
+    }
+
+    h3{
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+      margin: 3rem 0;
+      padding: 0;
+    }
+
+    .image{
+      flex: 1;
+      text-align: right;
+    }
+    .content{
+      flex: 1;
+    }
+  }
+
+  &__products{
+    .section__header{
+      h3{
+        text-align: center;
+        text-transform: uppercase;
+        color: #888;
+        font-size: 1.3rem;
+        margin: 3rem 0;
+      }
+    }
+
+    .section__footer{
+      a{
+        display: block;
+        margin: 1rem auto;
+        text-align: center;
+        font-size: .8rem;
+      }
+    }
+  }
+
+  &__bottom-hero{
+    background: #AAC6FC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    h3{
+      font-size: 2rem;
+      line-height: 3rem;
+      margin: 3rem 0;
+      padding: 0;
+    }
+
+    .image{
+      flex: 1;
+      text-align: left;
+    }
+    .content{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .actions{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 640px;
+        justify-content: flex-start;
+        line-height: 3rem;
+
+        span{
+          display: block;
+          margin: 0 2rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: .7rem;
+        }
+      }
+    }
+  }
+}
+
+footer{
+  background: #2E1641;
+  margin: 0;
+  padding: 2rem;
+  color: #fff;
+  font-size: .7rem;
+
+  ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  a{
+    color: #ccc;
+  }
+
+  .footer__content{
+    display: flex;
+
+    .footer__categories{
+      flex: 1;
+
+      p{
+        margin: 1rem 0;
+        padding: 0;
+        text-transform: uppercase;
+      }
+
+      li{
+        line-height: 2rem;
+      }
+    }
+
+    .footer__author{
+      flex: 1;
+
+      img{
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        margin-top: 2rem;
+      }
+
+      .buy-coffee{
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .footer__navigation{
+    ul{
+      display: flex;
+      margin: 2rem 0 0;
+      padding: 2rem 0 0;
+      border-top: 2px solid #280940;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+}

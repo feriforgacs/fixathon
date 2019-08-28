@@ -279,6 +279,11 @@ router.get('/item/:id/requests',
   catchErrors(orderController.displayItemRequests)
 );
 
+/**
+ * Search items
+ */
+router.get('/search', catchErrors(itemController.searchItems));
+
 // DEBUG
 // email layout preview
 router.get('/debug/email/:email', (req, res) => {

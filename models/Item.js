@@ -69,8 +69,8 @@ const itemSchema = new mongoose.Schema({
 
 // define our indexes
 itemSchema.index({
-  name: 'text',
-  description: 'text'
+  itemName: 'text',
+  itemDescription: 'text'
 });
 
 itemSchema.pre('save', async function(next){

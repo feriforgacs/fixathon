@@ -142,7 +142,7 @@ exports.displayRequest = async (req, res, next) => {
 /**
  * Accept item request
  */
-exports.acceptRequest = async (req, res) => {
+exports.acceptRequest = async (req, res, next) => {
   const item = await Item.findOne({
     _id: req.params.itemid
   });
@@ -151,9 +151,7 @@ exports.acceptRequest = async (req, res) => {
    * Check item author and current user
    */
   if(item.author._id.toString() != req.user.id){
-    req.flash("error", "You don't have permission to view this page.");
-    res.redirect("/");
-    return;
+    return next();
   }
 
   const request = await ItemRequest.findOne({
@@ -165,8 +163,15 @@ exports.acceptRequest = async (req, res) => {
   });
 
   if(!item || !request || !buyer){
-    req.flash("error", "The request you are looking for doesn't exists.")
-    res.redirect("/");
+    return next();
+  }
+
+  /**
+   * Check if item was sold previously
+   */
+  if(item.status == "sold"){
+    req.flash("error", "You've already accepted a request for this item.");
+    res.redirect(`/item/${item._id}/requests`);
     return;
   }
 

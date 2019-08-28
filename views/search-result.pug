@@ -1,0 +1,21 @@
+extends layout
+
+include mixins/_itemCard
+
+block content
+  .container
+    #search-result
+    h1= title
+
+    h3 #{items.length}
+      if items.length == 1
+        |  result
+      else
+        |  results
+
+    .item-list
+      if items.length > 0
+        each item in items
+          +itemCard(item)
+      else
+        p.message Ne result for "#{searchTerm}"

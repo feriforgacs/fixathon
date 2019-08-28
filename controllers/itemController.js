@@ -305,8 +305,11 @@ exports.approveItem = async (req, res, next) => {
   res.redirect(`/item/${item.itemSlug}`);
 }
 
+/**
+ * Display imates by ctegory
+ */
 exports.displayCategoryItems = async (req, res) => {
-  const itemCategory = req.params.category || '';
+  const itemCategory = req.params.category || 'other';
   const page = req.params.page || 1;
   const itemLimit = 10;
   const skip = (page * itemLimit) - itemLimit;
@@ -346,6 +349,9 @@ exports.displayCategoryItems = async (req, res) => {
   });
 }
 
+/**
+ * List items created by the current user
+ */
 exports.dispalyCreatedItems = async (req, res) => {
   const items = await Item.find({
     author: req.user._id
@@ -360,6 +366,9 @@ exports.dispalyCreatedItems = async (req, res) => {
   });
 }
 
+/**
+ * List items requested by the current user
+ */
 exports.displayRequestedItems = async (req, res) => {
   const items = await ItemRequest.find({
     author: req.user._id
@@ -372,5 +381,31 @@ exports.displayRequestedItems = async (req, res) => {
     items,
     displayStatus: true,
     displayRequestDate: true
+  });
+}
+
+/**
+ * Search items by keyword
+ */
+exports.searchItems = async (req, res, next) => {
+  const items = await Item.find({
+    $text: {
+      $search: req.query.q
+    },
+    itemStatus: 'approved'
+  }, {
+    score: {
+      $meta: 'textScore'
+    }
+  }).sort({
+    score: {
+      $meta: 'textScore'
+    }
+  });
+
+  res.render('search-result', {
+    title: `Search result for: "${req.query.q}"`,
+    items,
+    searchTerm: req.query.q
   });
 }

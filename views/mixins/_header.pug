@@ -14,8 +14,8 @@ mixin header(search = '')
                 != h.icon('categories_close_button')
           
           li.navigation__item.logged-in#search-item
-            form(method='GET' action='search')#search-form
-              input(type='text' name='search' value=`${search || ''}` placeholder='Search items...')
+            form(method='GET' action='/search')#search-form
+              input(type='text' name='q' value=`${searchQuery || ''}` placeholder='Search items...')
               button(type='submit')#search-item__submit
                 != h.icon('search_button')
         else

@@ -1,4 +1,4 @@
-#orders__buyer, #orders__seller{
+#orders__buyer, #orders__seller, #item-requests{
   margin: 3rem 0;
 
   h2{
@@ -14,5 +14,24 @@
 
   thead{
     background: #eee;
+  }
+
+  .unread{
+    font-weight: bold;
+    font-size: .65rem;
+  }
+
+  .read{
+    opacity: .8;
+  }
+
+  .accepted{
+    td{
+      background: #e5fff0;
+    }
+
+    td:nth-child(1){
+      border-left: 5px solid #008013;
+    }
   }
 }

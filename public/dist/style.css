@@ -1215,16 +1215,25 @@ table {
     font-style: italic;
     color: #888; }
 
-#orders__buyer, #orders__seller {
+#orders__buyer, #orders__seller, #item-requests {
   margin: 3rem 0; }
-  #orders__buyer h2, #orders__seller h2 {
+  #orders__buyer h2, #orders__seller h2, #item-requests h2 {
     margin: 0 0 2rem;
     padding: 0;
     font-size: 1.5rem; }
-  #orders__buyer table, #orders__seller table {
+  #orders__buyer table, #orders__seller table, #item-requests table {
     font-size: .6rem;
     border-spacing: 0; }
-  #orders__buyer thead, #orders__seller thead {
+  #orders__buyer thead, #orders__seller thead, #item-requests thead {
     background: #eee; }
+  #orders__buyer .unread, #orders__seller .unread, #item-requests .unread {
+    font-weight: bold;
+    font-size: .65rem; }
+  #orders__buyer .read, #orders__seller .read, #item-requests .read {
+    opacity: .8; }
+  #orders__buyer .accepted td, #orders__seller .accepted td, #item-requests .accepted td {
+    background: #e5fff0; }
+  #orders__buyer .accepted td:nth-child(1), #orders__seller .accepted td:nth-child(1), #item-requests .accepted td:nth-child(1) {
+    border-left: 5px solid #008013; }
 
 /*# sourceMappingURL=style.css.map*/

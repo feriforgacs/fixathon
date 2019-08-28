@@ -290,6 +290,9 @@ exports.acceptRequest = async (req, res) => {
   res.redirect(`/order/${order.id}`);
 }
 
+/**
+ * Display order details
+ */
 exports.displayOrder = async (req, res, next) => {
   /**
    * Get order details from the database
@@ -315,6 +318,9 @@ exports.displayOrder = async (req, res, next) => {
   }
 }
 
+/**
+ * Display orders list
+ */
 exports.displayOrderList = async (req, res) => {
   const ordersSellerPromise = Order.find({
     seller: req.user._id
@@ -334,5 +340,40 @@ exports.displayOrderList = async (req, res) => {
     title: 'Orders',
     ordersSeller,
     ordersBuyer
+  });
+}
+
+/**
+ * Display item requests
+ */
+exports.displayItemRequests = async (req, res, next) => {
+  /**
+   * Check item and user connection
+   */
+  const item = await Item.findOne({
+    _id: req.params.id,
+    author: req.user._id
+  });
+
+  if(!item){
+    return next();
+  }
+
+  const itemRequests = await ItemRequest.find({
+    item: req.params.id
+  }).sort({
+    created: -1
+  }).populate('item', {
+    itemName: 1,
+    _id: 1
+  }).populate('author', {
+    name: 1,
+    _id: 1
+  });
+
+  res.render('item-requests', {
+    title: `Requests for ${item.itemName}`,
+    itemRequests,
+    item
   });
 }

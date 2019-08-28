@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  .container
+    #item-requests
+      h1= title
+      
+      if itemRequests.length
+        table
+          thead
+            tr
+              th Request status
+              th Request sent
+              th Request from
+              th Request message
+              th Details
+
+          tbody
+            each itemRequest in itemRequests
+              tr(class=`${itemRequest.status}`)
+                td= itemRequest.status
+                td #{h.moment(itemRequest.created).fromNow()}
+                td
+                  a(href=`/profile/${itemRequest.author._id}` target='_blank' title=`View the profile of ${itemRequest.author.name}`)= itemRequest.author.name
+                td.request__message= itemRequest.message
+                td
+                  a(href=`/item/${itemRequest.item._id}/request/${itemRequest._id}`) View details
+
+        p
+          a(href=`/item/${item.itemSlug}`).button.button--small Back to the product page
+
+      else
+        p.message.message--info There are no requests for this product.
+          a(href=`/item/${item.itemSlug}`)  Back to the product page

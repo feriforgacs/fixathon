@@ -270,6 +270,15 @@ router.get('/orders',
   catchErrors(orderController.displayOrderList)
 );
 
+/**
+ * List requests for specific product
+ */
+router.get('/item/:id/requests',
+  authController.isLoggedIn,
+  catchErrors(userController.isConfirmed),
+  catchErrors(orderController.displayItemRequests)
+);
+
 // DEBUG
 // email layout preview
 router.get('/debug/email/:email', (req, res) => {

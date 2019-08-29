@@ -10,13 +10,6 @@
     "dev": "concurrently \"npm run watch\" \"npm run assets\" --names \"🤖,📦\" --prefix name",
     "assets": "webpack -w --display-max-modules 0"
   },
-  "now": {
-    "dotenv": "variables.env.now",
-    "builds": [
-      { "src": "*.js", "use": "@now/node" }
-    ]
-  },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/feriforgacs/fixathon.git"

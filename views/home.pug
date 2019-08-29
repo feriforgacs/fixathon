@@ -19,14 +19,14 @@ block content
           a.button.button--hero(href='/learn-more') Learn More
 
     #homepage__products
-      .container
-        .section__header
-          h3 Latest Re-Products
+      .section__header
+        h3 Latest Re-Products
+      .item-list
         each item in items
           +itemCard(item)
 
-        .section__footer
-          a(href='/items') View all Re-Products...
+      .section__footer
+        a(href='/items') View all Re-Products...
 
     #homepage__bottom-hero
       .container

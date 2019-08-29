@@ -56,10 +56,19 @@
       }
     }
 
+    .item-list{
+      display: flex;
+      justify-content: center;
+
+      .item-card{
+        margin: 0 .5rem 2rem 0;
+      }
+    }
+
     .section__footer{
       a{
         display: block;
-        margin: 1rem auto;
+        margin: 1rem auto 2rem;
         text-align: center;
         font-size: .8rem;
       }

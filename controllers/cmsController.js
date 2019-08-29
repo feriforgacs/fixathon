@@ -14,7 +14,7 @@ exports.home = async (req, res) => {
     itemStatus: 'approved'
   }).sort({
     itemPublished: -1
-  }).limit(5);
+  }).limit(4);
 
   res.render('home', {
     title: `${helpers.siteName} - ${helpers.siteTitle}`,

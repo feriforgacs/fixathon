@@ -47,7 +47,7 @@ mixin itemForm(item = {})
         small As there is no real money on Re-Product, it's up to you how much coin you ask for your product.
           br
           | If you want to, you can give it away for free. In that case, add 0 to the price field.
-      input#itemPrice(type='text' name='itemPrice' required='required' value=item.itemPrice maxlength='100')
+      input#itemPrice(type='number' name='itemPrice' required='required' value=item.itemPrice maxlength='100')
 
     .form-group
       label(for='itemDescription') Description

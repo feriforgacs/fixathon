@@ -84,3 +84,12 @@ exports.unverified = (req, res) => {
     title: 'Please, verify your profile'
   });
 }
+
+/**
+ * Learn more page
+ */
+exports.learnmore = (req, res) => {
+  res.render('learn-more', {
+    title: 'What is Re-Product?'
+  });
+}

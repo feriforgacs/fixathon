@@ -44,6 +44,11 @@ router.get('/contact', cmsController.contact);
 router.get('/unverified', cmsController.unverified);
 
 /**
+ * Basic pages - Learn more
+ */
+router.get('/learn-more', cmsController.learnmore);
+
+/**
  * Display all items
  */
 router.get('/items', catchErrors(itemController.getItems));

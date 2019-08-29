@@ -25,76 +25,83 @@ html(lang="en")
 
   body
 
-  block header
-    +header()
+    block header
+      +header()
 
-  block messages
-    if locals.flashes
-      .inner
-        .flash-messages
-          - const categories = Object.keys(locals.flashes)
-          each category in categories
-            each message in flashes[category]
-              .flash(class=`flash--${category}`)
-                p.flash__text!= message
-                button.flash__remove(onClick="this.parentElement.remove()") &times;
+    block messages
+      if locals.flashes
+        .inner
+          .flash-messages
+            - const categories = Object.keys(locals.flashes)
+            each category in categories
+              each message in flashes[category]
+                .flash(class=`flash--${category}`)
+                  p.flash__text!= message
+                  button.flash__remove(onClick="this.parentElement.remove()") &times;
 
-  block content
-    p Default content
+    block content
+      p Default content
 
-  footer
-    .footer__content.container
-      nav.footer__categories
-        p
-          strong Re-Product categories
+    footer
+      .footer__content.container
+        nav.footer__categories
+          p
+            strong Re-Product categories
 
+          ul
+            each category in h.itemCategories
+              li
+                a(href=`/category/${category.slug}`)
+                  span(aria-label=`${category.name}`)= category.icon
+                  |  #{category.name}
+
+        .footer__author
+          a(href='https://feriforgacs.me' target='_blank')
+            img(src='https://www.gravatar.com/avatar/86458dee9699b879181baa5d3f70d92e' alt='Learn more about Ferenc Forgacs')
+          
+          p Re-Product was built by Ferenc Forgacs (
+            a(href='https://twitter.com/feriforgacs' target='_blank') @feriforgacs
+            | ) for 
+            a(href='https://fixathon.io/' target='_blank')
+              span(aria-label='earth icon') 🌍 
+              | Fixathon - The world's first online hackathon to help fix the climate
+          
+          p If you like it, you can 
+            a.buy-coffee(href='https://www.paypal.me/feriforgacs/3usd' target='_blank') buy me a coffee 
+              span(role='img' aria-label='coffee icon') ☕ 
+            | to support the development of the project.
+
+      nav.footer__navigation.container
         ul
-          each category in h.itemCategories
-            li
-              a(href=`/category/${category.slug}`)
-                span(aria-label=`${category.name}`)= category.icon
-                |  #{category.name}
+          li
+            a(href='/') Home
 
-      .footer__author
-        a(href='https://feriforgacs.me' target='_blank')
-          img(src='https://www.gravatar.com/avatar/86458dee9699b879181baa5d3f70d92e' alt='Learn more about Ferenc Forgacs')
-        
-        p Re-Product was built by Ferenc Forgacs (
-          a(href='https://twitter.com/feriforgacs' target='_blank') @feriforgacs
-          | ) for 
-          a(href='https://fixathon.io/' target='_blank')
-            span(aria-label='earth icon') 🌍 
-            | Fixathon - The world's first online hackathon to help fix the climate
-        
-        p If you like it, you can 
-          a.buy-coffee(href='https://www.paypal.me/feriforgacs/3usd' target='_blank') buy me a coffee 
-            span(role='img' aria-label='coffee icon') ☕ 
-          | to support the development of the project.
+          li
+            a(href='/about') About
 
-    nav.footer__navigation.container
-      ul
-        li
-          a(href='/') Home
+          li
+            a(href='/terms-and-conditions') Terms and Conditions
 
-        li
-          a(href='/about') About
+          li
+            a(href='/privacy-policy') Privacy Policy
+          
+          li
+            a(href='/faq') FAQ
 
-        li
-          a(href='/terms-and-conditions') Terms and Conditions
+          li
+            a(href='/contact') Contact
 
-        li
-          a(href='/privacy-policy') Privacy Policy
-        
-        li
-          a(href='/faq') FAQ
+          li (c) 2019. Some Rights Reserved
 
-        li
-          a(href='/contact') Contact
+          li
+            a(href='https://icons8.com/ouch/' target='_blank') Illustration by Ouch.pics
+    
+    block scripts
+      script(src="/dist/fixathon.bundle.js")
+      script(src='https://www.googletagmanager.com/gtag/js?id=UA-67236740-10')
+      script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-        li (c) 2019. Some Rights Reserved
-
-        li
-          a(href='https://icons8.com/ouch/' target='_blank') Illustration by Ouch.pics
-  
-  block scripts
-    script(src="/dist/fixathon.bundle.js")
+        gtag('config', 'UA-67236740-10');

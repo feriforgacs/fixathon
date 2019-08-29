@@ -1172,7 +1172,9 @@ table {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap; }
+        flex-wrap: wrap;
+    -ms-flex-pack: center;
+        justify-content: center; }
 
 .item-card {
   background: #fff;
@@ -1415,6 +1417,11 @@ footer {
 
 #category-page {
   min-height: 400px; }
+  #category-page .item-list {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center; }
 
 #search-result, #about-page, #termsandconditions-page, #privacypolicy-page, #faq-page, #contact-page, #learnmore-page, #confirmed-page, #unverified-page {
   min-height: 400px;

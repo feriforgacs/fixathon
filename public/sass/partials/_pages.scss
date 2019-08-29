@@ -187,6 +187,11 @@ footer{
 
 #category-page{
   min-height: 400px;
+
+  .item-list{
+    display: flex;
+    justify-content: center;
+  }
 }
 
 #search-result, #about-page, #termsandconditions-page, #privacypolicy-page, #faq-page, #contact-page, #learnmore-page, #confirmed-page, #unverified-page{

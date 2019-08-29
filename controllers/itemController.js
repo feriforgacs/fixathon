@@ -97,8 +97,8 @@ exports.createItem = async (req, res) => {
   /**
    * Send notification to admin about the new item
    */
-  const approveURL = `http://${req.headers.host}/item/approve/${item.itemToken}/${item._id}`;
-  const previewURL = `http://${req.headers.host}/item/preview/${item.itemToken}/${item._id}`;
+  const approveURL = `https://${req.headers.host}/item/approve/${item.itemToken}/${item._id}`;
+  const previewURL = `https://${req.headers.host}/item/preview/${item.itemToken}/${item._id}`;
   const user = {
     name: process.env.ADMIN_NOTIFICATION_NAME,
     email: process.env.ADMIN_NOTIFICATION_EMAIL
@@ -301,8 +301,8 @@ exports.approveItem = async (req, res, next) => {
     email: item.author.email
   };
 
-  const itemURL = `http://${req.headers.host}/item/${item.itemSlug}`;
-  const itemRequestsURL = `http://${req.headers.host}/item/${item._id}/requests`;
+  const itemURL = `https://${req.headers.host}/item/${item.itemSlug}`;
+  const itemRequestsURL = `https://${req.headers.host}/item/${item._id}/requests`;
 
   await mail.send({
     user,

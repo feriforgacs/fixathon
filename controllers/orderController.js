@@ -82,7 +82,7 @@ exports.itemRequest = async (req, res) => {
   /**
    * Send mail to seller
    */
-  const requestURL = `http://${req.headers.host}/item/${item._id}/request/${itemRequest._id}`;
+  const requestURL = `https://${req.headers.host}/item/${item._id}/request/${itemRequest._id}`;
 
   await mail.send({
     user: item.author,
@@ -268,7 +268,7 @@ exports.acceptRequest = async (req, res, next) => {
   /**
    * Send notification to buyer
    */
-  const orderURL = `http://${req.headers.host}/order/${order._id}`;
+  const orderURL = `https://${req.headers.host}/order/${order._id}`;
 
   const buyerNotificationPromise = mail.send({
     user: buyer,

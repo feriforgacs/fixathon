@@ -83,7 +83,7 @@ exports.createUser = async (req, res, next) => {
     /**
      * Send confirm mail to new user
      */
-    const confirmURL = `http://${req.headers.host}/account/confirm/${user.confirmToken}`;
+    const confirmURL = `https://${req.headers.host}/account/confirm/${user.confirmToken}`;
     await mail.send({
       user,
       subject: 'Welcome to Re-Product 🤗 Please, confirm your account',

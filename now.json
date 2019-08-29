@@ -3,6 +3,5 @@
   "name": "fixathon",
   "builds": [
     { "src": "*.js", "use": "@now/node" }
-  ],
-  "dotenv": "variables.env.now"
+  ]
 }

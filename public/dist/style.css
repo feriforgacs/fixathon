@@ -1565,7 +1565,7 @@ footer {
       margin-top: 1rem; }
 
 @media only screen and (max-width: 960px) {
-  #category-item, #category, #search-item, #add-item, #profile {
+  #category-item, #category, #search-item, #add-item, #profile, #login-item, #signup-item {
     display: none; }
   #mobile-navigation-open {
     -ms-flex: 2;

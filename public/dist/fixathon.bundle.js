@@ -419,6 +419,8 @@ var _itemDetails = __webpack_require__(2);
 
 var _request = __webpack_require__(7);
 
+var _mobile = __webpack_require__(11);
+
 /**
  * Registration form
  */
@@ -659,12 +661,47 @@ if (requestAcceptMessage) {
  * END Accept request form
  */
 
+/**
+ * Mobile navigation toggle
+ */
+var mobileNavigationOpen = (0, _bling.$)("#mobile-navigation-open button");
+var mobileNavigationClose = (0, _bling.$)("#mobile-navigation-close");
+
+if (mobileNavigationOpen && mobileNavigationClose) {
+  mobileNavigationOpen.on("click", _mobile.toggleMobileNavigation);
+
+  mobileNavigationClose.on("click", _mobile.toggleMobileNavigation);
+}
+
 // automatically hide flash messages
 var flashes = (0, _bling.$)(".flash-messages");
 if (flashes) {
   /* setTimeout(() => {
     flashes.style.display = "none";
   }, 5000); */
+}
+
+/***/ }),
+/* 10 */,
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.toggleMobileNavigation = toggleMobileNavigation;
+function toggleMobileNavigation() {
+  var body = document.querySelector('body');
+  if (body.classList.contains('mobile-navigation-visible')) {
+    // hide mobile nav
+    body.classList.remove('mobile-navigation-visible');
+  } else {
+    // display mobile nav
+    body.classList.add('mobile-navigation-visible');
+  }
 }
 
 /***/ })

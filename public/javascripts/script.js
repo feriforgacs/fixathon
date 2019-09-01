@@ -8,6 +8,7 @@ import { profileDropdownToggle, profileDropdownHide, categoryDropdownToggle, cat
 import { itemPhotoPreview, charCounter, displaySpin } from './modules/itemEdit';
 import { displayRequestForm } from './modules/itemDetails';
 import { displayAcceptRequestForm } from './modules/request';
+import { toggleMobileNavigation } from './modules/mobile';
 
 /**
  * Registration form
@@ -210,6 +211,18 @@ if(requestAcceptMessage){
 /**
  * END Accept request form
  */
+
+/**
+ * Mobile navigation toggle
+ */
+const mobileNavigationOpen = $("#mobile-navigation-open button");
+const mobileNavigationClose = $("#mobile-navigation-close");
+
+if(mobileNavigationOpen && mobileNavigationClose){
+  mobileNavigationOpen.on("click", toggleMobileNavigation);
+
+  mobileNavigationClose.on("click", toggleMobileNavigation);
+}
 
 // automatically hide flash messages
 const flashes = $(".flash-messages");

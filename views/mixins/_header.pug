@@ -151,7 +151,7 @@ mixin header(search = '')
             span(aria-label='Waving Hand') 👋
             |  Logout
 
-      else
+      else if !user
         li.navigation__item#mobile-login-item
           a(href='/login').navigation__link.button.button--secondary.button--small Log In
 

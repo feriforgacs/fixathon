@@ -432,11 +432,14 @@ template {
   display: none; }
 
 html {
-  font-size: 18px;
+  font-size: 14px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #333;
   line-height: 150%;
   background: #fff; }
+  @media only screen and (min-width: 720px) {
+    html {
+      font-size: 18px; } }
 
 a {
   text-decoration: none;
@@ -500,6 +503,10 @@ body {
   font-family: "Paytone One", sans-serif;
   -ms-flex: 2;
       flex: 2; }
+  @media only screen and (max-width: 720px) {
+    #logo {
+      -ms-flex: 10;
+          flex: 10; } }
   #logo .navigation__link {
     color: #13B296;
     font-size: 1.5rem; }
@@ -1428,5 +1435,169 @@ footer {
 #search-result, #about-page, #termsandconditions-page, #privacypolicy-page, #faq-page, #contact-page, #learnmore-page, #confirmed-page, #unverified-page {
   min-height: 400px;
   padding-bottom: 4rem; }
+
+.mobile-navigation-visible #mobile-navigation {
+  display: block; }
+
+#mobile-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  background: #fff;
+  padding: 0 1rem;
+  z-index: 2000;
+  display: none; }
+  #mobile-navigation .navigation__list {
+    height: auto;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+  #mobile-navigation #mobile-logo {
+    font-weight: bold;
+    padding: 0;
+    font-family: "Paytone One", sans-serif;
+    -ms-flex: 100%;
+        flex: 100%;
+    border-bottom: 2px solid #13B296;
+    display: -ms-flexbox;
+    display: flex; }
+    #mobile-navigation #mobile-logo .navigation__link {
+      color: #13B296;
+      font-size: 1.3rem;
+      -ms-flex: 10;
+          flex: 10; }
+    #mobile-navigation #mobile-logo button {
+      -ms-flex: 1;
+          flex: 1;
+      color: #13B296;
+      font-size: 2rem;
+      font-weight: bold; }
+  #mobile-navigation #mobile-search-item {
+    -ms-flex: 100%;
+        flex: 100%; }
+    #mobile-navigation #mobile-search-item #mobile-search-form {
+      display: -ms-flexbox;
+      display: flex;
+      margin: 1rem 0;
+      width: 100%; }
+    #mobile-navigation #mobile-search-item input {
+      border: none;
+      box-shadow: 0 1px 0 #ccc;
+      line-height: 2rem;
+      color: #888;
+      font-size: .8rem;
+      width: calc(100% - 27px); }
+    #mobile-navigation #mobile-search-item__submit {
+      border: none;
+      margin-bottom: -10px;
+      margin-left: 2px;
+      cursor: pointer;
+      background: none; }
+  #mobile-navigation #mobile-categories {
+    -ms-flex: 100%;
+        flex: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: start;
+        align-items: flex-start;
+    border-top: 1px solid #eee; }
+    #mobile-navigation #mobile-categories-dropdown__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%; }
+      #mobile-navigation #mobile-categories-dropdown__list .categories-dropdown__item {
+        text-align: left;
+        border-bottom: 1px solid #eee; }
+        #mobile-navigation #mobile-categories-dropdown__list .categories-dropdown__item .categories-dropdown__link {
+          color: #13B296;
+          font-size: .8rem; }
+  #mobile-navigation #mobile-login-item {
+    -ms-flex: 1;
+        flex: 1;
+    margin: 1rem 1rem 0 0; }
+  #mobile-navigation #mobile-signup-item {
+    -ms-flex: 1;
+        flex: 1;
+    margin: 1rem 0 0 1rem; }
+  #mobile-navigation #mobile-profile {
+    -ms-flex: calc(50% - 1rem);
+        flex: calc(50% - 1rem);
+    padding: 0;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+    font-size: .7rem;
+    font-weight: bold;
+    color: #13B296;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-top: 1rem; }
+    #mobile-navigation #mobile-profile .profile__name {
+      line-height: 150%; }
+    #mobile-navigation #mobile-profile__link {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+          align-items: center;
+      max-width: 210px; }
+  #mobile-navigation #mobile-add-item {
+    -ms-flex: calc(50% - 1rem);
+        flex: calc(50% - 1rem);
+    margin-right: 1rem;
+    margin-top: 1rem; }
+  #mobile-navigation #mobile-profile__dropdown {
+    font-size: .8rem;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: start;
+        align-items: flex-start;
+    width: 100%; }
+    #mobile-navigation #mobile-profile__dropdown a {
+      padding: .5rem .2rem;
+      border-bottom: 1px solid #eee;
+      width: 100%; }
+    #mobile-navigation #mobile-profile__dropdown a:nth-child(1) {
+      border-top: 1px solid #eee;
+      margin-top: 1rem; }
+
+@media only screen and (max-width: 960px) {
+  #category-item, #category, #search-item, #add-item, #profile {
+    display: none; }
+  #mobile-navigation-open {
+    -ms-flex: 2;
+        flex: 2;
+    font-size: 2.5rem;
+    text-align: right;
+    padding-right: 1rem; }
+    #mobile-navigation-open button {
+      color: #13B296; }
+  #homepage__hero .container, #homepage__products .item-list, #homepage__bottom-hero .container {
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center; }
+  #homepage__bottom-hero .container .content .actions {
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center;
+    margin-bottom: 2rem; }
+  footer .footer__content {
+    -ms-flex-direction: column;
+        flex-direction: column; }
+  footer .footer__navigation ul {
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center;
+    line-height: 2.5rem; } }
+
+@media only screen and (min-width: 960px) {
+  #mobile-navigation-open {
+    display: none; } }
 
 /*# sourceMappingURL=style.css.map*/

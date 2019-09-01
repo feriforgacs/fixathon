@@ -5,6 +5,9 @@ mixin header(search = '')
         li.navigation__item#logo
           a(href='/').navigation__link.navigation__link--activ RE-PRODUCT
 
+        li.navigation-item#mobile-navigation-open
+          button &equiv;
+
         if user
           li.navigation__item.logged-in#category-item
             a(href='').navigation__link#category Categories
@@ -86,3 +89,71 @@ mixin header(search = '')
           a.categories-dropdown__link(href=`/category/${category.slug}` title=`View items in the ${category.name} category`)
             span(aria-label=`${category.name}`).icon #{category.icon} 
             span.label= category.name
+
+  #mobile-navigation
+    ul.navigation__list
+      li.navigation__item#mobile-logo
+        a(href='/').navigation__link RE-PRODUCT
+
+        button#mobile-navigation-close &times;
+
+      li.navigation__item#mobile-search-item
+        form(method='GET' action='search')#mobile-search-form
+          input(type='text' name='search' value=`${search || ''}` placeholder='Search items...')
+          button(type='submit')#mobile-search-item__submit
+            != h.icon('search_button')
+
+      li.navigation__item#mobile-categories
+        ul#mobile-categories-dropdown__list
+          each category in h.itemCategories
+            li.categories-dropdown__item
+              a.categories-dropdown__link(href=`/category/${category.slug}` title=`View items in the ${category.name} category`)
+                span(aria-label=`${category.name}`).icon #{category.icon} 
+                span.label= category.name
+
+      if user
+        li.navigation__item#mobile-add-item
+          a(href='/item/add').navigation__link.button.button--primary.button--small Add item
+
+        li.navigation__item#mobile-profile
+          #mobile-profile__link
+            img(src=`${user.gravatar}`).profile__image
+            span.profile__name #{user.name}
+
+      if user && user.status == 'confirmed'
+        li.navigation__item#mobile-profile__dropdown
+          a(href='/confirmed')
+            span(aria-label='Backhand Index Pointing Right') 👉
+            |  Getting started
+
+          a(href='/account')
+            span(aria-label='Gear') ⚙️
+            |  Edit profile
+
+          if user.status == 'confirmed'
+            a(href='/wallet')
+              span(aria-label='Money Bag') 💰
+              |  Wallet
+
+            a(href='/created-items')
+              span(aria-label='Box') 📦
+              |  My uploaded items
+
+            a(href='/requested-items')
+              span(aria-label='Wave') 🙋
+              |  My requested items
+
+            a(href='/orders')
+              span(aria-label='Delivery Truck') 🚚
+              |  My orders
+
+          a(href='/logout')
+            span(aria-label='Waving Hand') 👋
+            |  Logout
+
+      else
+        li.navigation__item#mobile-login-item
+          a(href='/login').navigation__link.button.button--secondary.button--small Log In
+
+        li.navigation__item#mobile-signup-item
+          a(href='/register').navigation__link.button.button--primary.button--small Sign Up

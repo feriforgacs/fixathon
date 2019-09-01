@@ -54,6 +54,10 @@ body{
   font-family: $paytone;
   flex: 2;
 
+  @media only screen and (max-width: $tablet){
+    flex: 10;
+  }
+
   & .navigation__link {
     color: $primaryColor;
     font-size: 1.5rem;

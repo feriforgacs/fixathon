@@ -3,6 +3,12 @@
 
   &__content{
     display: flex;
+
+    @media only screen and (max-width: $laptop){
+      flex-direction: column;
+      align-items: center;
+    }
+
   }
 
   &__image{

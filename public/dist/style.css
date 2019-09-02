@@ -1178,10 +1178,10 @@ table {
 /**
  * Created items
  */
-#created-items, #requested-items, #latest-items {
+#created-items, #requested-items, #latest-items, #search-result {
   padding-bottom: 4rem;
   min-height: 400px; }
-  #created-items .item-list, #requested-items .item-list, #latest-items .item-list {
+  #created-items .item-list, #requested-items .item-list, #latest-items .item-list, #search-result .item-list {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -1446,11 +1446,11 @@ footer {
   display: block; }
 
 #mobile-navigation {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   overflow-y: scroll;
   background: #fff;
   padding: 0 1rem;

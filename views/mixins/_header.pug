@@ -31,7 +31,7 @@ mixin header(search = '')
         
           li.navigation__item#search-item
             form(method='GET' action='search')#search-form
-              input(type='text' name='search' value=`${search || ''}` placeholder='Search items...')
+              input(type='text' name='q' value=`${search || ''}` placeholder='Search items...')
               button(type='submit')#search-item__submit
                 != h.icon('search_button')
 
@@ -99,7 +99,7 @@ mixin header(search = '')
 
       li.navigation__item#mobile-search-item
         form(method='GET' action='search')#mobile-search-form
-          input(type='text' name='search' value=`${search || ''}` placeholder='Search items...')
+          input(type='text' name='q' value=`${search || ''}` placeholder='Search items...')
           button(type='submit')#mobile-search-item__submit
             != h.icon('search_button')
 
@@ -120,7 +120,7 @@ mixin header(search = '')
             img(src=`${user.gravatar}`).profile__image
             span.profile__name #{user.name}
 
-      if user && user.status == 'confirmed'
+      if user
         li.navigation__item#mobile-profile__dropdown
           a(href='/confirmed')
             span(aria-label='Backhand Index Pointing Right') 👉
